@@ -579,7 +579,52 @@
     </section>
     <!-- Interactive Timeline Section -->
     <section class="py-14" id="timeline">
-      <div class="max-w-7xl mx-auto px-4">
+      <!-- Program / Degree Selector Section -->
+      <section class="w-full bg-primary/5 py-14" id="program-selector">
+        <div class="max-w-5xl mx-auto px-4">
+          <h2
+            class="text-2xl md:text-3xl font-bold text-primary mb-2 text-center"
+          >
+            Programs & Degrees
+          </h2>
+          <p class="text-primary/80 text-base md:text-lg mb-8 text-center">
+            Explore our Undergraduate, Postgraduate, and PhD offerings. Hover or
+            tap to learn more.
+          </p>
+          <div class="flex justify-center mb-8">
+            <div
+              id="program-tabs"
+              class="inline-flex rounded-lg shadow overflow-hidden border border-primary/20 bg-white"
+            >
+              <button
+                class="tab-btn px-6 py-2 text-primary font-semibold focus:outline-none transition hover:bg-secondary hover:text-primary"
+                data-tab="ug"
+              >
+                Undergraduate
+              </button>
+              <button
+                class="tab-btn px-6 py-2 text-primary font-semibold focus:outline-none transition hover:bg-secondary hover:text-primary"
+                data-tab="pg"
+              >
+                Postgraduate
+              </button>
+              <button
+                class="tab-btn px-6 py-2 text-primary font-semibold focus:outline-none transition hover:bg-secondary hover:text-primary"
+                data-tab="phd"
+              >
+                PhD
+              </button>
+            </div>
+          </div>
+          <div
+            id="program-content"
+            class="grid grid-cols-1 md:grid-cols-2 gap-8"
+          >
+            <!-- Program cards will be injected by JS -->
+          </div>
+        </div>
+      </section>
+      <div class="max-w-7xl mx-auto px-4 mt-12">
         <h2
           class="text-2xl md:text-3xl font-bold text-primary mb-2 text-center"
         >

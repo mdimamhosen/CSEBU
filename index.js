@@ -1,3 +1,88 @@
+// Program / Degree Selector Logic
+const programs = {
+	ug: [
+		{
+			title: "BSc in Computer Science & Engineering",
+			desc: "A 4-year undergraduate program focusing on core computing, software, and hardware skills.",
+			duration: "4 Years (8 Semesters)",
+			link: "#programs",
+		},
+		{
+			title: "BSc in Software Engineering",
+			desc: "Comprehensive study of software development, project management, and quality assurance.",
+			duration: "4 Years (8 Semesters)",
+			link: "#programs",
+		},
+	],
+	pg: [
+		{
+			title: "MSc in Computer Science & Engineering",
+			desc: "Advanced coursework and research in computer science, preparing for industry or academia.",
+			duration: "2 Years (4 Semesters)",
+			link: "#programs",
+		},
+		{
+			title: "MSc in Data Science",
+			desc: "Focus on big data, machine learning, and analytics for modern data-driven careers.",
+			duration: "2 Years (4 Semesters)",
+			link: "#programs",
+		},
+	],
+	phd: [
+		{
+			title: "PhD in Computer Science & Engineering",
+			desc: "Doctoral research program for those aiming to contribute new knowledge in computing.",
+			duration: "3-5 Years",
+			link: "#programs",
+		},
+	],
+};
+
+function renderPrograms(tab) {
+	const container = document.getElementById("program-content");
+	container.innerHTML = programs[tab]
+		.map(
+			(p) => `
+			<div class="group bg-white rounded-2xl shadow-lg border border-primary/10 p-6 flex flex-col gap-3 hover:bg-secondary/10 transition cursor-pointer">
+				<div class="flex items-center gap-3 mb-2">
+					<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-secondary text-2xl font-bold group-hover:bg-secondary/20 transition">
+						<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422A12.083 12.083 0 0112 21.5a12.083 12.083 0 01-6.16-10.922L12 14z"/></svg>
+					</div>
+					<div>
+						<div class="font-bold text-lg text-primary group-hover:text-secondary transition">${p.title}</div>
+						<div class="text-sm text-primary/70 group-hover:text-primary/90 transition">${p.duration}</div>
+					</div>
+				</div>
+				<div class="text-primary/80 text-base mb-2 group-hover:text-primary">${p.desc}</div>
+				<a href="${p.link}" class="inline-block mt-auto bg-primary text-secondary font-semibold px-4 py-2 rounded shadow hover:bg-secondary hover:text-primary border-2 border-primary hover:border-secondary transition text-sm">View Details</a>
+			</div>
+		`
+		)
+		.join("");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+	// Program tabs logic
+	const tabBtns = document.querySelectorAll("#program-tabs .tab-btn");
+	let activeTab = "ug";
+	function setActiveTab(tab) {
+		activeTab = tab;
+		tabBtns.forEach((btn) => {
+			if (btn.dataset.tab === tab) {
+				btn.classList.add("bg-secondary", "text-primary");
+				btn.classList.remove("bg-white", "text-primary");
+			} else {
+				btn.classList.remove("bg-secondary", "text-primary");
+				btn.classList.add("bg-white", "text-primary");
+			}
+		});
+		renderPrograms(tab);
+	}
+	tabBtns.forEach((btn) => {
+		btn.addEventListener("click", () => setActiveTab(btn.dataset.tab));
+	});
+	setActiveTab(activeTab);
+});
 // HERO SLIDER
 const slides = [
 	{
