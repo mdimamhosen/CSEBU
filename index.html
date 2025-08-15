@@ -19,6 +19,7 @@
         },
       };
     </script>
+
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
@@ -27,7 +28,38 @@
     <title>CSE-BU</title>
   </head>
   <body class="font-roboto">
-    <nav class="bg-primary text-secondary sticky top-0 z-50 shadow">
+    <!-- Live News / Event Ticker -->
+    <div
+      id="news-ticker-wrapper"
+      class="w-full bg-white text-primary font-medium text-xs md:text-sm overflow-hidden relative z-50 border-b border-primary/10"
+    >
+      <div
+        id="news-ticker"
+        class="whitespace-nowrap flex items-center py-1 px-2 cursor-pointer select-none"
+        style="will-change: transform"
+      >
+        <span class="mr-6">🎉 Admission Open for 2025! Apply Now.</span>
+        <span class="mr-6"
+          >📢 National Award 2023: Congratulations to CSE-BU!</span
+        >
+        <span class="mr-6"
+          >🗓️ Workshop on AI: 25th August, Register Today!</span
+        >
+        <span class="mr-6">💡 New Research Lab Inaugurated!</span>
+        <span class="mr-6">� Student Project Showcase: 1st September</span>
+        <!-- Duplicate for infinite scroll -->
+        <span class="mr-6">�🎉 Admission Open for 2025! Apply Now.</span>
+        <span class="mr-6"
+          >📢 National Award 2023: Congratulations to CSE-BU!</span
+        >
+        <span class="mr-6"
+          >🗓️ Workshop on AI: 25th August, Register Today!</span
+        >
+        <span class="mr-6">💡 New Research Lab Inaugurated!</span>
+        <span class="mr-6">🏆 Student Project Showcase: 1st September</span>
+      </div>
+    </div>
+    <nav class="bg-primary text-secondary sticky top-0 z-40 shadow">
       <div
         class="max-w-7xl mx-auto flex items-center justify-between h-16 px-4"
       >
@@ -168,7 +200,6 @@
       </ul>
     </nav>
 
-    <!-- Hero Slider Section -->
     <section
       class="relative w-full h-[60vh] md:h-[75vh] overflow-hidden"
       id="hero-slider"
@@ -224,6 +255,84 @@
         id="slider-dots"
       ></div>
     </section>
+    <script>
+      // --- Code Snippets / Demo Section Logic ---
+      const demoSnippets = {
+        hello: {
+          code: `// Print Hello World\nconsole.log('Hello, World!');`,
+        },
+        factorial: {
+          code: `// Calculate factorial\nfunction factorial(n) {\n  if (n <= 1) return 1;\n  return n * factorial(n - 1);\n}\nconsole.log('5! =', factorial(5));`,
+        },
+        palindrome: {
+          code: `// Palindrome checker\nfunction isPalindrome(str) {\n  str = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();\n  return str === str.split('').reverse().join('');\n}\nconsole.log('racecar:', isPalindrome('racecar'));\nconsole.log('hello:', isPalindrome('hello'));`,
+        },
+      };
+      const demoSelect = document.getElementById("demo-select");
+      const demoCode = document.getElementById("demo-code");
+      const demoRun = document.getElementById("demo-run");
+      const demoOutput = document.getElementById("demo-output");
+      function loadDemo(name) {
+        if (!demoSnippets[name]) return;
+        demoCode.value = demoSnippets[name].code;
+        demoOutput.textContent = "";
+      }
+      if (demoSelect && demoCode && demoRun && demoOutput) {
+        loadDemo(demoSelect.value);
+        demoSelect.addEventListener("change", () => loadDemo(demoSelect.value));
+        // Run code in a sandboxed iframe for better isolation
+        function runCodeSandboxed(code) {
+          return new Promise((resolve) => {
+            const iframe = document.createElement("iframe");
+            iframe.style.display = "none";
+            document.body.appendChild(iframe);
+            let output = "";
+            let error = "";
+            const script =
+              "window.console = { log: function(...args) { parent.postMessage({ type: 'demo-log', msg: args.join(' ' ) }, '*'); } };" +
+              "try {\n" +
+              code
+                .replace(/\\/g, "\\\\")
+                .replace(/'/g, "\\'")
+                .replace(/\n/g, "\\n") +
+              "\n} catch(e) { parent.postMessage({ type: 'demo-err', msg: e.message }, '*'); }" +
+              "parent.postMessage({ type: 'demo-done' }, '*');";
+            function handleMsg(e) {
+              if (e.source !== iframe.contentWindow) return;
+              if (e.data.type === "demo-log") output += e.data.msg + "\n";
+              if (e.data.type === "demo-err") error += e.data.msg + "\n";
+              if (e.data.type === "demo-done") {
+                window.removeEventListener("message", handleMsg);
+                document.body.removeChild(iframe);
+                resolve((output + error).trim());
+              }
+            }
+            window.addEventListener("message", handleMsg);
+            iframe.contentWindow.document.open();
+            iframe.contentWindow.document.write(
+              "<script>" + script + "<" + "/script>"
+            );
+            iframe.contentWindow.document.close();
+          });
+        }
+        demoRun.addEventListener("click", async () => {
+          demoOutput.textContent = "Running...";
+          const code = demoCode.value;
+          try {
+            const result = await runCodeSandboxed(code);
+            demoOutput.textContent = result || "(No output)";
+          } catch (e) {
+            demoOutput.textContent = "Error: " + e.message;
+          }
+        });
+        // Optional: auto-run on code change for instant feedback (debounced)
+        let demoTimeout;
+        demoCode.addEventListener("input", () => {
+          clearTimeout(demoTimeout);
+          demoTimeout = setTimeout(() => demoRun.click(), 800);
+        });
+      }
+    </script>
 
     <!-- Welcome Message Section -->
     <section class="w-full bg-white py-12 px-4 md:px-0 flex justify-center">
@@ -394,7 +503,7 @@
         <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
           Department Highlights
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <!-- Students -->
           <div
             class="bg-primary/20 rounded-lg p-6 flex flex-col items-center min-h-[200px]"
@@ -500,6 +609,188 @@
       </div>
     </section>
 
+    <!-- Notice Section -->
+    <section class="w-full bg-primary/5 py-8" id="notice-section">
+      <div
+        class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center md:items-stretch gap-8"
+      >
+        <!-- Left Side: Heading, Subheading, Illustration -->
+        <div
+          class="flex-1 flex flex-col justify-center items-center md:items-start mb-6 md:mb-0"
+        >
+          <h2
+            class="text-2xl md:text-3xl font-extrabold text-primary mb-2 flex items-center gap-2"
+          >
+            <svg
+              class="w-7 h-7 text-secondary animate-bounce"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z"
+              />
+            </svg>
+            Notice Board
+          </h2>
+          <h3 class="text-lg md:text-xl font-semibold text-primary mb-3">
+            Latest Announcements & Updates
+          </h3>
+          <p class="text-primary/70 text-sm md:text-base mb-4 max-w-xs">
+            Stay informed about important academic events, exams, workshops, and
+            departmental news. Notices are published in both Bangla and English
+            for everyone’s convenience.
+          </p>
+          <!-- Illustration SVG -->
+          <svg
+            class="w-32 h-32 md:w-40 md:h-40"
+            viewBox="0 0 120 120"
+            fill="none"
+          >
+            <ellipse
+              cx="60"
+              cy="100"
+              rx="45"
+              ry="12"
+              fill="#f0bd02"
+              opacity="0.15"
+            />
+            <rect
+              x="35"
+              y="30"
+              width="50"
+              height="60"
+              rx="8"
+              fill="#fff"
+              stroke="#030724"
+              stroke-width="2"
+            />
+            <rect x="45" y="40" width="30" height="8" rx="2" fill="#f0bd02" />
+            <rect x="45" y="54" width="30" height="8" rx="2" fill="#e0e7ff" />
+            <rect x="45" y="68" width="20" height="8" rx="2" fill="#f0bd02" />
+            <circle
+              cx="90"
+              cy="38"
+              r="7"
+              fill="#f0bd02"
+              stroke="#030724"
+              stroke-width="2"
+            />
+            <path
+              d="M90 35v6"
+              stroke="#030724"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M87 38h6"
+              stroke="#030724"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+        <!-- Right Side: Notices -->
+        <div class="flex-1 flex flex-col justify-center items-center w-full">
+          <div class="relative w-full max-w-xl">
+            <div
+              id="notice-list"
+              class="overflow-hidden rounded-lg shadow bg-white border border-primary/10"
+            >
+              <!-- Notices will be animated by JS -->
+              <div
+                class="notice-item px-6 py-4 text-primary text-base md:text-lg font-medium flex items-center gap-2"
+              >
+                📢
+                <span
+                  >Class Test for CSE-2101 will be held on 20 August, 2025 at
+                  10:00 AM in Classroom 1.</span
+                >
+              </div>
+              <div
+                class="notice-item px-6 py-4 text-primary text-base md:text-lg font-medium flex items-center gap-2"
+              >
+                📄
+                <span
+                  >নোটিশ: আগামী ২১ আগস্ট, ২০২৫ তারিখে সকল ল্যাব ক্লাস স্থগিত
+                  থাকবে।</span
+                >
+              </div>
+              <div
+                class="notice-item px-6 py-4 text-primary text-base md:text-lg font-medium flex items-center gap-2"
+              >
+                📝
+                <span
+                  >Registration for the Android App Development Workshop is open
+                  now!</span
+                >
+              </div>
+              <div
+                class="notice-item px-6 py-4 text-primary text-base md:text-lg font-medium flex items-center gap-2"
+              >
+                🕒
+                <span
+                  >নোটিশ: স্টাফ রুমে আগামীকাল সকাল ৯টায় জরুরি মিটিং অনুষ্ঠিত
+                  হবে।</span
+                >
+              </div>
+              <div
+                class="notice-item px-6 py-4 text-primary text-base md:text-lg font-medium flex items-center gap-2"
+              >
+                🎉
+                <span
+                  >Congratulations! Our department has won the National ICT
+                  Award 2025.</span
+                >
+              </div>
+            </div>
+            <button
+              id="notice-prev"
+              class="absolute left-2 top-1/2 -translate-y-1/2 bg-primary/80 text-secondary rounded-full p-1 z-10 hover:bg-primary transition focus:outline-none"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+            <button
+              id="notice-next"
+              class="absolute right-2 top-1/2 -translate-y-1/2 bg-primary/80 text-secondary rounded-full p-1 z-10 hover:bg-primary transition focus:outline-none"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="mt-3 text-xs text-primary/60 text-center">
+            Notices are shown in both Bangla and English. Stay updated for
+            important announcements!
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Mini Gallery / Campus Life Section -->
     <section class="bg-white py-12" id="mini-gallery">
       <div class="max-w-7xl mx-auto px-4">
@@ -816,8 +1107,577 @@
         </div>
       </div>
     </section>
+    <!-- Build Your Path Interactive Section -->
+    <section
+      id="build-your-path"
+      class="w-full bg-white py-8 px-4 flex justify-center"
+    >
+      <div class="max-w-5xl w-full flex flex-col items-center text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-2">
+          Build Your Path
+        </h2>
+        <p class="text-primary/70 text-base md:text-lg mb-6 max-w-2xl">
+          Choose your interests or goals and discover recommended programs,
+          labs, and faculty tailored for you!
+        </p>
+        <div
+          id="path-interests"
+          class="flex flex-wrap justify-center gap-4 mb-8"
+        >
+          <button
+            class="interest-btn bg-primary text-secondary font-semibold px-5 py-3 rounded-full shadow hover:bg-secondary hover:text-primary transition text-base flex items-center gap-2"
+            data-interest="ai"
+          >
+            <span>🤖</span> AI & Machine Learning
+          </button>
+          <button
+            class="interest-btn bg-primary text-secondary font-semibold px-5 py-3 rounded-full shadow hover:bg-secondary hover:text-primary transition text-base flex items-center gap-2"
+            data-interest="software"
+          >
+            <span>💻</span> Software Development
+          </button>
+          <button
+            class="interest-btn bg-primary text-secondary font-semibold px-5 py-3 rounded-full shadow hover:bg-secondary hover:text-primary transition text-base flex items-center gap-2"
+            data-interest="research"
+          >
+            <span>🔬</span> Research & Innovation
+          </button>
+          <button
+            class="interest-btn bg-primary text-secondary font-semibold px-5 py-3 rounded-full shadow hover:bg-secondary hover:text-primary transition text-base flex items-center gap-2"
+            data-interest="data"
+          >
+            <span>📊</span> Data Science
+          </button>
+          <button
+            class="interest-btn bg-primary text-secondary font-semibold px-5 py-3 rounded-full shadow hover:bg-secondary hover:text-primary transition text-base flex items-center gap-2"
+            data-interest="networks"
+          >
+            <span>🌐</span> Networks & Security
+          </button>
+        </div>
+        <div
+          id="path-recommendations"
+          class="w-full flex flex-col md:flex-row gap-6 justify-center items-stretch"
+        ></div>
+      </div>
+    </section>
+    <!-- Interactive Map Section -->
+    <!-- Code Snippets / Demo Section -->
+    <section id="code-demo" class="w-full bg-primary py-14 flex justify-center">
+      <div
+        class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
+      >
+        <!-- Left: Heading, Subheading, Description -->
+        <div class="flex flex-col gap-4">
+          <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-1">
+            Try a Code Demo!
+          </h2>
+          <h3 class="text-lg md:text-xl font-semibold text-secondary mb-2">
+            Interactive Coding Snippets
+          </h3>
+          <p class="text-secondary/80 text-base md:text-lg mb-2">
+            Experiment with simple code right here. Great for prospective
+            students and anyone curious about computer science. Edit the code
+            and see what happens!
+          </p>
+          <ul class="text-secondary/60 text-sm list-disc pl-5">
+            <li>Change the code and click <b>Run</b> to see the output.</li>
+            <li>
+              Try the dropdown for different demos (e.g., Hello World,
+              Factorial, Palindrome).
+            </li>
+          </ul>
+        </div>
+        <!-- Right: Live Code Editor & Output -->
+        <div
+          class="bg-white rounded-2xl shadow-xl border border-primary/10 p-6 flex flex-col gap-3"
+        >
+          <div class="flex items-center gap-2 mb-2">
+            <label for="demo-select" class="font-semibold text-primary"
+              >Choose Demo:</label
+            >
+            <select
+              id="demo-select"
+              class="border border-primary/20 rounded px-2 py-1 text-primary bg-primary/5"
+            >
+              <option value="hello">Hello World</option>
+              <option value="factorial">Factorial</option>
+              <option value="palindrome">Palindrome Checker</option>
+            </select>
+          </div>
+          <textarea
+            id="demo-code"
+            class="w-full h-40 font-mono text-sm border border-primary/20 rounded p-2 bg-primary/5 text-primary resize-none"
+            spellcheck="false"
+          ></textarea>
+          <button
+            id="demo-run"
+            class="bg-secondary text-primary font-bold px-4 py-2 rounded shadow hover:bg-yellow-400 transition self-end"
+          >
+            Run
+          </button>
+          <span class="text-sm text-primary/60">
+            Not a coder? No problem! This section is just for fun and
+            exploration. Feel free to play around with the code snippets and
+            see.
+            <br />
+            <span class="text-xs text-red-500">
+              Note: Not working yet, but will be functional in the final
+              version.
+            </span>
+          </span>
+        </div>
+      </div>
+    </section>
+    <section class="w-full bg-white py-7" id="interactive-map">
+      <div class="max-w-5xl mx-auto px-4 flex flex-col items-center">
+        <h2
+          class="text-2xl md:text-3xl font-bold text-primary mb-2 text-center"
+        >
+          Interactive Campus Map
+        </h2>
+        <p
+          class="text-primary/80 text-base md:text-lg mb-8 text-center max-w-2xl"
+        >
+          Explore the 5th and 6th floors of our department. Hover or click on a
+          marker to learn more about each room or lab.
+        </p>
+        <div class="w-full flex justify-center">
+          <div
+            class="relative w-full max-w-2xl aspect-[2/1] bg-primary/5 rounded-xl shadow-lg overflow-hidden"
+          >
+            <svg viewBox="0 0 800 400" class="w-full h-full">
+              <!-- 5th Floor (bottom half) -->
+              <rect
+                x="80"
+                y="220"
+                width="640"
+                height="120"
+                rx="24"
+                fill="#f0bd02"
+                opacity="0.18"
+              />
+              <text
+                x="400"
+                y="250"
+                text-anchor="middle"
+                font-size="20"
+                fill="#030724"
+                font-weight="bold"
+              >
+                5th Floor
+              </text>
+              <!-- 6th Floor (top half) -->
+              <rect
+                x="80"
+                y="60"
+                width="640"
+                height="120"
+                rx="24"
+                fill="#e0e7ff"
+                opacity="0.18"
+              />
+              <text
+                x="400"
+                y="90"
+                text-anchor="middle"
+                font-size="20"
+                fill="#030724"
+                font-weight="bold"
+              >
+                6th Floor
+              </text>
+              <!-- 5th Floor Markers -->
+              <g
+                class="map-marker"
+                data-label="Department & Teacher Room"
+                data-info="5th Floor: Main department office and teacher room for faculty and administration."
+              >
+                <circle
+                  cx="180"
+                  cy="300"
+                  r="22"
+                  fill="#030724"
+                  opacity="0.13"
+                />
+                <rect
+                  x="160"
+                  y="280"
+                  width="40"
+                  height="40"
+                  rx="8"
+                  fill="#f0bd02"
+                  stroke="#030724"
+                  stroke-width="2"
+                />
+                <text
+                  x="180"
+                  y="305"
+                  text-anchor="middle"
+                  font-size="13"
+                  fill="#030724"
+                  font-weight="bold"
+                >
+                  Dept
+                </text>
+              </g>
+              <g
+                class="map-marker"
+                data-label="Advanced Programming Lab"
+                data-info="5th Floor: Lab for advanced programming courses, equipped with modern PCs and software."
+              >
+                <circle
+                  cx="300"
+                  cy="320"
+                  r="18"
+                  fill="#030724"
+                  opacity="0.13"
+                />
+                <rect
+                  x="285"
+                  y="305"
+                  width="30"
+                  height="30"
+                  rx="6"
+                  fill="#fff"
+                  stroke="#f0bd02"
+                  stroke-width="2"
+                />
+                <text
+                  x="300"
+                  y="325"
+                  text-anchor="middle"
+                  font-size="12"
+                  fill="#f0bd02"
+                  font-weight="bold"
+                >
+                  Adv
+                </text>
+              </g>
+              <g
+                class="map-marker"
+                data-label="Android Lab"
+                data-info="5th Floor: Dedicated Android development lab for mobile app projects."
+              >
+                <circle
+                  cx="420"
+                  cy="320"
+                  r="18"
+                  fill="#030724"
+                  opacity="0.13"
+                />
+                <rect
+                  x="405"
+                  y="305"
+                  width="30"
+                  height="30"
+                  rx="6"
+                  fill="#e0e7ff"
+                  stroke="#030724"
+                  stroke-width="2"
+                />
+                <text
+                  x="420"
+                  y="325"
+                  text-anchor="middle"
+                  font-size="6"
+                  fill="#030724"
+                  font-weight="bold"
+                >
+                  Android
+                </text>
+              </g>
+              <g
+                class="map-marker"
+                data-label="Networking Lab"
+                data-info="5th Floor: Networking lab with routers, switches, and hands-on equipment for practical learning."
+              >
+                <circle
+                  cx="540"
+                  cy="320"
+                  r="18"
+                  fill="#030724"
+                  opacity="0.13"
+                />
+                <rect
+                  x="525"
+                  y="305"
+                  width="30"
+                  height="30"
+                  rx="6"
+                  fill="#fff"
+                  stroke="#f0bd02"
+                  stroke-width="2"
+                />
+                <text
+                  x="540"
+                  y="325"
+                  text-anchor="middle"
+                  font-size="12"
+                  fill="#f0bd02"
+                  font-weight="bold"
+                >
+                  Net
+                </text>
+              </g>
+              <g
+                class="map-marker"
+                data-label="Staff Room"
+                data-info="5th Floor: Staff room for department support staff."
+              >
+                <circle
+                  cx="660"
+                  cy="300"
+                  r="16"
+                  fill="#030724"
+                  opacity="0.13"
+                />
+                <rect
+                  x="650"
+                  y="290"
+                  width="20"
+                  height="20"
+                  rx="4"
+                  fill="#f0bd02"
+                  stroke="#030724"
+                  stroke-width="2"
+                />
+                <text
+                  x="660"
+                  y="305"
+                  text-anchor="middle"
+                  font-size="11"
+                  fill="#030724"
+                  font-weight="bold"
+                >
+                  Staff
+                </text>
+              </g>
+              <!-- 6th Floor Marker -->
+              <g
+                class="map-marker"
+                data-label="Classroom 1"
+                data-info="6th Floor: Main classroom for lectures and seminars."
+              >
+                <circle
+                  cx="400"
+                  cy="120"
+                  r="20"
+                  fill="#030724"
+                  opacity="0.13"
+                />
+                <rect
+                  x="385"
+                  y="105"
+                  width="30"
+                  height="30"
+                  rx="6"
+                  fill="#f0bd02"
+                  stroke="#030724"
+                  stroke-width="2"
+                />
+                <text
+                  x="400"
+                  y="125"
+                  text-anchor="middle"
+                  font-size="9"
+                  fill="#030724"
+                  font-weight="bold"
+                >
+                  CR 1
+                </text>
+              </g>
+            </svg>
+            <div
+              id="map-popover"
+              class="hidden absolute left-0 top-0 bg-white border border-primary/20 rounded-lg shadow-lg px-4 py-2 text-xs md:text-sm text-primary z-20 pointer-events-none transition-opacity duration-200"
+              style="min-width: 180px"
+            ></div>
+          </div>
+        </div>
+        <div class="mt-8 text-xs text-primary/60 max-w-xl text-center">
+          <strong>Note:</strong> This is a sample interactive SVG map.
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Footer -->
+    <footer
+      class="w-full bg-primary text-secondary pt-12 pb-6 px-4 mt-12 border-t border-primary/30"
+    >
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 md:gap-8"
+      >
+        <!-- Department Info -->
+        <div class="flex flex-col gap-3">
+          <div
+            class="flex items-center gap-3 mb-2 justify-center md:justify-start"
+          >
+            <img
+              src="./assets/bu logo.png"
+              alt="BU Logo"
+              class="h-12 w-12 rounded bg-white p-1"
+            />
+            <div>
+              <div class="font-bold text-lg">CSE - University of Barishal</div>
+              <div class="text-secondary/80 text-xs">
+                Excellence in Computing
+              </div>
+            </div>
+          </div>
+          <div class="text-secondary/80 text-sm text-center md:text-left">
+            Empowering the next generation of innovators and leaders in Computer
+            Science. Accredited by UGC. Modern Labs. International
+            Collaborations.
+          </div>
+        </div>
+        <!-- Quick Links -->
+        <div>
+          <div class="font-bold text-lg mb-3 text-center md:text-left">
+            Quick Links
+          </div>
+          <ul
+            class="space-y-2 text-secondary/90 text-sm flex flex-col items-center md:items-start"
+          >
+            <li><a href="#home" class="hover:underline block py-1">Home</a></li>
+            <li>
+              <a href="#about" class="hover:underline block py-1">About Us</a>
+            </li>
+            <li>
+              <a href="#faculty" class="hover:underline block py-1">Faculty</a>
+            </li>
+            <li>
+              <a href="#programs" class="hover:underline block py-1"
+                >Programs</a
+              >
+            </li>
+          </ul>
+        </div>
+        <!-- Contact Info -->
+        <div>
+          <div class="font-bold text-lg mb-3 text-center md:text-left">
+            Contact
+          </div>
+          <ul
+            class="text-secondary/90 text-sm space-y-2 flex flex-col items-center md:items-start"
+          >
+            <li class="flex items-center gap-2">
+              <span>🏫</span>
+              <span>5th Floor, Academic Building, BU</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span>📧</span>
+              <a href="mailto:cse@bu.ac.bd" class="hover:underline"
+                >cse@bu.ac.bd</a
+              >
+            </li>
+            <li class="flex items-center gap-2">
+              <span>🌐</span>
+              <a href="https://bu.ac.bd" target="_blank" class="hover:underline"
+                >bu.ac.bd</a
+              >
+            </li>
+            <li class="flex items-center gap-2">
+              <span>📞</span> <span>+880-1234-567890</span>
+            </li>
+          </ul>
+        </div>
+        <!-- Social & Newsletter -->
+        <div>
+          <div class="font-bold text-lg mb-3 text-center md:text-left">
+            Connect
+          </div>
+          <div class="flex gap-3 mb-4 justify-center md:justify-start">
+            <a
+              href="https://facebook.com/csebu"
+              target="_blank"
+              class="hover:text-secondary/70"
+              aria-label="Facebook"
+              ><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.632.771-1.632 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12z"
+                /></svg
+            ></a>
+            <a
+              href="https://twitter.com/csebu"
+              target="_blank"
+              class="hover:text-secondary/70"
+              aria-label="Twitter"
+              ><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M22.46 6c-.77.35-1.6.59-2.47.69a4.3 4.3 0 0 0 1.88-2.37 8.59 8.59 0 0 1-2.72 1.04A4.28 4.28 0 0 0 16.11 4c-2.37 0-4.29 1.92-4.29 4.29 0 .34.04.67.11.99C7.69 8.99 4.07 7.13 1.64 4.16c-.37.64-.58 1.39-.58 2.19 0 1.51.77 2.84 1.94 3.62-.72-.02-1.39-.22-1.98-.55v.06c0 2.11 1.5 3.87 3.5 4.27-.36.1-.74.16-1.13.16-.28 0-.54-.03-.8-.08.54 1.68 2.12 2.9 3.99 2.93A8.6 8.6 0 0 1 2 19.54c-.63 0-1.25-.04-1.86-.11A12.13 12.13 0 0 0 7.29 21.5c7.55 0 11.68-6.26 11.68-11.68 0-.18-.01-.36-.02-.54A8.18 8.18 0 0 0 22.46 6z"
+                /></svg
+            ></a>
+            <a
+              href="https://linkedin.com/company/csebu"
+              target="_blank"
+              class="hover:text-secondary/70"
+              aria-label="LinkedIn"
+              ><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.18-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z"
+                /></svg
+            ></a>
+          </div>
+          <form
+            class="flex flex-col gap-2 w-full max-w-xs mx-auto md:mx-0"
+            onsubmit="event.preventDefault(); alert('Thank you for subscribing!');"
+          >
+            <label for="newsletter" class="text-secondary/80 text-xs"
+              >Subscribe to our newsletter</label
+            >
+            <div class="flex-col md:flex-row flex gap-2">
+              <input
+                id="newsletter"
+                type="email"
+                required
+                placeholder="Your email"
+                class="rounded px-3 py-1 text-primary bg-white border border-primary/20 focus:outline-none focus:ring-2 focus:ring-secondary/50"
+              />
+              <button
+                type="submit"
+                class="bg-secondary text-primary font-bold px-3 py-1 rounded hover:bg-yellow-400 transition"
+              >
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div
+        class="max-w-7xl mx-auto mt-8 border-t border-secondary/20 pt-4 flex flex-col md:flex-row justify-between items-center text-xs text-secondary/70 gap-2 text-center"
+      >
+        <div>
+          &copy; 2025 Department of Computer Science & Engineering, University
+          of Barishal. All rights reserved.
+        </div>
+        <div class="flex gap-4 mt-2 md:mt-0">
+          <a href="#privacy" class="hover:underline">Privacy Policy</a>
+          <a href="#terms" class="hover:underline">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Gamified Quiz / Fun Fact Section -->
+    <section
+      id="quiz-funfact"
+      class="fixed bottom-6 right-6 z-50 grid grid-cols-2 gap-4 items-end"
+    >
+      <!-- Fun Fact Popup -->
+      <div
+        id="funfact-popup"
+        class="hidden bg-white border border-primary/20 rounded-xl shadow-lg px-6 py-4 max-w-xs text-primary animate-bounce-in"
+      >
+        <div class="flex items-center gap-2 mb-2">
+          <span class="text-2xl">💡</span>
+          <span class="font-bold text-primary">Did You Know?</span>
+        </div>
+        <div id="funfact-text" class="text-sm"></div>
+      </div>
+      <!-- Quiz Widget -->
+    </section>
     <script src="./index.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script></script>
   </body>
 </html>

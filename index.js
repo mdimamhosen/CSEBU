@@ -371,3 +371,264 @@ counters.forEach(counter => {
       function closeTimelineDetail() {
         document.getElementById('timeline-modal').classList.add('hidden');
       }
+
+
+	    // News Ticker Infinite Scroll Animation
+      (function () {
+        const ticker = document.getElementById("news-ticker");
+        let isPaused = false;
+        let pos = 0;
+        let wrapper = document.getElementById("news-ticker-wrapper");
+        let tickerWidth = ticker.scrollWidth / 2; // since content is duplicated
+        function animate() {
+          if (!isPaused) {
+            pos -= 1;
+            if (Math.abs(pos) >= tickerWidth) {
+              pos = 0;
+            }
+            ticker.style.transform = `translateX(${pos}px)`;
+          }
+          requestAnimationFrame(animate);
+        }
+        ticker.addEventListener("mouseenter", () => {
+          isPaused = true;
+        });
+        ticker.addEventListener("mouseleave", () => {
+          isPaused = false;
+        });
+        window.addEventListener("resize", () => {
+          tickerWidth = ticker.scrollWidth / 2;
+        });
+        animate();
+      })();
+
+// --- Gamified Quiz / Fun Fact Section ---
+const quizData = [
+	{
+		question: "What year was the CSE Department at University of Barishal founded?",
+		options: ["2010", "2012", "2015", "2018"],
+		answer: 1,
+		explanation: "The department was founded in 2012."
+	},
+	{
+		question: "Which of these is a core research area at CSE-BU?",
+		options: ["Marine Biology", "AI/ML", "Civil Engineering", "Astrophysics"],
+		answer: 1,
+		explanation: "AI/ML is a major research area at CSE-BU."
+	},
+	{
+		question: "What is the duration of the BSc in Computer Science & Engineering program?",
+		options: ["2 Years", "3 Years", "4 Years", "5 Years"],
+		answer: 2,
+		explanation: "The BSc program is 4 years long."
+	},
+	{
+		question: "Which event did CSE-BU win a national award for in 2023?",
+		options: ["Sports", "Research", "Education", "Cultural"],
+		answer: 2,
+		explanation: "CSE-BU received a national award for excellence in computer science education."
+	},
+	{
+		question: "Which programming language is NOT listed as a top skill among CSE-BU students?",
+		options: ["Python", "Java", "C++", "Ruby"],
+		answer: 3,
+		explanation: "Ruby is not listed among the top skills."
+	}
+];
+
+const funFacts = [
+	"CSE-BU's first batch graduated in 2016!",
+	"The department has a modern research lab opened in 2019.",
+	"CSE-BU students regularly participate in national hackathons.",
+	"The department is home to over 400 students.",
+	"CSE-BU has international research collaborations.",
+	"Did you know? The department mascot is a robot named 'BaroBot'!"
+];
+
+function showFunFact() {
+	const popup = document.getElementById('funfact-popup');
+	const text = document.getElementById('funfact-text');
+	const fact = funFacts[Math.floor(Math.random() * funFacts.length)];
+	text.textContent = fact;
+	popup.classList.remove('hidden');
+	popup.classList.add('animate-bounce-in');
+	setTimeout(() => {
+		popup.classList.remove('animate-bounce-in');
+		popup.classList.add('animate-fade-out');
+		setTimeout(() => {
+			popup.classList.add('hidden');
+			popup.classList.remove('animate-fade-out');
+		}, 1200);
+	}, 3500);
+}
+
+// Show a fun fact every ~30 seconds
+setInterval(showFunFact, 20000);
+// Show one on first load after a short delay
+setTimeout(showFunFact, 3000);
+
+// Quiz Logic
+let quizIndex = 0;
+let quizAnswered = false;
+const quizWidget = document.getElementById('quiz-widget');
+const quizQ = document.getElementById('quiz-question');
+const quizOpts = document.getElementById('quiz-options');
+const quizFeedback = document.getElementById('quiz-feedback');
+const quizNextBtn = document.getElementById('quiz-next-btn');
+
+function renderQuiz() {
+	const q = quizData[quizIndex];
+	quizQ.textContent = q.question;
+	quizOpts.innerHTML = '';
+	quizFeedback.textContent = '';
+	quizNextBtn.classList.add('hidden');
+	quizAnswered = false;
+	q.options.forEach((opt, i) => {
+		const btn = document.createElement('button');
+		btn.textContent = opt;
+		btn.className = 'bg-primary/5 border border-primary/10 rounded px-3 py-2 text-left hover:bg-secondary/20 transition text-sm';
+		btn.onclick = () => handleQuizAnswer(i);
+		quizOpts.appendChild(btn);
+	});
+}
+
+function handleQuizAnswer(selected) {
+	if (quizAnswered) return;
+	quizAnswered = true;
+	const q = quizData[quizIndex];
+	Array.from(quizOpts.children).forEach((btn, i) => {
+		btn.disabled = true;
+		if (i === q.answer) {
+			btn.classList.add('bg-green-200', 'font-bold');
+		} else if (i === selected) {
+			btn.classList.add('bg-red-200');
+		}
+	});
+	if (selected === q.answer) {
+		quizFeedback.textContent = '✅ Correct! ' + q.explanation;
+		quizFeedback.className = 'text-green-700 font-semibold mb-2';
+	} else {
+		quizFeedback.textContent = '❌ Oops! ' + q.explanation;
+		quizFeedback.className = 'text-red-700 font-semibold mb-2';
+	}
+	quizNextBtn.classList.remove('hidden');
+}
+
+quizNextBtn.onclick = () => {
+	quizIndex = (quizIndex + 1) % quizData.length;
+	renderQuiz();
+};
+
+// Start quiz on load
+if (quizWidget) renderQuiz();
+
+// --- Animations for Fun Fact ---
+const style = document.createElement('style');
+style.innerHTML = `
+@keyframes bounce-in { 0% { transform: scale(0.7); opacity: 0; } 60% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); } }
+.animate-bounce-in { animation: bounce-in 0.7s cubic-bezier(.68,-0.55,.27,1.55); }
+@keyframes fade-out { to { opacity: 0; transform: translateY(30px) scale(0.95); } }
+.animate-fade-out { animation: fade-out 1.2s forwards; }
+`;
+document.head.appendChild(style);
+
+// --- Build Your Path Interactive Section ---
+const pathData = {
+	ai: {
+		programs: [
+			{ title: 'BSc in Computer Science & Engineering', desc: 'Strong AI/ML curriculum, hands-on projects, and electives in deep learning.', link: '#programs' },
+			{ title: 'MSc in Computer Science & Engineering', desc: 'Advanced AI research, thesis options, and faculty mentorship.', link: '#programs' }
+		],
+		labs: [
+			{ title: 'AI & Robotics Lab', desc: 'Work on real-world AI and robotics projects with peers and faculty.' }
+		],
+		faculty: [
+			{ name: 'Dr. Rahat Hossain Faisal', desc: 'AI, Machine Learning, and Data Science', link: '#faculty' }
+		]
+	},
+	software: {
+		programs: [
+			{ title: 'BSc in Software Engineering', desc: 'Focus on software design, development, and project management.', link: '#programs' }
+		],
+		labs: [
+			{ title: 'Software Development Lab', desc: 'Collaborate on software projects and competitions.' }
+		],
+		faculty: [
+			{ name: 'Ms. Nusrat Jahan', desc: 'Software Engineering, Web Development', link: '#faculty' }
+		]
+	},
+	research: {
+		programs: [
+			{ title: 'MSc in Computer Science & Engineering', desc: 'Research-focused curriculum with thesis and publication opportunities.', link: '#programs' },
+			{ title: 'PhD in Computer Science & Engineering', desc: 'Doctoral research with international collaborations.', link: '#programs' }
+		],
+		labs: [
+			{ title: 'Research & Innovation Lab', desc: 'Pursue cutting-edge research with faculty and peers.' }
+		],
+		faculty: [
+			{ name: 'Dr. Rahat Hossain Faisal', desc: 'Research, Innovation, and Supervision', link: '#faculty' }
+		]
+	},
+	data: {
+		programs: [
+			{ title: 'MSc in Data Science', desc: 'Specialized in big data, analytics, and machine learning.', link: '#programs' }
+		],
+		labs: [
+			{ title: 'Data Science Lab', desc: 'Analyze real datasets and participate in data challenges.' }
+		],
+		faculty: [
+			{ name: 'Dr. Tanjina Rahman', desc: 'Data Science, Analytics', link: '#faculty' }
+		]
+	},
+	networks: {
+		programs: [
+			{ title: 'BSc in Computer Science & Engineering', desc: 'Courses and labs in networking and cybersecurity.', link: '#programs' }
+		],
+		labs: [
+			{ title: 'Networks & Security Lab', desc: 'Hands-on with network protocols, security, and ethical hacking.' }
+		],
+		faculty: [
+			{ name: 'Mr. Imran Hossain', desc: 'Networks, Cybersecurity', link: '#faculty' }
+		]
+	}
+};
+
+const interests = document.querySelectorAll('.interest-btn');
+const recs = document.getElementById('path-recommendations');
+
+function renderPathRecommendations(interest) {
+	const d = pathData[interest];
+	if (!d) return;
+	recs.innerHTML = `
+		<div class="flex-1 bg-primary/5 rounded-2xl p-6 shadow-lg animate-fade-in">
+			<h3 class="text-xl font-bold text-primary mb-3 flex items-center gap-2"><span>🎓</span> Recommended Programs</h3>
+			<div class="flex flex-col gap-2">${d.programs.map(p => `<a href="${p.link}" class="block bg-white border border-primary/10 rounded-lg px-4 py-3 text-left hover:bg-secondary/10 transition mb-1"><div class="font-semibold text-primary">${p.title}</div><div class="text-primary/70 text-sm">${p.desc}</div></a>`).join('')}</div>
+		</div>
+		<div class="flex-1 bg-primary/5 rounded-2xl p-6 shadow-lg animate-fade-in">
+			<h3 class="text-xl font-bold text-primary mb-3 flex items-center gap-2"><span>🧪</span> Labs</h3>
+			<div class="flex flex-col gap-2">${d.labs.map(l => `<div class="bg-white border border-primary/10 rounded-lg px-4 py-3 text-left mb-1"><div class="font-semibold text-primary">${l.title}</div><div class="text-primary/70 text-sm">${l.desc}</div></div>`).join('')}</div>
+		</div>
+		<div class="flex-1 bg-primary/5 rounded-2xl p-6 shadow-lg animate-fade-in">
+			<h3 class="text-xl font-bold text-primary mb-3 flex items-center gap-2"><span>👩‍🏫</span> Faculty</h3>
+			<div class="flex flex-col gap-2">${d.faculty.map(f => `<a href="${f.link}" class="block bg-white border border-primary/10 rounded-lg px-4 py-3 text-left hover:bg-secondary/10 transition mb-1"><div class="font-semibold text-primary">${f.name}</div><div class="text-primary/70 text-sm">${f.desc}</div></a>`).join('')}</div>
+		</div>
+	`;
+}
+
+interests.forEach(btn => {
+	btn.addEventListener('click', () => {
+		interests.forEach(b => b.classList.remove('bg-secondary', 'text-primary'));
+		btn.classList.add('bg-secondary', 'text-primary');
+		renderPathRecommendations(btn.dataset.interest);
+	});
+});
+
+// Animation for fade-in
+const pathStyle = document.createElement('style');
+pathStyle.innerHTML = `
+@keyframes fade-in { from { opacity: 0; transform: translateY(30px) scale(0.97); } to { opacity: 1; transform: none; } }
+.animate-fade-in { animation: fade-in 0.7s cubic-bezier(.68,-0.55,.27,1.55); }
+`;
+document.head.appendChild(pathStyle);
+
+ 
