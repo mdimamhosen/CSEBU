@@ -333,6 +333,7 @@
         });
       }
     </script>
+  <!-- Code Snippets / Demo Section Logic moved to index.js -->
 
     <!-- Welcome Message Section -->
     <section class="w-full bg-white py-12 px-4 md:px-0 flex justify-center">
@@ -564,6 +565,7 @@
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
+        <!-- Animated Skill Clouds Logic moved to index.js -->
                 viewBox="0 0 24 24"
               >
                 <path
@@ -610,9 +612,9 @@
     </section>
 
     <!-- Notice Section -->
-    <section class="w-full bg-primary/5 py-8" id="notice-section">
+    <section class="w-full py-8" id="notice-section">
       <div
-        class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center md:items-stretch gap-8"
+        class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row-reverse items-center md:items-stretch gap-8 md:gap-16 lg:gap-24"
       >
         <!-- Left Side: Heading, Subheading, Illustration -->
         <div
@@ -747,42 +749,6 @@
                 >
               </div>
             </div>
-            <button
-              id="notice-prev"
-              class="absolute left-2 top-1/2 -translate-y-1/2 bg-primary/80 text-secondary rounded-full p-1 z-10 hover:bg-primary transition focus:outline-none"
-            >
-              <svg
-                class="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </button>
-            <button
-              id="notice-next"
-              class="absolute right-2 top-1/2 -translate-y-1/2 bg-primary/80 text-secondary rounded-full p-1 z-10 hover:bg-primary transition focus:outline-none"
-            >
-              <svg
-                class="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
           </div>
           <div class="mt-3 text-xs text-primary/60 text-center">
             Notices are shown in both Bangla and English. Stay updated for
@@ -791,8 +757,64 @@
         </div>
       </div>
     </section>
-    <!-- Mini Gallery / Campus Life Section -->
-    <section class="bg-white py-12" id="mini-gallery">
+
+    <!-- Animated Skill Clouds Section -->
+    <section
+      id="skill-clouds"
+      class="relative w-full py-20 px-4 overflow-hidden"
+    >
+      <div
+        class="max-w-5xl mx-auto flex flex-col md:flex-row items-center md:items-stretch gap-10 md:gap-20 lg:gap-32 relative z-10"
+      >
+        <!-- Floating Skill Tags Left -->
+        <div class="w-full md:w-1/2 flex justify-center items-center">
+          <div
+            id="skill-cloud-container"
+            class="relative w-full h-72 md:h-[28rem] flex flex-wrap items-center justify-center overflow-visible"
+          ></div>
+        </div>
+        <!-- Content Right -->
+        <div
+          class="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left"
+        >
+          <h2
+            class="text-3xl md:text-5xl font-extrabold text-primary mb-2 animate-fade-in-up"
+          >
+            Explore Our Skills
+          </h2>
+          <h3
+            class="text-lg md:text-2xl font-semibold text-secondary mb-4 animate-fade-in-up delay-150"
+          >
+            Animated Skill Clouds
+          </h3>
+          <p
+            class="text-primary/80 text-base md:text-lg mb-8 max-w-2xl animate-fade-in-up delay-300"
+          >
+            Our department excels in a wide range of research and technical
+            domains. Hover over a skill to learn more, or click to explore
+            related programs and labs. Watch the skills float and interact for a
+            playful, modern experience!
+          </p>
+          <div
+            id="skill-cloud-info"
+            class="mt-2 text-primary/80 text-base min-h-[32px] transition-all duration-300"
+          ></div>
+        </div>
+      </div>
+      <div class="absolute inset-0 pointer-events-none z-0">
+        <div
+          class="absolute w-72 rounded-full blur-3xl left-[-80px] top-[-60px] animate-pulse-slow"
+        ></div>
+        <div
+          class="absolute w-60 h-60 rounded-full blur-2xl right-[-60px] top-32 animate-pulse-slow2"
+        ></div>
+        <div
+          class="absolute w-80 h-80 rounded-full blur-3xl left-1/2 bottom-[-100px] -translate-x-1/2 animate-pulse-slow3"
+        ></div>
+      </div>
+    </section>
+
+    <section class="py-12" id="mini-gallery">
       <div class="max-w-7xl mx-auto px-4">
         <div
           class="flex flex-col md:flex-row md:items-end md:justify-between mb-8 gap-4"
@@ -1658,24 +1680,235 @@
       </div>
     </footer>
 
-    <!-- Gamified Quiz / Fun Fact Section -->
-    <section
-      id="quiz-funfact"
-      class="fixed bottom-6 right-6 z-50 grid grid-cols-2 gap-4 items-end"
-    >
-      <!-- Fun Fact Popup -->
-      <div
-        id="funfact-popup"
-        class="hidden bg-white border border-primary/20 rounded-xl shadow-lg px-6 py-4 max-w-xs text-primary animate-bounce-in"
-      >
-        <div class="flex items-center gap-2 mb-2">
-          <span class="text-2xl">💡</span>
-          <span class="font-bold text-primary">Did You Know?</span>
-        </div>
-        <div id="funfact-text" class="text-sm"></div>
-      </div>
-      <!-- Quiz Widget -->
-    </section>
+    <script>
+      // --- Animated Skill Clouds Logic (Enhanced) ---
+      const skillTags = [
+        {
+          label: "AI",
+          color: "bg-yellow-300",
+          info: "Artificial Intelligence: Machine Learning, Deep Learning, Data Science",
+          link: "#programs",
+        },
+        {
+          label: "Networking",
+          color: "bg-blue-200",
+          info: "Networking: Computer Networks, IoT, Wireless",
+          link: "#programs",
+        },
+        {
+          label: "Cybersecurity",
+          color: "bg-red-200",
+          info: "Cybersecurity: Security, Cryptography, Privacy",
+          link: "#programs",
+        },
+        {
+          label: "Robotics",
+          color: "bg-green-200",
+          info: "Robotics: Automation, Embedded Systems",
+          link: "#programs",
+        },
+        {
+          label: "Data Science",
+          color: "bg-purple-200",
+          info: "Data Science: Big Data, Analytics, Visualization",
+          link: "#programs",
+        },
+        {
+          label: "Software Eng.",
+          color: "bg-pink-200",
+          info: "Software Engineering: DevOps, Agile, Testing",
+          link: "#programs",
+        },
+        {
+          label: "Cloud",
+          color: "bg-cyan-200",
+          info: "Cloud Computing: Distributed Systems, Web Services",
+          link: "#programs",
+        },
+        {
+          label: "Bioinformatics",
+          color: "bg-lime-200",
+          info: "Bioinformatics: Computational Biology",
+          link: "#programs",
+        },
+        {
+          label: "Theory",
+          color: "bg-orange-200",
+          info: "Theory: Algorithms, Complexity, Computation",
+          link: "#programs",
+        },
+        {
+          label: "Web Dev",
+          color: "bg-indigo-200",
+          info: "Web Development: Frontend, Backend, Full Stack",
+          link: "#programs",
+        },
+        {
+          label: "Mobile Apps",
+          color: "bg-teal-200",
+          info: "Mobile App Development: Android, iOS, Cross-Platform",
+          link: "#programs",
+        },
+        {
+          label: "Game Dev",
+          color: "bg-fuchsia-200",
+          info: "Game Development: Graphics, Engines, Design",
+          link: "#programs",
+        },
+        {
+          label: "IoT",
+          color: "bg-emerald-200",
+          info: "Internet of Things: Embedded, Sensors, Smart Devices",
+          link: "#programs",
+        },
+        {
+          label: "AR/VR",
+          color: "bg-violet-200",
+          info: "Augmented & Virtual Reality: Immersive Tech",
+          link: "#programs",
+        },
+        {
+          label: "Big Data",
+          color: "bg-yellow-100",
+          info: "Big Data: Analytics, Storage, Processing",
+          link: "#programs",
+        },
+        {
+          label: "Quantum",
+          color: "bg-gray-200",
+          info: "Quantum Computing: Algorithms, Theory",
+          link: "#programs",
+        },
+        {
+          label: "UI/UX",
+          color: "bg-rose-200",
+          info: "UI/UX Design: Human-Computer Interaction",
+          link: "#programs",
+        },
+        {
+          label: "Blockchain",
+          color: "bg-yellow-200",
+          info: "Blockchain: Distributed Ledger, Crypto",
+          link: "#programs",
+        },
+        {
+          label: "Comp Vision",
+          color: "bg-blue-100",
+          info: "Computer Vision: Image Processing, Recognition",
+          link: "#programs",
+        },
+        {
+          label: "Natural Language",
+          color: "bg-green-100",
+          info: "Natural Language Processing: Text, Speech, AI",
+          link: "#programs",
+        },
+      ];
+      function randomPos(radius, centerX, centerY) {
+        const angle = Math.random() * 2 * Math.PI;
+        const r = radius * (0.7 + 0.3 * Math.random());
+        return {
+          x: centerX + r * Math.cos(angle),
+          y: centerY + r * Math.sin(angle),
+        };
+      }
+      function createSkillCloud() {
+        const container = document.getElementById("skill-cloud-container");
+        container.innerHTML = "";
+        const w = container.offsetWidth || 600;
+        const h = container.offsetHeight || 300;
+        const centerX = w / 2,
+          centerY = h / 2,
+          radius = Math.min(w, h) / 2.1;
+        skillTags.forEach((tag, i) => {
+          const pos = randomPos(
+            radius * (0.95 + 0.15 * Math.sin(i)),
+            centerX,
+            centerY
+          );
+          const el = document.createElement("button");
+          el.textContent = tag.label;
+          el.className = `skill-tag absolute px-6 py-2.5 rounded-full font-bold text-primary shadow-xl ${tag.color} transition-all duration-500 cursor-pointer text-base md:text-lg hover:scale-125 hover:z-30`;
+          el.style.left = `${pos.x}px`;
+          el.style.top = `${pos.y}px`;
+          el.style.opacity = 0.93;
+          el.style.transition = "box-shadow .3s, transform .3s, background .3s";
+          el.dataset.floatSeed = Math.random() * 1000;
+          el.onmouseenter = () => {
+            el.classList.add("ring-4", "ring-secondary");
+            el.style.zIndex = 40;
+            el.style.background = "#fffbe6";
+            document.getElementById("skill-cloud-info").textContent = tag.info;
+          };
+          el.onmouseleave = () => {
+            el.classList.remove("ring-4", "ring-secondary");
+            el.style.zIndex = 10;
+            el.style.background = "";
+            document.getElementById("skill-cloud-info").textContent = "";
+          };
+          el.onclick = () => {
+            window.location.hash = tag.link;
+          };
+          container.appendChild(el);
+        });
+      }
+      // Animate floating, scaling, and rotation
+      function animateSkillCloud() {
+        const tags = document.querySelectorAll(".skill-tag");
+        tags.forEach((el, i) => {
+          const baseLeft = parseFloat(el.style.left);
+          const baseTop = parseFloat(el.style.top);
+          el.dataset.baseLeft = baseLeft;
+          el.dataset.baseTop = baseTop;
+        });
+        function step() {
+          tags.forEach((el, i) => {
+            const t = Date.now() / (1600 + i * 120) + i * 0.7;
+            const dx = Math.sin(t) * (10 + 2 * i);
+            const dy = Math.cos(t) * (8 + 1.5 * i);
+            const scale = 1 + 0.04 * Math.sin(t + i);
+            const rot = Math.sin(t + i) * 5;
+            el.style.left = `${parseFloat(el.dataset.baseLeft) + dx}px`;
+            el.style.top = `${parseFloat(el.dataset.baseTop) + dy}px`;
+            el.style.transform = `scale(${scale}) rotate(${rot}deg)`;
+          });
+          requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+      function animateSkillCloud() {
+        const tags = document.querySelectorAll(".skill-tag");
+        tags.forEach((el, i) => {
+          const baseLeft = parseFloat(el.style.left);
+          const baseTop = parseFloat(el.style.top);
+          el.dataset.baseLeft = baseLeft;
+          el.dataset.baseTop = baseTop;
+        });
+        function step() {
+          tags.forEach((el, i) => {
+            const seed = parseFloat(el.dataset.floatSeed) || 0;
+            const t = Date.now() / (1200 + (i % 7) * 110) + i * 0.6 + seed;
+            const dx = Math.sin(t) * (12 + 3 * Math.sin(i + seed));
+            const dy = Math.cos(t) * (10 + 2 * Math.cos(i + seed));
+            const scale = 1 + 0.06 * Math.sin(t + i + seed);
+            const rot = Math.sin(t + i + seed) * 7;
+            el.style.left = `${parseFloat(el.dataset.baseLeft) + dx}px`;
+            el.style.top = `${parseFloat(el.dataset.baseTop) + dy}px`;
+            el.style.transform = `scale(${scale}) rotate(${rot}deg)`;
+          });
+          requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+      window.addEventListener("DOMContentLoaded", () => {
+        createSkillCloud();
+        animateSkillCloud();
+        window.addEventListener("resize", () => {
+          createSkillCloud();
+          animateSkillCloud();
+        });
+      });
+    </script>
     <script src="./index.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

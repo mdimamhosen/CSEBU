@@ -631,4 +631,26 @@ pathStyle.innerHTML = `
 `;
 document.head.appendChild(pathStyle);
 
+
+// --- Story Section --- 
+
+  function handleStoryScroll() {
+        const blocks = document.querySelectorAll(".story-block");
+        const parallaxImgs = document.querySelectorAll(".parallax-img");
+        const windowHeight = window.innerHeight;
+        blocks.forEach((block, i) => {
+          const rect = block.getBoundingClientRect();
+          if (rect.top < windowHeight * 0.85) {
+            block.classList.add("!opacity-100", "!translate-y-0");
+            block.classList.remove("opacity-0", "translate-y-12");
+          }
+        });
+        parallaxImgs.forEach((img) => {
+          const rect = img.getBoundingClientRect();
+          const offset = Math.max(0, windowHeight - rect.top);
+          img.style.transform = `translateY(${offset * 0.08}px)`;
+        });
+      }
+      window.addEventListener("scroll", handleStoryScroll);
+      window.addEventListener("DOMContentLoaded", handleStoryScroll);
  
