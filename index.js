@@ -159,3 +159,33 @@ counters.forEach(counter => {
   };
   updateCount();
 });
+
+
+
+// time line section
+ // Timeline modal data
+      const timelineDetails = [
+        {
+          title: '2012: Department Founded',
+          content: `<img src='./assets/bu logo.png' class='w-24 h-24 mx-auto mb-3' alt='Founded'><p>The Department of Computer Science & Engineering at University of Barishal was established in 2012, aiming to provide quality education and research opportunities in computing.</p>`
+        },
+        {
+          title: '2016: First Graduating Batch',
+          content: `<img src='./assets/image2.png' class='w-24 h-24 mx-auto mb-3 rounded' alt='First Batch'><p>Our first batch of students graduated, many of whom have gone on to successful careers in academia and industry.</p>`
+        },
+        {
+          title: '2019: Research Lab Opened',
+          content: `<img src='./assets/image3.jpg' class='w-24 h-24 mx-auto mb-3 rounded' alt='Research Lab'><p>The department inaugurated a modern research lab, fostering innovation and collaborative projects among students and faculty.</p>`
+        },
+        {
+          title: '2023: National Award',
+          content: `<video src='./assets/video1.mp4' controls class='w-full rounded mb-3' poster='./assets/image4.png'></video><p>In 2023, the department received a national award for excellence in computer science education, recognizing our commitment to academic and research excellence.</p>`
+        },
+      ];
+      function showTimelineDetail(idx) {
+        document.getElementById('timeline-modal-content').innerHTML = `<h3 class='text-xl font-bold text-primary mb-2'>${timelineDetails[idx].title}</h3>` + timelineDetails[idx].content;
+        document.getElementById('timeline-modal').classList.remove('hidden');
+      }
+      function closeTimelineDetail() {
+        document.getElementById('timeline-modal').classList.add('hidden');
+      }

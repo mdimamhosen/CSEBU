@@ -577,6 +577,152 @@
         </div>
       </div>
     </section>
+    <!-- Interactive Timeline Section -->
+    <section class="py-14" id="timeline">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2
+          class="text-2xl md:text-3xl font-bold text-primary mb-2 text-center"
+        >
+          Department Timeline & Milestones
+        </h2>
+        <p class="text-primary/80 text-base md:text-lg mb-8 text-center">
+          Explore the key moments and achievements that have shaped our
+          department's journey.
+        </p>
+        <div class="overflow-x-auto">
+          <div
+            class="flex space-x-8 md:space-x-12 min-w-[700px] md:min-w-[1000px] pb-4"
+            id="timeline-track"
+          >
+            <!-- Timeline Item 1 -->
+            <div
+              class="relative flex flex-col items-center w-64 min-w-[16rem] bg-white rounded-xl shadow-lg p-4 group hover:scale-105 transition duration-300 cursor-pointer"
+            >
+              <div
+                class="w-20 h-20 mb-3 rounded-lg overflow-hidden bg-gray-200 flex items-center justify-center"
+              >
+                <img
+                  src="./assets/bu logo.png"
+                  alt="Founded"
+                  class="object-contain w-full h-full"
+                />
+              </div>
+              <div class="text-primary font-bold text-lg mb-1">
+                2012: Department Founded
+              </div>
+              <div class="text-gray-700 text-sm mb-2 text-center">
+                The Department of CSE at University of Barishal was established,
+                marking the beginning of a journey in computing education.
+              </div>
+              <button
+                class="text-secondary font-semibold underline text-xs mt-auto"
+                onclick="showTimelineDetail(0)"
+              >
+                See Details
+              </button>
+            </div>
+            <!-- Timeline Item 2 -->
+            <div
+              class="relative flex flex-col items-center w-64 min-w-[16rem] bg-white rounded-xl shadow-lg p-4 group hover:scale-105 transition duration-300 cursor-pointer"
+            >
+              <div
+                class="w-20 h-20 mb-3 rounded-lg overflow-hidden bg-gray-200 flex items-center justify-center"
+              >
+                <img
+                  src="./assets/image2.png"
+                  alt="First Batch"
+                  class="object-cover w-full h-full"
+                />
+              </div>
+              <div class="text-primary font-bold text-lg mb-1">
+                2016: First Graduating Batch
+              </div>
+              <div class="text-gray-700 text-sm mb-2 text-center">
+                Our first cohort of students graduated, setting a high standard
+                for future generations.
+              </div>
+              <button
+                class="text-secondary font-semibold underline text-xs mt-auto"
+                onclick="showTimelineDetail(1)"
+              >
+                See Details
+              </button>
+            </div>
+            <!-- Timeline Item 3 -->
+            <div
+              class="relative flex flex-col items-center w-64 min-w-[16rem] bg-white rounded-xl shadow-lg p-4 group hover:scale-105 transition duration-300 cursor-pointer"
+            >
+              <div
+                class="w-20 h-20 mb-3 rounded-lg overflow-hidden bg-gray-200 flex items-center justify-center"
+              >
+                <img
+                  src="./assets/image3.jpg"
+                  alt="Research Lab"
+                  class="object-cover w-full h-full"
+                />
+              </div>
+              <div class="text-primary font-bold text-lg mb-1">
+                2019: Research Lab Opened
+              </div>
+              <div class="text-gray-700 text-sm mb-2 text-center">
+                Inauguration of the state-of-the-art research lab, boosting
+                innovation and collaboration.
+              </div>
+              <button
+                class="text-secondary font-semibold underline text-xs mt-auto"
+                onclick="showTimelineDetail(2)"
+              >
+                See Details
+              </button>
+            </div>
+            <!-- Timeline Item 4 -->
+            <div
+              class="relative flex flex-col items-center w-64 min-w-[16rem] bg-white rounded-xl shadow-lg p-4 group hover:scale-105 transition duration-300 cursor-pointer"
+            >
+              <div
+                class="w-20 h-20 mb-3 rounded-lg overflow-hidden bg-gray-200 flex items-center justify-center"
+              >
+                <video
+                  src="./assets/video1.mp4"
+                  controls
+                  class="object-cover w-full h-full"
+                  poster="./assets/image4.png"
+                ></video>
+              </div>
+              <div class="text-primary font-bold text-lg mb-1">
+                2023: National Award
+              </div>
+              <div class="text-gray-700 text-sm mb-2 text-center">
+                Department received a national award for excellence in computer
+                science education.
+              </div>
+              <button
+                class="text-secondary font-semibold underline text-xs mt-auto"
+                onclick="showTimelineDetail(3)"
+              >
+                See Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Timeline Modal (hidden by default) -->
+      <div
+        id="timeline-modal"
+        class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden"
+      >
+        <div class="bg-white rounded-lg shadow-xl max-w-lg w-full p-6 relative">
+          <button
+            onclick="closeTimelineDetail()"
+            class="absolute top-2 right-2 text-primary text-2xl font-bold"
+          >
+            &times;
+          </button>
+          <div id="timeline-modal-content"></div>
+        </div>
+      </div>
+    </section>
     <script src="./index.js"></script>
+    <script></script>
   </body>
 </html>
