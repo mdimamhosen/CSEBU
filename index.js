@@ -1,3 +1,100 @@
+// Animated Skill / Research Graphs Section
+document.addEventListener("DOMContentLoaded", () => {
+	// Animate charts when in view
+	function isInViewport(el) {
+		const rect = el.getBoundingClientRect();
+		return (
+			rect.top < window.innerHeight && rect.bottom > 0
+		);
+	}
+	let chartsInitialized = false;
+	function initCharts() {
+		if (chartsInitialized) return;
+		chartsInitialized = true;
+		// Pie Chart: Research Areas
+			new Chart(document.getElementById('researchPie').getContext('2d'), {
+				type: 'pie',
+				data: {
+					labels: ['AI/ML', 'Data Science', 'Networks', 'Cybersecurity', 'Software Eng.', 'Other'],
+					datasets: [{
+						data: [28, 22, 16, 14, 12, 8],
+						backgroundColor: [
+							'#050e58ff', '#f0bd02', '#a3a3a3', '#09ff00ff', '#fde68a', '#e11d48'
+						],
+						borderWidth: 2,
+						borderColor: '#fff',
+					}],
+				},
+				options: {
+					plugins: {
+						legend: { display: true, position: 'bottom', labels: { color: '#030724', font: { weight: 'bold' } } },
+						tooltip: { enabled: true }
+					},
+					animation: { animateRotate: true, animateScale: true },
+				},
+			});
+		// Bar Chart: Student Skills
+			new Chart(document.getElementById('skillsBar').getContext('2d'), {
+				type: 'bar',
+				data: {
+					labels: ['Python', 'Java', 'C++', 'Web Dev', 'Data Analysis', 'AI'],
+					datasets: [{
+						label: 'Skill Level',
+						data: [92, 85, 78, 88, 80, 75],
+						backgroundColor: [
+							'#f0bd02', '#030724', '#f0bd02', '#030724', '#f0bd02', '#030724'
+						],
+						borderColor: '#030724',
+						borderWidth: 2,
+					}],
+				},
+				options: {
+					indexAxis: 'y',
+					scales: {
+						x: { beginAtZero: true, max: 100, grid: { color: '#e5e7eb' }, ticks: { color: '#030724' } },
+						y: { ticks: { color: '#030724', font: { weight: 'bold' } } },
+					},
+					plugins: {
+						legend: { display: false },
+						tooltip: { enabled: true },
+					},
+					animation: { duration: 1200 },
+				},
+			});
+		// Doughnut Chart: Project Types
+			new Chart(document.getElementById('projectDoughnut').getContext('2d'), {
+				type: 'doughnut',
+				data: {
+					labels: ['Research', 'Industry', 'Open Source', 'Other'],
+					datasets: [{
+						data: [40, 30, 20, 10],
+						backgroundColor: [
+							'#030724', '#f0bd02', '#a3a3a3', '#e11d48'
+						],
+						borderWidth: 2,
+						borderColor: '#fff',
+					}],
+				},
+				options: {
+					cutout: '70%',
+					plugins: {
+						legend: { display: true, position: 'bottom', labels: { color: '#030724', font: { weight: 'bold' } } },
+						tooltip: { enabled: true },
+					},
+					animation: { animateRotate: true, animateScale: true },
+				},
+			});
+	}
+	function onScrollCharts() {
+		const section = document.getElementById('skills-research-graphs');
+		if (section && isInViewport(section)) {
+			initCharts();
+			window.removeEventListener('scroll', onScrollCharts);
+		}
+	}
+	window.addEventListener('scroll', onScrollCharts);
+	onScrollCharts();
+});
 // Program / Degree Selector Logic
 const programs = {
 	ug: [

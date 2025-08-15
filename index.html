@@ -579,6 +579,55 @@
     </section>
     <!-- Interactive Timeline Section -->
     <section class="py-14" id="timeline">
+      <!-- Animated Skill / Research Graphs Section -->
+      <section class="w-full bg-primary py-10" id="skills-research-graphs">
+        <div class="max-w-7xl mx-auto px-4">
+          <h2
+            class="text-2xl md:text-3xl font-bold text-secondary mb-2 text-center"
+          >
+            Skills & Research Areas
+          </h2>
+          <p class="text-white text-base md:text-lg mb-8 text-center">
+            Our students and faculty excel in diverse research and technical
+            domains. Explore the stats below!
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Pie Chart: Research Areas -->
+            <div
+              class="group bg-white rounded-3xl border-2 border-primary/20 shadow-xl p-8 flex flex-col items-center transition-transform hover:scale-105 hover:shadow-2xl hover:border-secondary/80"
+            >
+              <h3
+                class="font-extrabold text-primary text-lg mb-3 tracking-wide drop-shadow"
+              >
+                Research Area Distribution
+              </h3>
+              <canvas id="researchPie" width="180" height="180"></canvas>
+            </div>
+            <!-- Bar Chart: Student Skills -->
+            <div
+              class="group bg-white rounded-3xl border-2 border-primary/20 shadow-xl p-8 flex flex-col items-center transition-transform hover:scale-105 hover:shadow-2xl hover:border-secondary/80"
+            >
+              <h3
+                class="font-extrabold text-primary text-lg mb-3 tracking-wide drop-shadow"
+              >
+                Top Student Skills
+              </h3>
+              <canvas id="skillsBar" width="220" height="180"></canvas>
+            </div>
+            <!-- Circular Progress: Project Types -->
+            <div
+              class="group bg-white rounded-3xl border-2 border-primary/20 shadow-xl p-8 flex flex-col items-center transition-transform hover:scale-105 hover:shadow-2xl hover:border-secondary/80"
+            >
+              <h3
+                class="font-extrabold text-primary text-lg mb-3 tracking-wide drop-shadow"
+              >
+                Project Type Completion
+              </h3>
+              <canvas id="projectDoughnut" width="180" height="180"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- Program / Degree Selector Section -->
       <section class="w-full bg-primary/5 py-14" id="program-selector">
         <div class="max-w-5xl mx-auto px-4">
@@ -768,6 +817,7 @@
       </div>
     </section>
     <script src="./index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script></script>
   </body>
 </html>
