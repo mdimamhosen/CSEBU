@@ -1,0 +1,7 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* All navigation and layout is now handled by Tailwind CSS in index.html */
