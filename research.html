@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#030724",
+              secondary: "#f0bd02",
+            },
+            fontFamily: {
+              roboto: ["Roboto", "Arial", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./assets/bu logo.png" type="image/x-icon" />
+    <title>CSE-BU / Research Page</title>
+  </head>
+  <body>
+    <!-- Live News / Event Ticker -->
+    <div
+      id="news-ticker-wrapper"
+      class="w-full bg-white text-primary font-medium text-xs md:text-sm overflow-hidden relative z-50 border-b border-primary/10"
+    >
+      <div
+        id="news-ticker"
+        class="whitespace-nowrap flex items-center py-1 px-2 cursor-pointer select-none"
+        style="will-change: transform"
+      >
+        <span class="mr-6">🎉 Admission Open for 2025! Apply Now.</span>
+        <span class="mr-6"
+          >📢 National Award 2023: Congratulations to CSE-BU!</span
+        >
+        <span class="mr-6"
+          >🗓️ Workshop on AI: 25th August, Register Today!</span
+        >
+        <span class="mr-6">💡 New Research Lab Inaugurated!</span>
+        <span class="mr-6">� Student Project Showcase: 1st September</span>
+        <!-- Duplicate for infinite scroll -->
+        <span class="mr-6">�🎉 Admission Open for 2025! Apply Now.</span>
+        <span class="mr-6"
+          >📢 National Award 2023: Congratulations to CSE-BU!</span
+        >
+        <span class="mr-6"
+          >🗓️ Workshop on AI: 25th August, Register Today!</span
+        >
+        <span class="mr-6">💡 New Research Lab Inaugurated!</span>
+        <span class="mr-6">🏆 Student Project Showcase: 1st September</span>
+      </div>
+    </div>
+    <nav class="bg-primary text-secondary sticky top-0 z-40 shadow">
+      <div
+        class="max-w-7xl mx-auto flex items-center justify-between h-16 px-4"
+      >
+        <a href="#" class="flex items-center font-bold text-lg gap-2">
+          <img src="./assets/bu logo.png" alt="BU Logo" class="h-14 w-14" />
+          <div
+            class="flex justify-center items-center flex-col text-sm md:text-base"
+          >
+            <span class="text-sm md:text-sm"
+              >Computer Science & Engineering</span
+            >
+            <span> Uiversity of Barishal </span>
+          </div>
+        </a>
+        <button
+          id="menu-toggle"
+          class="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
+          aria-label="Toggle navigation"
+        >
+          <span
+            class="block w-7 h-1 bg-secondary rounded-sm mb-1 transition-all"
+            id="bar1"
+          ></span>
+          <span
+            class="block w-7 h-1 bg-secondary rounded-sm mb-1 transition-all"
+            id="bar2"
+          ></span>
+          <span
+            class="block w-7 h-1 bg-secondary rounded-sm transition-all"
+            id="bar3"
+          ></span>
+        </button>
+        <ul id="nav-links" class="hidden md:flex space-x-8 font-medium">
+          <li>
+            <a
+              href="index.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="about.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >About Us</a
+            >
+          </li>
+          <li>
+            <a
+              href="faculty.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >Faculty</a
+            >
+          </li>
+          <li>
+            <a
+              href="programs.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >Programs</a
+            >
+          </li>
+          <li>
+            <a
+              href="research.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >Research</a
+            >
+          </li>
+          <li>
+            <a
+              href="students.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >Students</a
+            >
+          </li>
+          <li>
+            <a
+              href="contact.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >Contact Us</a
+            >
+          </li>
+        </ul>
+      </div>
+      <ul
+        id="mobile-nav"
+        class="md:hidden hidden flex-col bg-primary text-secondary w-full px-4 pb-4"
+      >
+        <li>
+          <a
+            href="index.html"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="#about"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >About Us</a
+          >
+        </li>
+        <li>
+          <a
+            href="faculty.html"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >Faculty</a
+          >
+        </li>
+        <li>
+          <a
+            href="programs.html"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >Programs</a
+          >
+        </li>
+        <li>
+          <a
+            href="research.html"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >Research</a
+          >
+        </li>
+        <li>
+          <a
+            href="students.html"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >Students</a
+          >
+        </li>
+        <li>
+          <a
+            href="contact.html"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >Contact Us</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Research Page Content -->
+    <main class="min-h-screen bg-white">
+      <!-- Hero Section / Introduction -->
+      <section
+        class="bg-gradient-to-r from-primary to-primary/90 text-secondary py-16"
+      >
+        <div class="max-w-7xl mx-auto px-4 text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">
+            Research Excellence
+          </h1>
+          <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed">
+            Our faculty and students are engaged in cutting-edge research across
+            Artificial Intelligence, Cybersecurity, Data Science, and more. We
+            foster innovation and discovery to solve real-world problems.
+          </p>
+          <div class="flex flex-wrap justify-center gap-6 text-lg">
+            <div class="flex items-center gap-2">
+              <span class="text-3xl">🧠</span>
+              <span>AI & Machine Learning</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-3xl">🔒</span>
+              <span>Cybersecurity</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-3xl">📊</span>
+              <span>Data Science</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-3xl">🤖</span>
+              <span>Robotics & IoT</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Research Areas / Domains -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-center text-primary mb-12"
+          >
+            Research Areas
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- AI & Machine Learning -->
+            <div
+              class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
+            >
+              <div class="text-4xl mb-4 text-center">🧠</div>
+              <h3 class="text-xl font-bold text-primary mb-3 text-center">
+                Artificial Intelligence & Machine Learning
+              </h3>
+              <p class="text-gray-600 text-center mb-4">
+                Deep learning, neural networks, computer vision, natural
+                language processing, and intelligent systems.
+              </p>
+              <div class="flex flex-wrap gap-2 justify-center">
+                <span
+                  class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                  >Deep Learning</span
+                >
+                <span
+                  class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                  >Computer Vision</span
+                >
+                <span
+                  class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                  >NLP</span
+                >
+              </div>
+            </div>
+
+            <!-- Data Science & Big Data -->
+            <div
+              class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
+            >
+              <div class="text-4xl mb-4 text-center">📊</div>
+              <h3 class="text-xl font-bold text-primary mb-3 text-center">
+                Data Science & Big Data
+              </h3>
+              <p class="text-gray-600 text-center mb-4">
+                Analytics, data mining, statistical modeling, and big data
+                processing for business intelligence.
+              </p>
+              <div class="flex flex-wrap gap-2 justify-center">
+                <span
+                  class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                  >Analytics</span
+                >
+                <span
+                  class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                  >Data Mining</span
+                >
+                <span
+                  class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                  >Visualization</span
+                >
+              </div>
+            </div>
+
+            <!-- Networking & Cybersecurity -->
+            <div
+              class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
+            >
+              <div class="text-4xl mb-4 text-center">🔒</div>
+              <h3 class="text-xl font-bold text-primary mb-3 text-center">
+                Networking & Cybersecurity
+              </h3>
+              <p class="text-gray-600 text-center mb-4">
+                Network security, cryptography, digital forensics, and secure
+                communication protocols.
+              </p>
+              <div class="flex flex-wrap gap-2 justify-center">
+                <span
+                  class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                  >Cryptography</span
+                >
+                <span
+                  class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                  >Network Security</span
+                >
+                <span
+                  class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                  >Digital Forensics</span
+                >
+              </div>
+            </div>
+
+            <!-- Software Engineering -->
+            <div
+              class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
+            >
+              <div class="text-4xl mb-4 text-center">💻</div>
+              <h3 class="text-xl font-bold text-primary mb-3 text-center">
+                Software Engineering
+              </h3>
+              <p class="text-gray-600 text-center mb-4">
+                Software architecture, agile methodologies, testing frameworks,
+                and development best practices.
+              </p>
+              <div class="flex flex-wrap gap-2 justify-center">
+                <span
+                  class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                  >Agile</span
+                >
+                <span
+                  class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                  >Testing</span
+                >
+                <span
+                  class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                  >Architecture</span
+                >
+              </div>
+            </div>
+
+            <!-- Robotics & IoT -->
+            <div
+              class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
+            >
+              <div class="text-4xl mb-4 text-center">🤖</div>
+              <h3 class="text-xl font-bold text-primary mb-3 text-center">
+                Robotics & IoT
+              </h3>
+              <p class="text-gray-600 text-center mb-4">
+                Autonomous systems, sensor networks, embedded systems, and smart
+                device integration.
+              </p>
+              <div class="flex flex-wrap gap-2 justify-center">
+                <span
+                  class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                  >Autonomous Systems</span
+                >
+                <span
+                  class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                  >IoT</span
+                >
+                <span
+                  class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                  >Embedded</span
+                >
+              </div>
+            </div>
+
+            <!-- Human-Computer Interaction -->
+            <div
+              class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
+            >
+              <div class="text-4xl mb-4 text-center">👥</div>
+              <h3 class="text-xl font-bold text-primary mb-3 text-center">
+                Human-Computer Interaction
+              </h3>
+              <p class="text-gray-600 text-center mb-4">
+                User experience design, accessibility, interface design, and
+                usability engineering.
+              </p>
+              <div class="flex flex-wrap gap-2 justify-center">
+                <span
+                  class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                  >UX Design</span
+                >
+                <span
+                  class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                  >Accessibility</span
+                >
+                <span
+                  class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                  >Usability</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Research Labs & Centers -->
+      <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-center text-primary mb-12"
+          >
+            Research Labs & Centers
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- AI Research Lab -->
+            <div
+              class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <div
+                class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center"
+              >
+                <div class="text-white text-6xl">🧠</div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-primary mb-2">
+                  AI Research Lab
+                </h3>
+                <p class="text-gray-600 mb-3">
+                  Faculty: Dr. Aminul Islam, Dr. Rashida Rahman
+                </p>
+                <p class="text-sm text-gray-500 mb-4">
+                  Advanced research in machine learning algorithms, neural
+                  networks, and intelligent systems development.
+                </p>
+                <div class="space-y-2">
+                  <div class="text-sm">
+                    <span class="font-medium">Ongoing Projects:</span>
+                    <ul class="list-disc list-inside text-gray-600 mt-1">
+                      <li>Bangla NLP Processing System</li>
+                      <li>Medical Image Analysis</li>
+                      <li>Smart Agriculture Solutions</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cybersecurity Lab -->
+            <div
+              class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <div
+                class="h-48 bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center"
+              >
+                <div class="text-white text-6xl">🔒</div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-primary mb-2">
+                  Cybersecurity Research Lab
+                </h3>
+                <p class="text-gray-600 mb-3">
+                  Faculty: Dr. Mohammad Hasan, Dr. Fatema Khatun
+                </p>
+                <p class="text-sm text-gray-500 mb-4">
+                  Focus on network security, cryptography, and digital forensics
+                  research and applications.
+                </p>
+                <div class="space-y-2">
+                  <div class="text-sm">
+                    <span class="font-medium">Ongoing Projects:</span>
+                    <ul class="list-disc list-inside text-gray-600 mt-1">
+                      <li>Blockchain Security Framework</li>
+                      <li>IoT Device Authentication</li>
+                      <li>Malware Detection System</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Data Science Center -->
+            <div
+              class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <div
+                class="h-48 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center"
+              >
+                <div class="text-white text-6xl">📊</div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-primary mb-2">
+                  Data Science Center
+                </h3>
+                <p class="text-gray-600 mb-3">
+                  Faculty: Dr. Shahrina Ahmed, Dr. Kamal Uddin
+                </p>
+                <p class="text-sm text-gray-500 mb-4">
+                  Big data analytics, statistical modeling, and business
+                  intelligence research center.
+                </p>
+                <div class="space-y-2">
+                  <div class="text-sm">
+                    <span class="font-medium">Ongoing Projects:</span>
+                    <ul class="list-disc list-inside text-gray-600 mt-1">
+                      <li>Climate Data Analysis</li>
+                      <li>Healthcare Analytics Platform</li>
+                      <li>Economic Forecasting Models</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Research Achievements / Stats -->
+      <section class="py-16 bg-primary text-secondary">
+        <div class="max-w-7xl mx-auto px-4">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+            Research Achievements
+          </h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="space-y-2">
+              <div
+                class="text-4xl md:text-5xl font-bold"
+                id="publications-count"
+              >
+                150+
+              </div>
+              <div class="text-lg md:text-xl">Publications</div>
+            </div>
+            <div class="space-y-2">
+              <div class="text-4xl md:text-5xl font-bold" id="projects-count">
+                45+
+              </div>
+              <div class="text-lg md:text-xl">Active Projects</div>
+            </div>
+            <div class="space-y-2">
+              <div class="text-4xl md:text-5xl font-bold" id="grants-count">
+                12+
+              </div>
+              <div class="text-lg md:text-xl">Research Grants</div>
+            </div>
+            <div class="space-y-2">
+              <div
+                class="text-4xl md:text-5xl font-bold"
+                id="collaborations-count"
+              >
+                25+
+              </div>
+              <div class="text-lg md:text-xl">Collaborations</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ongoing & Completed Projects -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-center text-primary mb-8"
+          >
+            Research Projects
+          </h2>
+
+          <!-- Filter Buttons -->
+          <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button
+              class="filter-btn active bg-primary text-secondary px-6 py-2 rounded-full hover:bg-primary/90 transition"
+              data-filter="all"
+            >
+              All Projects
+            </button>
+            <button
+              class="filter-btn bg-gray-200 text-primary px-6 py-2 rounded-full hover:bg-gray-300 transition"
+              data-filter="ai"
+            >
+              AI & ML
+            </button>
+            <button
+              class="filter-btn bg-gray-200 text-primary px-6 py-2 rounded-full hover:bg-gray-300 transition"
+              data-filter="security"
+            >
+              Cybersecurity
+            </button>
+            <button
+              class="filter-btn bg-gray-200 text-primary px-6 py-2 rounded-full hover:bg-gray-300 transition"
+              data-filter="data"
+            >
+              Data Science
+            </button>
+            <button
+              class="filter-btn bg-gray-200 text-primary px-6 py-2 rounded-full hover:bg-gray-300 transition"
+              data-filter="software"
+            >
+              Software Engineering
+            </button>
+          </div>
+
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            id="projects-container"
+          >
+            <!-- AI Project -->
+            <div
+              class="project-card bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
+              data-category="ai"
+            >
+              <div class="flex items-center justify-between mb-4">
+                <span
+                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium"
+                  >AI & ML</span
+                >
+                <span
+                  class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm"
+                  >Ongoing</span
+                >
+              </div>
+              <h3 class="text-xl font-bold text-primary mb-3">
+                Bangla Natural Language Processing System
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Development of advanced NLP tools for Bangla language
+                processing, including sentiment analysis and machine
+                translation.
+              </p>
+              <div class="space-y-2 text-sm">
+                <div>
+                  <span class="font-medium">Lead:</span> Dr. Aminul Islam
+                </div>
+                <div>
+                  <span class="font-medium">Team:</span> 3 Faculty, 8 Students
+                </div>
+                <div>
+                  <span class="font-medium">Funding:</span> UGC Research Grant
+                </div>
+                <div><span class="font-medium">Duration:</span> 2024-2026</div>
+              </div>
+            </div>
+
+            <!-- Security Project -->
+            <div
+              class="project-card bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
+              data-category="security"
+            >
+              <div class="flex items-center justify-between mb-4">
+                <span
+                  class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium"
+                  >Cybersecurity</span
+                >
+                <span
+                  class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm"
+                  >Ongoing</span
+                >
+              </div>
+              <h3 class="text-xl font-bold text-primary mb-3">
+                IoT Security Framework
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Developing a comprehensive security framework for IoT devices
+                with focus on authentication and data protection.
+              </p>
+              <div class="space-y-2 text-sm">
+                <div>
+                  <span class="font-medium">Lead:</span> Dr. Mohammad Hasan
+                </div>
+                <div>
+                  <span class="font-medium">Team:</span> 2 Faculty, 5 Students
+                </div>
+                <div>
+                  <span class="font-medium">Funding:</span> Industry Partnership
+                </div>
+                <div><span class="font-medium">Duration:</span> 2023-2025</div>
+              </div>
+            </div>
+
+            <!-- Data Science Project -->
+            <div
+              class="project-card bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
+              data-category="data"
+            >
+              <div class="flex items-center justify-between mb-4">
+                <span
+                  class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium"
+                  >Data Science</span
+                >
+                <span
+                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
+                  >Completed</span
+                >
+              </div>
+              <h3 class="text-xl font-bold text-primary mb-3">
+                Climate Change Prediction Model
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Machine learning model for predicting climate patterns in
+                Bangladesh using historical weather data.
+              </p>
+              <div class="space-y-2 text-sm">
+                <div>
+                  <span class="font-medium">Lead:</span> Dr. Shahrina Ahmed
+                </div>
+                <div>
+                  <span class="font-medium">Team:</span> 4 Faculty, 6 Students
+                </div>
+                <div>
+                  <span class="font-medium">Funding:</span> Ministry of
+                  Environment
+                </div>
+                <div><span class="font-medium">Duration:</span> 2022-2024</div>
+              </div>
+            </div>
+
+            <!-- Software Engineering Project -->
+            <div
+              class="project-card bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
+              data-category="software"
+            >
+              <div class="flex items-center justify-between mb-4">
+                <span
+                  class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium"
+                  >Software Eng.</span
+                >
+                <span
+                  class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm"
+                  >Ongoing</span
+                >
+              </div>
+              <h3 class="text-xl font-bold text-primary mb-3">
+                Educational Management System
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Comprehensive platform for educational institutions with
+                features for student, faculty, and administrative management.
+              </p>
+              <div class="space-y-2 text-sm">
+                <div>
+                  <span class="font-medium">Lead:</span> Dr. Kamal Uddin
+                </div>
+                <div>
+                  <span class="font-medium">Team:</span> 3 Faculty, 10 Students
+                </div>
+                <div><span class="font-medium">Funding:</span> Self-funded</div>
+                <div><span class="font-medium">Duration:</span> 2024-2025</div>
+              </div>
+            </div>
+
+            <!-- AI Project 2 -->
+            <div
+              class="project-card bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
+              data-category="ai"
+            >
+              <div class="flex items-center justify-between mb-4">
+                <span
+                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium"
+                  >AI & ML</span
+                >
+                <span
+                  class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm"
+                  >Ongoing</span
+                >
+              </div>
+              <h3 class="text-xl font-bold text-primary mb-3">
+                Medical Image Analysis Platform
+              </h3>
+              <p class="text-gray-600 mb-4">
+                AI-powered system for automated analysis of medical images
+                including X-rays, CT scans, and MRIs.
+              </p>
+              <div class="space-y-2 text-sm">
+                <div>
+                  <span class="font-medium">Lead:</span> Dr. Rashida Rahman
+                </div>
+                <div>
+                  <span class="font-medium">Team:</span> 2 Faculty, 6 Students
+                </div>
+                <div>
+                  <span class="font-medium">Funding:</span> Hospital Partnership
+                </div>
+                <div><span class="font-medium">Duration:</span> 2024-2026</div>
+              </div>
+            </div>
+
+            <!-- Data Science Project 2 -->
+            <div
+              class="project-card bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
+              data-category="data"
+            >
+              <div class="flex items-center justify-between mb-4">
+                <span
+                  class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium"
+                  >Data Science</span
+                >
+                <span
+                  class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm"
+                  >Ongoing</span
+                >
+              </div>
+              <h3 class="text-xl font-bold text-primary mb-3">
+                Smart Agriculture Analytics
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Data-driven solutions for crop yield prediction and optimal
+                farming strategies using IoT sensors and satellite data.
+              </p>
+              <div class="space-y-2 text-sm">
+                <div>
+                  <span class="font-medium">Lead:</span> Dr. Fatema Khatun
+                </div>
+                <div>
+                  <span class="font-medium">Team:</span> 3 Faculty, 7 Students
+                </div>
+                <div>
+                  <span class="font-medium">Funding:</span> Agricultural
+                  Ministry
+                </div>
+                <div><span class="font-medium">Duration:</span> 2023-2025</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Publications -->
+      <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-center text-primary mb-12"
+          >
+            Recent Publications
+          </h2>
+
+          <div class="space-y-6 mb-8">
+            <!-- Publication 1 -->
+            <div
+              class="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow"
+            >
+              <div
+                class="flex flex-col md:flex-row md:items-center justify-between mb-3"
+              >
+                <h3 class="text-lg font-bold text-primary mb-2 md:mb-0">
+                  "Advanced Machine Learning Techniques for Bangla Text
+                  Classification"
+                </h3>
+                <span class="text-sm text-gray-500">IEEE TKDE, 2024</span>
+              </div>
+              <p class="text-gray-600 mb-3">
+                Authors: Dr. Aminul Islam, Rashida Rahman, Md. Karim Ahmed
+              </p>
+              <p class="text-sm text-gray-500 mb-3">
+                This paper presents novel approaches to Bangla text
+                classification using deep learning models with improved accuracy
+                of 94.2%.
+              </p>
+              <div class="flex gap-4">
+                <a href="#" class="text-primary hover:underline text-sm"
+                  >📄 View Paper</a
+                >
+                <a href="#" class="text-primary hover:underline text-sm"
+                  >📊 Citation</a
+                >
+              </div>
+            </div>
+
+            <!-- Publication 2 -->
+            <div
+              class="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow"
+            >
+              <div
+                class="flex flex-col md:flex-row md:items-center justify-between mb-3"
+              >
+                <h3 class="text-lg font-bold text-primary mb-2 md:mb-0">
+                  "Cybersecurity Framework for IoT Devices in Smart Cities"
+                </h3>
+                <span class="text-sm text-gray-500"
+                  >ACM Computing Surveys, 2024</span
+                >
+              </div>
+              <p class="text-gray-600 mb-3">
+                Authors: Dr. Mohammad Hasan, Fatema Khatun, Ali Rahman
+              </p>
+              <p class="text-sm text-gray-500 mb-3">
+                Comprehensive survey and proposed framework for securing IoT
+                infrastructure in urban environments.
+              </p>
+              <div class="flex gap-4">
+                <a href="#" class="text-primary hover:underline text-sm"
+                  >📄 View Paper</a
+                >
+                <a href="#" class="text-primary hover:underline text-sm"
+                  >📊 Citation</a
+                >
+              </div>
+            </div>
+
+            <!-- Publication 3 -->
+            <div
+              class="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow"
+            >
+              <div
+                class="flex flex-col md:flex-row md:items-center justify-between mb-3"
+              >
+                <h3 class="text-lg font-bold text-primary mb-2 md:mb-0">
+                  "Climate Data Analytics for Agricultural Decision Making"
+                </h3>
+                <span class="text-sm text-gray-500"
+                  >Nature Climate Change, 2023</span
+                >
+              </div>
+              <p class="text-gray-600 mb-3">
+                Authors: Dr. Shahrina Ahmed, Kamal Uddin, Sarah Johnson
+              </p>
+              <p class="text-sm text-gray-500 mb-3">
+                Data-driven insights for climate-smart agriculture using machine
+                learning and satellite imagery.
+              </p>
+              <div class="flex gap-4">
+                <a href="#" class="text-primary hover:underline text-sm"
+                  >📄 View Paper</a
+                >
+                <a href="#" class="text-primary hover:underline text-sm"
+                  >📊 Citation</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <a
+              href="#"
+              class="bg-primary text-secondary px-8 py-3 rounded-lg hover:bg-primary/90 transition inline-flex items-center gap-2"
+            >
+              <span>View All Publications</span>
+              <span>🔗</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Research Collaborations -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-center text-primary mb-12"
+          >
+            Research Collaborations
+          </h2>
+
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+          >
+            <!-- University Collaborations -->
+            <div class="bg-white rounded-lg p-6 text-center shadow-lg">
+              <div class="text-4xl mb-4">🏛️</div>
+              <h3 class="text-xl font-bold text-primary mb-3">
+                University Partners
+              </h3>
+              <ul class="space-y-2 text-gray-600">
+                <li>University of Dhaka</li>
+                <li>Bangladesh University of Engineering and Technology</li>
+                <li>North South University</li>
+                <li>Aalto University, Finland</li>
+                <li>University of Sydney, Australia</li>
+              </ul>
+            </div>
+
+            <!-- Industry Collaborations -->
+            <div class="bg-white rounded-lg p-6 text-center shadow-lg">
+              <div class="text-4xl mb-4">🏢</div>
+              <h3 class="text-xl font-bold text-primary mb-3">
+                Industry Partners
+              </h3>
+              <ul class="space-y-2 text-gray-600">
+                <li>Samsung R&D Institute Bangladesh</li>
+                <li>Grameenphone Limited</li>
+                <li>Brain Station 23</li>
+                <li>DataSoft Systems Bangladesh</li>
+                <li>Pathao Limited</li>
+              </ul>
+            </div>
+
+            <!-- Government & NGO -->
+            <div class="bg-white rounded-lg p-6 text-center shadow-lg">
+              <div class="text-4xl mb-4">🏛️</div>
+              <h3 class="text-xl font-bold text-primary mb-3">
+                Government & NGOs
+              </h3>
+              <ul class="space-y-2 text-gray-600">
+                <li>ICT Division, Bangladesh</li>
+                <li>Ministry of Agriculture</li>
+                <li>Ministry of Health</li>
+                <li>
+                  BASIS (Bangladesh Association of Software and Information
+                  Services)
+                </li>
+                <li>UNDP Bangladesh</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Student Research Opportunities -->
+      <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-center text-primary mb-12"
+          >
+            Student Research Opportunities
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <!-- Undergraduate Research -->
+            <div
+              class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-8"
+            >
+              <div class="text-4xl mb-4">🎓</div>
+              <h3 class="text-2xl font-bold text-primary mb-4">
+                Undergraduate Research
+              </h3>
+              <ul class="space-y-3 text-gray-700 mb-6">
+                <li class="flex items-start gap-2">
+                  <span class="text-green-500 mt-1">✓</span>
+                  <span>Final year thesis projects</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-500 mt-1">✓</span>
+                  <span>Summer research internships</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-500 mt-1">✓</span>
+                  <span>Research assistant positions</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-500 mt-1">✓</span>
+                  <span>Conference paper publications</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-500 mt-1">✓</span>
+                  <span>Industry project collaborations</span>
+                </li>
+              </ul>
+              <a
+                href="#"
+                class="bg-primary text-secondary px-6 py-2 rounded-lg hover:bg-primary/90 transition"
+              >
+                Apply for Research
+              </a>
+            </div>
+
+            <!-- Graduate Research -->
+            <div
+              class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg p-8"
+            >
+              <div class="text-4xl mb-4">🎓</div>
+              <h3 class="text-2xl font-bold text-primary mb-4">
+                Graduate Programs
+              </h3>
+              <ul class="space-y-3 text-gray-700 mb-6">
+                <li class="flex items-start gap-2">
+                  <span class="text-green-500 mt-1">✓</span>
+                  <span>Masters by Research (MPhil)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-500 mt-1">✓</span>
+                  <span>PhD in Computer Science</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-500 mt-1">✓</span>
+                  <span>Research assistantships</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-500 mt-1">✓</span>
+                  <span>International collaboration opportunities</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-500 mt-1">✓</span>
+                  <span>Scholarship opportunities</span>
+                </li>
+              </ul>
+              <a
+                href="#"
+                class="bg-primary text-secondary px-6 py-2 rounded-lg hover:bg-primary/90 transition"
+              >
+                Graduate Admission
+              </a>
+            </div>
+          </div>
+
+          <!-- How to Join -->
+          <div class="bg-primary text-secondary rounded-lg p-8 text-center">
+            <h3 class="text-2xl font-bold mb-4">How to Join Research Groups</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              <div class="space-y-2">
+                <div class="text-3xl">📧</div>
+                <h4 class="font-bold">Contact Faculty</h4>
+                <p class="text-sm">
+                  Reach out to faculty members in your area of interest
+                </p>
+              </div>
+              <div class="space-y-2">
+                <div class="text-3xl">📝</div>
+                <h4 class="font-bold">Submit Proposal</h4>
+                <p class="text-sm">
+                  Prepare a research proposal or expression of interest
+                </p>
+              </div>
+              <div class="space-y-2">
+                <div class="text-3xl">🚀</div>
+                <h4 class="font-bold">Start Research</h4>
+                <p class="text-sm">
+                  Begin your research journey with faculty guidance
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Conferences & Workshops -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-center text-primary mb-12"
+          >
+            Conferences & Workshops
+          </h2>
+
+          <!-- Upcoming Events -->
+          <div class="mb-12">
+            <h3 class="text-2xl font-bold text-primary mb-6">
+              Upcoming Events
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div
+                class="bg-white rounded-lg p-6 shadow-lg border-l-4 border-green-500"
+              >
+                <div class="flex items-start justify-between mb-3">
+                  <div>
+                    <h4 class="font-bold text-lg text-primary">
+                      International AI Workshop 2025
+                    </h4>
+                    <p class="text-gray-600">March 15-17, 2025</p>
+                  </div>
+                  <span
+                    class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm"
+                    >Upcoming</span
+                  >
+                </div>
+                <p class="text-gray-600 mb-4">
+                  Three-day workshop on latest developments in AI and machine
+                  learning with international speakers.
+                </p>
+                <div class="flex gap-4 text-sm">
+                  <span class="text-gray-500">📍 BU Campus</span>
+                  <span class="text-gray-500">👥 200 participants</span>
+                  <a href="#" class="text-primary hover:underline"
+                    >Register Now</a
+                  >
+                </div>
+              </div>
+
+              <div
+                class="bg-white rounded-lg p-6 shadow-lg border-l-4 border-blue-500"
+              >
+                <div class="flex items-start justify-between mb-3">
+                  <div>
+                    <h4 class="font-bold text-lg text-primary">
+                      Cybersecurity Symposium
+                    </h4>
+                    <p class="text-gray-600">April 20-21, 2025</p>
+                  </div>
+                  <span
+                    class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm"
+                    >Registration Open</span
+                  >
+                </div>
+                <p class="text-gray-600 mb-4">
+                  National symposium on cybersecurity challenges and solutions
+                  for digital Bangladesh.
+                </p>
+                <div class="flex gap-4 text-sm">
+                  <span class="text-gray-500">📍 Virtual + Physical</span>
+                  <span class="text-gray-500">👥 500 participants</span>
+                  <a href="#" class="text-primary hover:underline"
+                    >Learn More</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Past Events -->
+          <div>
+            <h3 class="text-2xl font-bold text-primary mb-6">Past Events</h3>
+            <div class="space-y-4">
+              <div
+                class="bg-white rounded-lg p-4 shadow hover:shadow-lg transition-shadow"
+              >
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h4 class="font-bold text-primary">
+                      Data Science Workshop 2024
+                    </h4>
+                    <p class="text-gray-600 text-sm">
+                      November 10-12, 2024 • 150 participants
+                    </p>
+                  </div>
+                  <div class="flex gap-2">
+                    <a href="#" class="text-primary hover:underline text-sm"
+                      >📄 Proceedings</a
+                    >
+                    <a href="#" class="text-primary hover:underline text-sm"
+                      >📸 Gallery</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-white rounded-lg p-4 shadow hover:shadow-lg transition-shadow"
+              >
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h4 class="font-bold text-primary">
+                      Regional Computing Conference 2024
+                    </h4>
+                    <p class="text-gray-600 text-sm">
+                      September 5-7, 2024 • 300 participants
+                    </p>
+                  </div>
+                  <div class="flex gap-2">
+                    <a href="#" class="text-primary hover:underline text-sm"
+                      >📄 Proceedings</a
+                    >
+                    <a href="#" class="text-primary hover:underline text-sm"
+                      >📸 Gallery</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-white rounded-lg p-4 shadow hover:shadow-lg transition-shadow"
+              >
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h4 class="font-bold text-primary">
+                      Student Research Showcase 2024
+                    </h4>
+                    <p class="text-gray-600 text-sm">
+                      August 20, 2024 • 80 participants
+                    </p>
+                  </div>
+                  <div class="flex gap-2">
+                    <a href="#" class="text-primary hover:underline text-sm"
+                      >📄 Abstracts</a
+                    >
+                    <a href="#" class="text-primary hover:underline text-sm"
+                      >📸 Gallery</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call-to-Action -->
+      <section
+        class="py-16 bg-gradient-to-r from-primary to-primary/90 text-secondary"
+      >
+        <div class="max-w-7xl mx-auto px-4 text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            Join Our Research Community
+          </h2>
+          <p class="text-xl mb-8 max-w-3xl mx-auto">
+            Be part of cutting-edge research that shapes the future. Whether
+            you're a student, faculty, or industry partner, there are many ways
+            to collaborate with us.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <a
+              href="#"
+              class="bg-secondary text-primary px-6 py-4 rounded-lg hover:bg-yellow-400 transition block"
+            >
+              <div class="text-2xl mb-2">🤝</div>
+              <div class="font-bold">Collaborate with Us</div>
+              <div class="text-sm">Partner for research projects</div>
+            </a>
+
+            <a
+              href="#"
+              class="bg-secondary text-primary px-6 py-4 rounded-lg hover:bg-yellow-400 transition block"
+            >
+              <div class="text-2xl mb-2">🎓</div>
+              <div class="font-bold">Join as Research Student</div>
+              <div class="text-sm">Start your research journey</div>
+            </a>
+
+            <a
+              href="#"
+              class="bg-secondary text-primary px-6 py-4 rounded-lg hover:bg-yellow-400 transition block"
+            >
+              <div class="text-2xl mb-2">📧</div>
+              <div class="font-bold">Contact Research Office</div>
+              <div class="text-sm">Get more information</div>
+            </a>
+          </div>
+
+          <div class="mt-8 pt-8 border-t border-secondary/20">
+            <p class="mb-4">
+              <span class="font-bold">Research Office:</span>
+              research@cse.bu.ac.bd |
+              <span class="font-bold">Phone:</span> +880-1234-567891
+            </p>
+            <p class="text-sm">
+              Office Hours: Sunday-Thursday, 9:00 AM - 5:00 PM | Room 5A,
+              Academic Building
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Professional Footer -->
+    <footer
+      class="w-full bg-primary text-secondary pt-12 pb-6 px-4 border-t border-primary/30"
+    >
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 md:gap-8"
+      >
+        <!-- Department Info -->
+        <div class="flex flex-col gap-3">
+          <div
+            class="flex items-center gap-3 mb-2 justify-center md:justify-start"
+          >
+            <img
+              src="./assets/bu logo.png"
+              alt="BU Logo"
+              class="h-12 w-12 rounded bg-white p-1"
+            />
+            <div>
+              <div class="font-bold text-lg">CSE - University of Barishal</div>
+              <div class="text-secondary/80 text-xs">
+                Excellence in Computing
+              </div>
+            </div>
+          </div>
+          <div class="text-secondary/80 text-sm text-center md:text-left">
+            Empowering the next generation of innovators and leaders in Computer
+            Science. Accredited by UGC. Modern Labs. International
+            Collaborations.
+          </div>
+        </div>
+        <!-- Quick Links -->
+        <div>
+          <div class="font-bold text-lg mb-3 text-center md:text-left">
+            Quick Links
+          </div>
+          <ul
+            class="space-y-2 text-secondary/90 text-sm flex flex-col items-center md:items-start"
+          >
+            <li>
+              <a href="index.html" class="hover:underline block py-1">Home</a>
+            </li>
+            <li>
+              <a href="about.html" class="hover:underline block py-1"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a href="#faculty" class="hover:underline block py-1">Faculty</a>
+            </li>
+            <li>
+              <a href="#programs" class="hover:underline block py-1"
+                >Programs</a
+              >
+            </li>
+          </ul>
+        </div>
+        <!-- Contact Info -->
+        <div>
+          <div class="font-bold text-lg mb-3 text-center md:text-left">
+            Contact
+          </div>
+          <ul
+            class="text-secondary/90 text-sm space-y-2 flex flex-col items-center md:items-start"
+          >
+            <li class="flex items-center gap-2">
+              <span>🏫</span>
+              <span>5th Floor, Academic Building, BU</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span>📧</span>
+              <a href="mailto:cse@bu.ac.bd" class="hover:underline"
+                >cse@bu.ac.bd</a
+              >
+            </li>
+            <li class="flex items-center gap-2">
+              <span>🌐</span>
+              <a href="https://bu.ac.bd" target="_blank" class="hover:underline"
+                >bu.ac.bd</a
+              >
+            </li>
+            <li class="flex items-center gap-2">
+              <span>📞</span> <span>+880-1234-567890</span>
+            </li>
+          </ul>
+        </div>
+        <!-- Social & Newsletter -->
+        <div>
+          <div class="font-bold text-lg mb-3 text-center md:text-left">
+            Connect
+          </div>
+          <div class="flex gap-3 mb-4 justify-center md:justify-start">
+            <a
+              href="https://facebook.com/csebu"
+              target="_blank"
+              class="hover:text-secondary/70"
+              aria-label="Facebook"
+              ><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.632.771-1.632 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12z"
+                /></svg
+            ></a>
+            <a
+              href="https://twitter.com/csebu"
+              target="_blank"
+              class="hover:text-secondary/70"
+              aria-label="Twitter"
+              ><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M22.46 6c-.77.35-1.6.59-2.47.69a4.3 4.3 0 0 0 1.88-2.37 8.59 8.59 0 0 1-2.72 1.04A4.28 4.28 0 0 0 16.11 4c-2.37 0-4.29 1.92-4.29 4.29 0 .34.04.67.11.99C7.69 8.99 4.07 7.13 1.64 4.16c-.37.64-.58 1.39-.58 2.19 0 1.51.77 2.84 1.94 3.62-.72-.02-1.39-.22-1.98-.55v.06c0 2.11 1.5 3.87 3.5 4.27-.36.1-.74.16-1.13.16-.28 0-.54-.03-.8-.08.54 1.68 2.12 2.9 3.99 2.93A8.6 8.6 0 0 1 2 19.54c-.63 0-1.25-.04-1.86-.11A12.13 12.13 0 0 0 7.29 21.5c7.55 0 11.68-6.26 11.68-11.68 0-.18-.01-.36-.02-.54A8.18 8.18 0 0 0 22.46 6z"
+                /></svg
+            ></a>
+            <a
+              href="https://linkedin.com/company/csebu"
+              target="_blank"
+              class="hover:text-secondary/70"
+              aria-label="LinkedIn"
+              ><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.18-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z"
+                /></svg
+            ></a>
+          </div>
+          <form
+            class="flex flex-col gap-2 w-full max-w-xs mx-auto md:mx-0"
+            onsubmit="event.preventDefault(); alert('Thank you for subscribing!');"
+          >
+            <label for="newsletter" class="text-secondary/80 text-xs"
+              >Subscribe to our newsletter</label
+            >
+            <div class="flex-col md:flex-row flex gap-2">
+              <input
+                id="newsletter"
+                type="email"
+                required
+                placeholder="Your email"
+                class="rounded px-3 py-1 text-primary bg-white border border-primary/20 focus:outline-none focus:ring-2 focus:ring-secondary/50"
+              />
+              <button
+                type="submit"
+                class="bg-secondary text-primary font-bold px-3 py-1 rounded hover:bg-yellow-400 transition"
+              >
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div
+        class="max-w-7xl mx-auto mt-8 border-t border-secondary/20 pt-4 flex flex-col md:flex-row justify-between items-center text-xs text-secondary/70 gap-2 text-center"
+      >
+        <div>
+          &copy; 2025 Department of Computer Science & Engineering, University
+          of Barishal. All rights reserved.
+        </div>
+        <div class="flex gap-4 mt-2 md:mt-0">
+          <a href="#privacy" class="hover:underline">Privacy Policy</a>
+          <a href="#terms" class="hover:underline">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+    <script src="index.js"></script>
+  </body>
+</html>

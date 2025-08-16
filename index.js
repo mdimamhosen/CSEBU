@@ -694,3 +694,294 @@ document.head.appendChild(pathStyle);
           // Show first tab by default
           tabs[0].click();
         });
+
+// Research Page Functionality
+document.addEventListener("DOMContentLoaded", function () {
+  // Project Filtering System
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const projectCards = document.querySelectorAll(".project-card");
+
+  if (filterBtns.length && projectCards.length) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", function () {
+        const filter = this.dataset.filter;
+        
+        // Update active button
+        filterBtns.forEach(b => {
+          b.classList.remove("active", "bg-primary", "text-secondary");
+          b.classList.add("bg-gray-200", "text-primary");
+        });
+        this.classList.remove("bg-gray-200", "text-primary");
+        this.classList.add("active", "bg-primary", "text-secondary");
+        
+        // Filter projects
+        projectCards.forEach(card => {
+          if (filter === "all" || card.dataset.category === filter) {
+            card.style.display = "block";
+            setTimeout(() => {
+              card.style.opacity = "1";
+              card.style.transform = "translateY(0)";
+            }, 10);
+          } else {
+            card.style.opacity = "0";
+            card.style.transform = "translateY(20px)";
+            setTimeout(() => {
+              card.style.display = "none";
+            }, 300);
+          }
+        });
+      });
+    });
+  }
+
+  // Animated Counters for Research Stats
+  function animateCounter(element, target, duration = 2000) {
+    let start = 0;
+    const increment = target / (duration / 16);
+    
+    function updateCounter() {
+      start += increment;
+      if (start < target) {
+        element.textContent = Math.ceil(start) + "+";
+        requestAnimationFrame(updateCounter);
+      } else {
+        element.textContent = target + "+";
+      }
+    }
+    updateCounter();
+  }
+
+  // Trigger counter animations when section is in view
+  const statsSection = document.querySelector("#publications-count")?.parentElement?.parentElement;
+  if (statsSection) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animate all counters
+          const publicationsEl = document.getElementById("publications-count");
+          const projectsEl = document.getElementById("projects-count");
+          const grantsEl = document.getElementById("grants-count");
+          const collaborationsEl = document.getElementById("collaborations-count");
+
+          if (publicationsEl) animateCounter(publicationsEl, 150);
+          if (projectsEl) animateCounter(projectsEl, 45);
+          if (grantsEl) animateCounter(grantsEl, 12);
+          if (collaborationsEl) animateCounter(collaborationsEl, 25);
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(statsSection);
+  }
+
+  // Smooth reveal animations for research sections
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = "1";
+        entry.target.style.transform = "translateY(0)";
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Apply reveal animation to research sections
+  const researchSections = document.querySelectorAll("section");
+  researchSections.forEach(section => {
+    section.style.opacity = "0";
+    section.style.transform = "translateY(30px)";
+    section.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+    revealObserver.observe(section);
+  });
+
+  // Card hover effects
+  const cards = document.querySelectorAll(".project-card, .bg-white.rounded-lg");
+  cards.forEach(card => {
+    card.addEventListener("mouseenter", function() {
+      this.style.transform = "translateY(-5px)";
+      this.style.transition = "transform 0.3s ease";
+    });
+    
+    card.addEventListener("mouseleave", function() {
+      this.style.transform = "translateY(0)";
+    });
+  });
+});
+
+// Faculty Page Enhancements
+document.addEventListener("DOMContentLoaded", function () {
+  // Animated Counter for Faculty Statistics
+  function animateCounter(element, target, duration = 2000) {
+    let start = 0;
+    const increment = target / (duration / 16);
+    
+    function updateCounter() {
+      start += increment;
+      if (start < target) {
+        element.textContent = Math.ceil(start) + "+";
+        requestAnimationFrame(updateCounter);
+      } else {
+        element.textContent = target + "+";
+      }
+    }
+    updateCounter();
+  }
+
+  // Trigger counter animations when faculty stats section is in view
+  const facultyStatsSection = document.querySelector(".grid.grid-cols-2.md\\:grid-cols-4");
+  if (facultyStatsSection) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Get all stat numbers and animate them
+          const statElements = entry.target.querySelectorAll(".text-3xl.font-bold.text-primary");
+          const targets = [150, 25, 15, 500]; // Publications, Projects, Awards, Students
+          
+          statElements.forEach((element, index) => {
+            if (targets[index]) {
+              animateCounter(element, targets[index]);
+            }
+          });
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(facultyStatsSection);
+  }
+
+  // Faculty Card Hover Effects
+  const facultyCards = document.querySelectorAll(".bg-white.rounded-lg.shadow");
+  facultyCards.forEach(card => {
+    card.addEventListener("mouseenter", function() {
+      this.style.transform = "translateY(-5px)";
+      this.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
+      this.style.boxShadow = "0 10px 25px rgba(0,0,0,0.1)";
+    });
+    
+    card.addEventListener("mouseleave", function() {
+      this.style.transform = "translateY(0)";
+      this.style.boxShadow = "";
+    });
+  });
+
+  // Research Expertise Cards Animation
+  const expertiseCards = document.querySelectorAll(".bg-gradient-to-br");
+  expertiseCards.forEach((card, index) => {
+    card.style.opacity = "0";
+    card.style.transform = "translateY(30px)";
+    card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+    
+    setTimeout(() => {
+      card.style.opacity = "1";
+      card.style.transform = "translateY(0)";
+    }, index * 100);
+  });
+
+  // Publication Cards Interaction
+  const publicationCards = document.querySelectorAll(".bg-gray-50.rounded-lg");
+  publicationCards.forEach(card => {
+    card.addEventListener("click", function() {
+      // Add a subtle click animation
+      this.style.transform = "scale(0.98)";
+      setTimeout(() => {
+        this.style.transform = "scale(1)";
+      }, 150);
+    });
+  });
+
+  // Smooth scroll reveal for sections
+  const revealSections = document.querySelectorAll("section");
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("animate-fade-in");
+      }
+    });
+  }, { threshold: 0.1 });
+
+  revealSections.forEach(section => {
+    revealObserver.observe(section);
+  });
+
+  // Faculty Tab Enhancement (if not already handled)
+  const facultyTabs = document.querySelectorAll(".faculty-tab");
+  if (facultyTabs.length > 0) {
+    facultyTabs.forEach(tab => {
+      tab.addEventListener("click", function() {
+        // Add ripple effect
+        const ripple = document.createElement("span");
+        ripple.classList.add("ripple");
+        ripple.style.cssText = `
+          position: absolute;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.6);
+          transform: scale(0);
+          animation: ripple 0.6s linear;
+          pointer-events: none;
+        `;
+        
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = size + "px";
+        ripple.style.left = (event.clientX - rect.left - size / 2) + "px";
+        ripple.style.top = (event.clientY - rect.top - size / 2) + "px";
+        
+        this.style.position = "relative";
+        this.style.overflow = "hidden";
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+          ripple.remove();
+        }, 600);
+      });
+    });
+  }
+
+  // Add CSS for animations if not present
+  if (!document.querySelector('#faculty-animations')) {
+    const style = document.createElement('style');
+    style.id = 'faculty-animations';
+    style.textContent = `
+      @keyframes ripple {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+      
+      @keyframes fade-in-up {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .animate-fade-in {
+        animation: fade-in-up 0.8s ease forwards;
+      }
+      
+      .faculty-card-hover {
+        transition: all 0.3s ease;
+      }
+      
+      .faculty-card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(3, 7, 36, 0.1);
+      }
+    `;
+    document.head.appendChild(style);
+  }
+});
