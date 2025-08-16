@@ -90,3 +90,20 @@
     transform: scale(1.09);
   }
 }
+
+/* scrollbar hide */
+* For Chrome,
+Safari,
+Edge */ ::-webkit-scrollbar {
+  display: none;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: none; /* hides scrollbar */
+}
+
+/* For IE/Edge (legacy) */
+* {
+  -ms-overflow-style: none;
+}
