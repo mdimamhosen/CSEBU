@@ -123,13 +123,13 @@ const programs = {
 			title: "BSc in Computer Science & Engineering",
 			desc: "A 4-year undergraduate program focusing on core computing, software, and hardware skills.",
 			duration: "4 Years (8 Semesters)",
-			link: "#programs",
+			link: "programs.html",
 		},
 		{
 			title: "BSc in Software Engineering",
 			desc: "Comprehensive study of software development, project management, and quality assurance.",
 			duration: "4 Years (8 Semesters)",
-			link: "#programs",
+			link: "programs.html",
 		},
 	],
 	pg: [
@@ -137,13 +137,13 @@ const programs = {
 			title: "MSc in Computer Science & Engineering",
 			desc: "Advanced coursework and research in computer science, preparing for industry or academia.",
 			duration: "2 Years (4 Semesters)",
-			link: "#programs",
+			link: "programs.html",
 		},
 		{
 			title: "MSc in Data Science",
 			desc: "Focus on big data, machine learning, and analytics for modern data-driven careers.",
 			duration: "2 Years (4 Semesters)",
-			link: "#programs",
+			link: "programs.html",
 		},
 	],
 	phd: [
@@ -151,7 +151,7 @@ const programs = {
 			title: "PhD in Computer Science & Engineering",
 			desc: "Doctoral research program for those aiming to contribute new knowledge in computing.",
 			duration: "3-5 Years",
-			link: "#programs",
+			link: "programs.html",
 		},
 	],
 };
@@ -209,7 +209,7 @@ const slides = [
 		subheading: 'A Hub of Innovation and Excellence',
 		text: 'Empowering the next generation of innovators and leaders in Computer Science. Our department offers state-of-the-art facilities, a modern curriculum, and a vibrant academic community dedicated to your success.',
 		details: 'Accredited by UGC | Modern Labs | International Collaborations',
-		button: { text: 'Explore Programs', link: '#programs' },
+		button: { text: 'Explore Programs', link: 'programs.html' },
 		secondaryButton: { text: 'About Us', link: '#about' },
 	},
 	{
@@ -218,7 +218,7 @@ const slides = [
 		subheading: 'Pushing the Boundaries of Knowledge',
 		text: 'Join our vibrant research community and make a global impact. Our faculty and students are engaged in groundbreaking research in AI, Data Science, Cybersecurity, and more.',
 		details: 'Research Labs | Publications | Funded Projects',
-		button: { text: 'See Research', link: '#research' },
+		button: { text: 'See Research', link: 'research.html' },
 		secondaryButton: { text: 'Meet Our Faculty', link: '#faculty' },
 	},
 	{
@@ -227,7 +227,7 @@ const slides = [
 		subheading: 'A Dynamic and Supportive Community',
 		text: 'Experience a dynamic campus life with diverse student activities, clubs, and events. We foster leadership, creativity, and teamwork through hackathons, seminars, and cultural programs.',
 		details: 'Clubs & Societies | Hackathons | Career Support',
-		button: { text: 'Meet Our Students', link: '#students' },
+		button: { text: 'Meet Our Students', link: 'students.html' },
 		secondaryButton: { text: 'Campus Life', link: '#about' },
 	},
 	{
@@ -236,8 +236,8 @@ const slides = [
 		subheading: 'Your Journey Starts Here',
 		text: 'Get in touch for admissions, collaborations, and more. We are here to support your academic and professional journey every step of the way.',
 		details: 'Admissions | Partnerships | Contact',
-		button: { text: 'Contact Us', link: '#contact' },
-		secondaryButton: { text: 'Apply Now', link: '#programs' },
+		button: { text: 'Contact Us', link: 'contact.html' },
+		secondaryButton: { text: 'Apply Now', link: 'programs.html' },
 	},
 ];
 
@@ -557,8 +557,8 @@ document.head.appendChild(style);
 const pathData = {
 	ai: {
 		programs: [
-			{ title: 'BSc in Computer Science & Engineering', desc: 'Strong AI/ML curriculum, hands-on projects, and electives in deep learning.', link: '#programs' },
-			{ title: 'MSc in Computer Science & Engineering', desc: 'Advanced AI research, thesis options, and faculty mentorship.', link: '#programs' }
+			{ title: 'BSc in Computer Science & Engineering', desc: 'Strong AI/ML curriculum, hands-on projects, and electives in deep learning.', link: 'programs.html' },
+			{ title: 'MSc in Computer Science & Engineering', desc: 'Advanced AI research, thesis options, and faculty mentorship.', link: 'programs.html' }
 		],
 		labs: [
 			{ title: 'AI & Robotics Lab', desc: 'Work on real-world AI and robotics projects with peers and faculty.' }
@@ -569,7 +569,7 @@ const pathData = {
 	},
 	software: {
 		programs: [
-			{ title: 'BSc in Software Engineering', desc: 'Focus on software design, development, and project management.', link: '#programs' }
+			{ title: 'BSc in Software Engineering', desc: 'Focus on software design, development, and project management.', link: 'programs.html' }
 		],
 		labs: [
 			{ title: 'Software Development Lab', desc: 'Collaborate on software projects and competitions.' }
@@ -580,8 +580,8 @@ const pathData = {
 	},
 	research: {
 		programs: [
-			{ title: 'MSc in Computer Science & Engineering', desc: 'Research-focused curriculum with thesis and publication opportunities.', link: '#programs' },
-			{ title: 'PhD in Computer Science & Engineering', desc: 'Doctoral research with international collaborations.', link: '#programs' }
+			{ title: 'MSc in Computer Science & Engineering', desc: 'Research-focused curriculum with thesis and publication opportunities.', link: 'programs.html' },
+			{ title: 'PhD in Computer Science & Engineering', desc: 'Doctoral research with international collaborations.', link: 'programs.html' }
 		],
 		labs: [
 			{ title: 'Research & Innovation Lab', desc: 'Pursue cutting-edge research with faculty and peers.' }
@@ -592,7 +592,7 @@ const pathData = {
 	},
 	data: {
 		programs: [
-			{ title: 'MSc in Data Science', desc: 'Specialized in big data, analytics, and machine learning.', link: '#programs' }
+			{ title: 'MSc in Data Science', desc: 'Specialized in big data, analytics, and machine learning.', link: 'programs.html' }
 		],
 		labs: [
 			{ title: 'Data Science Lab', desc: 'Analyze real datasets and participate in data challenges.' }
@@ -603,7 +603,7 @@ const pathData = {
 	},
 	networks: {
 		programs: [
-			{ title: 'BSc in Computer Science & Engineering', desc: 'Courses and labs in networking and cybersecurity.', link: '#programs' }
+			{ title: 'BSc in Computer Science & Engineering', desc: 'Courses and labs in networking and cybersecurity.', link: 'programs.html' }
 		],
 		labs: [
 			{ title: 'Networks & Security Lab', desc: 'Hands-on with network protocols, security, and ethical hacking.' }
@@ -695,558 +695,130 @@ document.head.appendChild(pathStyle);
           tabs[0].click();
         });
 
-// Research Page Functionality
+// Contact Form Functionality
 document.addEventListener("DOMContentLoaded", function () {
-  // Project Filtering System
-  const filterBtns = document.querySelectorAll(".filter-btn");
-  const projectCards = document.querySelectorAll(".project-card");
+  const contactForm = document.getElementById("contactForm");
+  const formMessage = document.getElementById("form-message");
 
-  if (filterBtns.length && projectCards.length) {
-    filterBtns.forEach(btn => {
-      btn.addEventListener("click", function () {
-        const filter = this.dataset.filter;
-        
-        // Update active button
-        filterBtns.forEach(b => {
-          b.classList.remove("active", "bg-primary", "text-secondary");
-          b.classList.add("bg-gray-200", "text-primary");
-        });
-        this.classList.remove("bg-gray-200", "text-primary");
-        this.classList.add("active", "bg-primary", "text-secondary");
-        
-        // Filter projects
-        projectCards.forEach(card => {
-          if (filter === "all" || card.dataset.category === filter) {
-            card.style.display = "block";
-            setTimeout(() => {
-              card.style.opacity = "1";
-              card.style.transform = "translateY(0)";
-            }, 10);
-          } else {
-            card.style.opacity = "0";
-            card.style.transform = "translateY(20px)";
-            setTimeout(() => {
-              card.style.display = "none";
-            }, 300);
-          }
-        });
-      });
-    });
-  }
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
 
-  // Animated Counters for Research Stats
-  function animateCounter(element, target, duration = 2000) {
-    let start = 0;
-    const increment = target / (duration / 16);
-    
-    function updateCounter() {
-      start += increment;
-      if (start < target) {
-        element.textContent = Math.ceil(start) + "+";
-        requestAnimationFrame(updateCounter);
-      } else {
-        element.textContent = target + "+";
+      // Get form data
+      const formData = new FormData(contactForm);
+      const verification = parseInt(formData.get("verification"));
+      
+      // Simple verification check (5 + 3 = 8)
+      if (verification !== 8) {
+        showMessage("Please enter the correct answer for the verification question.", "error");
+        return;
       }
-    }
-    updateCounter();
-  }
 
-  // Trigger counter animations when section is in view
-  const statsSection = document.querySelector("#publications-count")?.parentElement?.parentElement;
-  if (statsSection) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Animate all counters
-          const publicationsEl = document.getElementById("publications-count");
-          const projectsEl = document.getElementById("projects-count");
-          const grantsEl = document.getElementById("grants-count");
-          const collaborationsEl = document.getElementById("collaborations-count");
-
-          if (publicationsEl) animateCounter(publicationsEl, 150);
-          if (projectsEl) animateCounter(projectsEl, 45);
-          if (grantsEl) animateCounter(grantsEl, 12);
-          if (collaborationsEl) animateCounter(collaborationsEl, 25);
-
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    observer.observe(statsSection);
-  }
-
-  // Smooth reveal animations for research sections
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px"
-  };
-
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  // Apply reveal animation to research sections
-  const researchSections = document.querySelectorAll("section");
-  researchSections.forEach(section => {
-    section.style.opacity = "0";
-    section.style.transform = "translateY(30px)";
-    section.style.transition = "opacity 0.8s ease, transform 0.8s ease";
-    revealObserver.observe(section);
-  });
-
-  // Card hover effects
-  const cards = document.querySelectorAll(".project-card, .bg-white.rounded-lg");
-  cards.forEach(card => {
-    card.addEventListener("mouseenter", function() {
-      this.style.transform = "translateY(-5px)";
-      this.style.transition = "transform 0.3s ease";
-    });
-    
-    card.addEventListener("mouseleave", function() {
-      this.style.transform = "translateY(0)";
-    });
-  });
-});
-
-// Faculty Page Enhancements
-document.addEventListener("DOMContentLoaded", function () {
-  // Animated Counter for Faculty Statistics
-  function animateCounter(element, target, duration = 2000) {
-    let start = 0;
-    const increment = target / (duration / 16);
-    
-    function updateCounter() {
-      start += increment;
-      if (start < target) {
-        element.textContent = Math.ceil(start) + "+";
-        requestAnimationFrame(updateCounter);
-      } else {
-        element.textContent = target + "+";
-      }
-    }
-    updateCounter();
-  }
-
-  // Trigger counter animations when faculty stats section is in view
-  const facultyStatsSection = document.querySelector(".grid.grid-cols-2.md\\:grid-cols-4");
-  if (facultyStatsSection) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Get all stat numbers and animate them
-          const statElements = entry.target.querySelectorAll(".text-3xl.font-bold.text-primary");
-          const targets = [150, 25, 15, 500]; // Publications, Projects, Awards, Students
-          
-          statElements.forEach((element, index) => {
-            if (targets[index]) {
-              animateCounter(element, targets[index]);
-            }
-          });
-
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    observer.observe(facultyStatsSection);
-  }
-
-  // Faculty Card Hover Effects
-  const facultyCards = document.querySelectorAll(".bg-white.rounded-lg.shadow");
-  facultyCards.forEach(card => {
-    card.addEventListener("mouseenter", function() {
-      this.style.transform = "translateY(-5px)";
-      this.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
-      this.style.boxShadow = "0 10px 25px rgba(0,0,0,0.1)";
-    });
-    
-    card.addEventListener("mouseleave", function() {
-      this.style.transform = "translateY(0)";
-      this.style.boxShadow = "";
-    });
-  });
-
-  // Research Expertise Cards Animation
-  const expertiseCards = document.querySelectorAll(".bg-gradient-to-br");
-  expertiseCards.forEach((card, index) => {
-    card.style.opacity = "0";
-    card.style.transform = "translateY(30px)";
-    card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-    
-    setTimeout(() => {
-      card.style.opacity = "1";
-      card.style.transform = "translateY(0)";
-    }, index * 100);
-  });
-
-  // Publication Cards Interaction
-  const publicationCards = document.querySelectorAll(".bg-gray-50.rounded-lg");
-  publicationCards.forEach(card => {
-    card.addEventListener("click", function() {
-      // Add a subtle click animation
-      this.style.transform = "scale(0.98)";
+      // Simulate form submission
+      showMessage("Sending message...", "loading");
+      
+      // Simulate API call delay
       setTimeout(() => {
-        this.style.transform = "scale(1)";
-      }, 150);
-    });
-  });
-
-  // Smooth scroll reveal for sections
-  const revealSections = document.querySelectorAll("section");
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("animate-fade-in");
-      }
-    });
-  }, { threshold: 0.1 });
-
-  revealSections.forEach(section => {
-    revealObserver.observe(section);
-  });
-
-  // Faculty Tab Enhancement (if not already handled)
-  const facultyTabs = document.querySelectorAll(".faculty-tab");
-  if (facultyTabs.length > 0) {
-    facultyTabs.forEach(tab => {
-      tab.addEventListener("click", function() {
-        // Add ripple effect
-        const ripple = document.createElement("span");
-        ripple.classList.add("ripple");
-        ripple.style.cssText = `
-          position: absolute;
-          border-radius: 50%;
-          background: rgba(255,255,255,0.6);
-          transform: scale(0);
-          animation: ripple 0.6s linear;
-          pointer-events: none;
-        `;
-        
-        const rect = this.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        ripple.style.width = ripple.style.height = size + "px";
-        ripple.style.left = (event.clientX - rect.left - size / 2) + "px";
-        ripple.style.top = (event.clientY - rect.top - size / 2) + "px";
-        
-        this.style.position = "relative";
-        this.style.overflow = "hidden";
-        this.appendChild(ripple);
-        
-        setTimeout(() => {
-          ripple.remove();
-        }, 600);
-      });
+        showMessage("Thank you for your message! We'll get back to you within 24 hours.", "success");
+        contactForm.reset();
+      }, 1500);
     });
   }
 
-  // Add CSS for animations if not present
-  if (!document.querySelector('#faculty-animations')) {
-    const style = document.createElement('style');
-    style.id = 'faculty-animations';
-    style.textContent = `
-      @keyframes ripple {
-        to {
-          transform: scale(4);
-          opacity: 0;
-        }
-      }
-      
-      @keyframes fade-in-up {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      
-      .animate-fade-in {
-        animation: fade-in-up 0.8s ease forwards;
-      }
-      
-      .faculty-card-hover {
-        transition: all 0.3s ease;
-      }
-      
-      .faculty-card-hover:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(3, 7, 36, 0.1);
-      }
-    `;
-    document.head.appendChild(style);
+  function showMessage(message, type) {
+    formMessage.className = `mt-6 p-4 rounded-lg text-center font-medium`;
+    formMessage.classList.remove("hidden");
+    
+    switch (type) {
+      case "success":
+        formMessage.classList.add("bg-green-100", "text-green-800", "border", "border-green-200");
+        break;
+      case "error":
+        formMessage.classList.add("bg-red-100", "text-red-800", "border", "border-red-200");
+        break;
+      case "loading":
+        formMessage.classList.add("bg-blue-100", "text-blue-800", "border", "border-blue-200");
+        break;
+    }
+    
+    formMessage.textContent = message;
+    
+    // Auto-hide success and error messages after 5 seconds
+    if (type !== "loading") {
+      setTimeout(() => {
+        formMessage.classList.add("hidden");
+      }, 5000);
+    }
   }
 });
 
-// About Page Enhancements
+// FAQ Toggle Functionality
+function toggleFAQ(button) {
+  const content = button.nextElementSibling;
+  const icon = button.querySelector('.faq-icon');
+  
+  if (content.classList.contains('hidden')) {
+    content.classList.remove('hidden');
+    icon.style.transform = 'rotate(180deg)';
+    button.setAttribute('aria-expanded', 'true');
+  } else {
+    content.classList.add('hidden');
+    icon.style.transform = 'rotate(0deg)';
+    button.setAttribute('aria-expanded', 'false');
+  }
+}
+
+// Add smooth scrolling for anchor links
 document.addEventListener("DOMContentLoaded", function () {
-  // Animated Counter for About Page Statistics
-  function animateCounter(element, target, duration = 2000, suffix = "+") {
-    let start = 0;
-    const increment = target / (duration / 16);
-    
-    function updateCounter() {
-      start += increment;
-      if (start < target) {
-        element.textContent = Math.ceil(start) + suffix;
-        requestAnimationFrame(updateCounter);
-      } else {
-        element.textContent = target + suffix;
+  // Smooth scrolling for anchor links
+  const anchorLinks = document.querySelectorAll('a[href^="#"]');
+  anchorLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Add CSS animations dynamically
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
-    updateCounter();
-  }
-
-  // Trigger counter animations when about stats section is in view
-  const aboutStatsSection = document.querySelector("#students-count")?.parentElement?.parentElement?.parentElement;
-  if (aboutStatsSection) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Get all stat elements and animate them
-          const studentsEl = document.getElementById("students-count");
-          const facultyEl = document.getElementById("faculty-count");
-          const graduatesEl = document.getElementById("graduates-count");
-          const projectsEl = document.getElementById("projects-count");
-
-          if (studentsEl) animateCounter(studentsEl, 500);
-          if (facultyEl) animateCounter(facultyEl, 25);
-          if (graduatesEl) animateCounter(graduatesEl, 300);
-          if (projectsEl) animateCounter(projectsEl, 150);
-
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    observer.observe(aboutStatsSection);
-  }
-
-  // Timeline Animation
-  const timelineItems = document.querySelectorAll(".relative.border-l-4 .flex.items-start");
-  timelineItems.forEach((item, index) => {
-    item.style.opacity = "0";
-    item.style.transform = "translateX(-50px)";
-    item.style.transition = "opacity 0.6s ease, transform 0.6s ease";
     
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateX(0)";
-          }, index * 200);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    observer.observe(item);
-  });
-
-  // Academic Programs Cards Animation
-  const programCards = document.querySelectorAll(".bg-gradient-to-br");
-  programCards.forEach((card, index) => {
-    card.style.opacity = "0";
-    card.style.transform = "translateY(30px) scale(0.95)";
-    card.style.transition = "opacity 0.8s ease, transform 0.8s ease";
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0) scale(1)";
-          }, index * 150);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-
-    observer.observe(card);
-  });
-
-  // Student Organization Cards Hover Effects
-  const orgCards = document.querySelectorAll(".bg-white.rounded-lg.shadow");
-  orgCards.forEach(card => {
-    card.addEventListener("mouseenter", function() {
-      this.style.transform = "translateY(-5px) scale(1.02)";
-      this.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
-      this.style.boxShadow = "0 10px 25px rgba(3, 7, 36, 0.15)";
-    });
-    
-    card.addEventListener("mouseleave", function() {
-      this.style.transform = "translateY(0) scale(1)";
-      this.style.boxShadow = "";
-    });
-  });
-
-  // Alumni Cards Animation
-  const alumniCards = document.querySelectorAll(".bg-secondary\\/10");
-  alumniCards.forEach((card, index) => {
-    card.style.opacity = "0";
-    card.style.transform = "rotateY(45deg) translateY(20px)";
-    card.style.transition = "opacity 0.8s ease, transform 0.8s ease";
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "rotateY(0deg) translateY(0)";
-          }, index * 200);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    observer.observe(card);
-  });
-
-  // Leadership Cards Staggered Animation
-  const leadershipCards = document.querySelectorAll(".bg-white.rounded-lg.shadow-lg");
-  leadershipCards.forEach((card, index) => {
-    card.style.opacity = "0";
-    card.style.transform = "translateY(40px)";
-    card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-          }, index * 100);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-
-    observer.observe(card);
-  });
-
-  // Parallax Effect for Hero Section
-  const heroSection = document.querySelector('.min-h-\\[340px\\]');
-  if (heroSection) {
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      const rate = scrolled * -0.5;
-      heroSection.style.backgroundPositionY = rate + 'px';
-    });
-  }
-
-  // Smooth Reveal for Mission/Vision Cards
-  const missionCards = document.querySelectorAll(".bg-primary\\/5");
-  missionCards.forEach((card, index) => {
-    card.style.opacity = "0";
-    card.style.transform = "scale(0.9)";
-    card.style.transition = "opacity 0.8s ease, transform 0.8s ease";
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "scale(1)";
-          }, index * 200);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    observer.observe(card);
-  });
-
-  // Floating Animation for Icons
-  const floatingIcons = document.querySelectorAll(".text-4xl, .text-3xl");
-  floatingIcons.forEach(icon => {
-    if (icon.textContent.match(/[🎓🔬💼🎯🏆⚡🎤🎯🤝🚀🌟🏢🏛️🌍💼🔬🛠️]/)) {
-      icon.style.animation = "float 3s ease-in-out infinite";
-      icon.style.animationDelay = Math.random() * 2 + "s";
+    .animate-fade-in {
+      animation: fade-in 1s ease-out;
     }
-  });
-
-  // Add CSS animations if not present
-  if (!document.querySelector('#about-animations')) {
-    const style = document.createElement('style');
-    style.id = 'about-animations';
-    style.textContent = `
-      @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
       }
-      
-      @keyframes slideInLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
+      40% {
+        transform: translateY(-10px);
       }
-      
-      @keyframes fadeInScale {
-        from {
-          opacity: 0;
-          transform: scale(0.8);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-      
-      .animate-slide-in-left {
-        animation: slideInLeft 0.8s ease forwards;
-      }
-      
-      .animate-fade-in-scale {
-        animation: fadeInScale 0.6s ease forwards;
-      }
-      
-      .hover-lift {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-      
-      .hover-lift:hover {
+      60% {
         transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       }
-    `;
-    document.head.appendChild(style);
-  }
-
-  // Add hover effects to all cards
-  document.querySelectorAll('.rounded-lg').forEach(card => {
-    card.classList.add('hover-lift');
-  });
-
-  // Scroll Progress Indicator (optional)
-  const progressBar = document.createElement('div');
-  progressBar.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: linear-gradient(90deg, #030724, #f0bd02);
-    z-index: 9999;
-    transition: width 0.1s ease;
+    }
+    
+    .animate-bounce {
+      animation: bounce 3s infinite;
+    }
   `;
-  document.body.appendChild(progressBar);
-
-  window.addEventListener('scroll', () => {
-    const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-    progressBar.style.width = scrollPercent + '%';
-  });
+  document.head.appendChild(style);
 });
+ 

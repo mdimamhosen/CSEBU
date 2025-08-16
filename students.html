@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSE-BU / Students Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#030724",
+              secondary: "#f0bd02",
+            },
+            fontFamily: {
+              roboto: ["Roboto", "Arial", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="./assets/bu logo.png" type="image/x-icon" />
+  </head>
+  <body>
+    <!-- Live News / Event Ticker -->
+    <div
+      id="news-ticker-wrapper"
+      class="w-full bg-white text-primary font-medium text-xs md:text-sm overflow-hidden relative z-50 border-b border-primary/10"
+    >
+      <div
+        id="news-ticker"
+        class="whitespace-nowrap flex items-center py-1 px-2 cursor-pointer select-none"
+        style="will-change: transform"
+      >
+        <span class="mr-6">🎉 Admission Open for 2025! Apply Now.</span>
+        <span class="mr-6"
+          >📢 National Award 2023: Congratulations to CSE-BU!</span
+        >
+        <span class="mr-6"
+          >🗓️ Workshop on AI: 25th August, Register Today!</span
+        >
+        <span class="mr-6">💡 New Research Lab Inaugurated!</span>
+        <span class="mr-6">� Student Project Showcase: 1st September</span>
+        <!-- Duplicate for infinite scroll -->
+        <span class="mr-6">�🎉 Admission Open for 2025! Apply Now.</span>
+        <span class="mr-6"
+          >📢 National Award 2023: Congratulations to CSE-BU!</span
+        >
+        <span class="mr-6"
+          >🗓️ Workshop on AI: 25th August, Register Today!</span
+        >
+        <span class="mr-6">💡 New Research Lab Inaugurated!</span>
+        <span class="mr-6">🏆 Student Project Showcase: 1st September</span>
+      </div>
+    </div>
+    <nav class="bg-primary text-secondary sticky top-0 z-40 shadow">
+      <div
+        class="max-w-7xl mx-auto flex items-center justify-between h-16 px-4"
+      >
+        <a href="#" class="flex items-center font-bold text-lg gap-2">
+          <img src="./assets/bu logo.png" alt="BU Logo" class="h-14 w-14" />
+          <div
+            class="flex justify-center items-center flex-col text-sm md:text-base"
+          >
+            <span class="text-sm md:text-sm"
+              >Computer Science & Engineering</span
+            >
+            <span> Uiversity of Barishal </span>
+          </div>
+        </a>
+        <button
+          id="menu-toggle"
+          class="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
+          aria-label="Toggle navigation"
+        >
+          <span
+            class="block w-7 h-1 bg-secondary rounded-sm mb-1 transition-all"
+            id="bar1"
+          ></span>
+          <span
+            class="block w-7 h-1 bg-secondary rounded-sm mb-1 transition-all"
+            id="bar2"
+          ></span>
+          <span
+            class="block w-7 h-1 bg-secondary rounded-sm transition-all"
+            id="bar3"
+          ></span>
+        </button>
+        <ul id="nav-links" class="hidden md:flex space-x-8 font-medium">
+          <li>
+            <a
+              href="index.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="about.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >About Us</a
+            >
+          </li>
+          <li>
+            <a
+              href="faculty.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >Faculty</a
+            >
+          </li>
+          <li>
+            <a
+              href="programs.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >Programs</a
+            >
+          </li>
+          <li>
+            <a
+              href="research.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >Research</a
+            >
+          </li>
+          <li>
+            <a
+              href="students.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >Students</a
+            >
+          </li>
+          <li>
+            <a
+              href="contact.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >Contact Us</a
+            >
+          </li>
+        </ul>
+      </div>
+      <ul
+        id="mobile-nav"
+        class="md:hidden hidden flex-col bg-primary text-secondary w-full px-4 pb-4"
+      >
+        <li>
+          <a
+            href="index.html"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="#about"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >About Us</a
+          >
+        </li>
+        <li>
+          <a
+            href="faculty.html"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >Faculty</a
+          >
+        </li>
+        <li>
+          <a
+            href="programs.html"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >Programs</a
+          >
+        </li>
+        <li>
+          <a
+            href="research.html"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >Research</a
+          >
+        </li>
+        <li>
+          <a
+            href="students.html"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >Students</a
+          >
+        </li>
+        <li>
+          <a
+            href="contact.html"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >Contact Us</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="bg-white">
+      <!-- 1. Introduction Section -->
+      <section
+        class="bg-gradient-to-br from-primary via-primary to-blue-900 text-white py-20 px-4 relative overflow-hidden"
+      >
+        <div class="absolute inset-0 opacity-10">
+          <div
+            class="absolute top-20 left-10 w-32 h-32 bg-secondary rounded-full blur-3xl"
+          ></div>
+          <div
+            class="absolute bottom-20 right-10 w-40 h-40 bg-yellow-300 rounded-full blur-3xl"
+          ></div>
+        </div>
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+          <div class="mb-6">
+            <span
+              class="bg-secondary text-primary px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide"
+            >
+              Student Life
+            </span>
+          </div>
+          <h1
+            class="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-secondary to-yellow-300 bg-clip-text text-transparent"
+          >
+            Our Students
+          </h1>
+          <h2
+            class="text-xl md:text-2xl font-light text-white/90 mb-8 max-w-3xl mx-auto"
+          >
+            Empowering Tomorrow's Tech Leaders Through Innovation and Excellence
+          </h2>
+          <p
+            class="text-lg md:text-xl leading-relaxed max-w-4xl mx-auto font-light text-white/80 mb-8"
+          >
+            Our students are at the heart of everything we do—<span
+              class="text-secondary font-semibold"
+              >innovators</span
+            >, <span class="text-secondary font-semibold">coders</span>,
+            <span class="text-secondary font-semibold">researchers</span>, and
+            <span class="text-secondary font-semibold">leaders</span> shaping
+            the future of technology.
+          </p>
+
+          <!-- Additional Introduction Content -->
+          <div class="mb-12 max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+              <div
+                class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20"
+              >
+                <div class="text-secondary text-3xl mb-3">🎓</div>
+                <h3 class="text-lg font-semibold text-secondary mb-2">
+                  Academic Excellence
+                </h3>
+                <p class="text-white/80 text-sm">
+                  Our rigorous curriculum combines theoretical knowledge with
+                  hands-on experience, preparing students for real-world
+                  challenges.
+                </p>
+              </div>
+              <div
+                class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20"
+              >
+                <div class="text-secondary text-3xl mb-3">🚀</div>
+                <h3 class="text-lg font-semibold text-secondary mb-2">
+                  Innovation Hub
+                </h3>
+                <p class="text-white/80 text-sm">
+                  From startup incubation to cutting-edge research, our students
+                  lead breakthrough projects that make global impact.
+                </p>
+              </div>
+              <div
+                class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20"
+              >
+                <div class="text-secondary text-3xl mb-3">🌍</div>
+                <h3 class="text-lg font-semibold text-secondary mb-2">
+                  Global Recognition
+                </h3>
+                <p class="text-white/80 text-sm">
+                  Our graduates work at top tech companies worldwide, from
+                  Silicon Valley giants to innovative startups across
+                  continents.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Statistics Section -->
+          <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="student-stat" data-target="500">
+              <div class="text-3xl md:text-4xl font-bold text-secondary mb-2">
+                0+
+              </div>
+              <div class="text-white/80 font-medium">Active Students</div>
+            </div>
+            <div class="student-stat" data-target="120">
+              <div class="text-3xl md:text-4xl font-bold text-secondary mb-2">
+                0+
+              </div>
+              <div class="text-white/80 font-medium">Graduates (2024)</div>
+            </div>
+            <div class="student-stat" data-target="85">
+              <div class="text-3xl md:text-4xl font-bold text-secondary mb-2">
+                0%
+              </div>
+              <div class="text-white/80 font-medium">Placement Rate</div>
+            </div>
+            <div class="student-stat" data-target="35">
+              <div class="text-3xl md:text-4xl font-bold text-secondary mb-2">
+                0+
+              </div>
+              <div class="text-white/80 font-medium">Awards Won</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Student Clubs & Societies -->
+      <section class="py-16 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <span
+              class="bg-primary text-secondary px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide"
+            >
+              Campus Community
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mt-4 mb-4">
+              Student Clubs & Societies
+            </h2>
+            <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+              Join our vibrant community of learners, creators, and innovators.
+              Our diverse clubs provide platforms for skill development,
+              networking, and pursuing your passions.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div
+              class="club-card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-secondary"
+            >
+              <div class="text-4xl mb-4 text-center">💻</div>
+              <h3 class="text-xl font-bold text-primary mb-3 text-center">
+                Programming Club
+              </h3>
+              <p class="text-gray-600 text-center mb-4">
+                Competitive programming, coding challenges, and algorithm
+                practice sessions with industry mentors.
+              </p>
+              <div class="text-center">
+                <span
+                  class="bg-primary text-secondary px-3 py-1 rounded-full text-sm font-medium"
+                  >200+ Members</span
+                >
+              </div>
+            </div>
+            <div
+              class="club-card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-secondary"
+            >
+              <div class="text-4xl mb-4 text-center">🤖</div>
+              <h3 class="text-xl font-bold text-primary mb-3 text-center">
+                Robotics Club
+              </h3>
+              <p class="text-gray-600 text-center mb-4">
+                Building robots, IoT projects, and participating in national
+                robotics competitions and exhibitions.
+              </p>
+              <div class="text-center">
+                <span
+                  class="bg-primary text-secondary px-3 py-1 rounded-full text-sm font-medium"
+                  >150+ Members</span
+                >
+              </div>
+            </div>
+            <div
+              class="club-card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-secondary"
+            >
+              <div class="text-4xl mb-4 text-center">🧠</div>
+              <h3 class="text-xl font-bold text-primary mb-3 text-center">
+                AI/ML Club
+              </h3>
+              <p class="text-gray-600 text-center mb-4">
+                Machine learning projects, AI research, data science workshops,
+                and cutting-edge technology exploration.
+              </p>
+              <div class="text-center">
+                <span
+                  class="bg-primary text-secondary px-3 py-1 rounded-full text-sm font-medium"
+                  >180+ Members</span
+                >
+              </div>
+            </div>
+            <div
+              class="club-card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-secondary"
+            >
+              <div class="text-4xl mb-4 text-center">🎭</div>
+              <h3 class="text-xl font-bold text-primary mb-3 text-center">
+                Cultural & Debate Club
+              </h3>
+              <p class="text-gray-600 text-center mb-4">
+                Cultural events, debate competitions, creative expression
+                activities, and community engagement programs.
+              </p>
+              <div class="text-center">
+                <span
+                  class="bg-primary text-secondary px-3 py-1 rounded-full text-sm font-medium"
+                  >120+ Members</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Achievements & Awards -->
+      <section class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <span
+              class="bg-secondary text-primary px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide"
+            >
+              Excellence & Recognition
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mt-4 mb-4">
+              Achievements & Awards
+            </h2>
+            <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+              Celebrating our students' outstanding accomplishments in
+              competitions, research, innovation, and entrepreneurship on
+              national and international platforms.
+            </p>
+          </div>
+          <div class="achievement-carousel overflow-hidden relative">
+            <div
+              class="achievement-slides flex transition-transform duration-500 ease-in-out"
+            >
+              <div class="achievement-slide min-w-full md:min-w-1/3 px-4">
+                <div
+                  class="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl p-6 text-white shadow-xl"
+                >
+                  <div class="text-3xl mb-4">🏆</div>
+                  <h3 class="text-xl font-bold mb-3">
+                    ICPC Asia Regional 2024
+                  </h3>
+                  <p class="mb-4">
+                    Team "CodeCrafters" secured 15th position among 300+ teams
+                    from across Asia
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm"
+                      >Programming</span
+                    >
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm"
+                      >Algorithms</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="achievement-slide min-w-full md:min-w-1/3 px-4">
+                <div
+                  class="bg-gradient-to-br from-green-400 to-blue-500 rounded-xl p-6 text-white shadow-xl"
+                >
+                  <div class="text-3xl mb-4">💡</div>
+                  <h3 class="text-xl font-bold mb-3">NASA Space Apps 2024</h3>
+                  <p class="mb-4">
+                    Global Nominee for "EcoGuard" environmental monitoring
+                    application project
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm"
+                      >Innovation</span
+                    >
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm"
+                      >Sustainability</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="achievement-slide min-w-full md:min-w-1/3 px-4">
+                <div
+                  class="bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl p-6 text-white shadow-xl"
+                >
+                  <div class="text-3xl mb-4">📄</div>
+                  <h3 class="text-xl font-bold mb-3">IEEE Research Paper</h3>
+                  <p class="mb-4">
+                    Published in IEEE ICACEA 2024: "Blockchain-based Secure
+                    Voting System"
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm"
+                      >Research</span
+                    >
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm"
+                      >Blockchain</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="achievement-slide min-w-full md:min-w-1/3 px-4">
+                <div
+                  class="bg-gradient-to-br from-red-400 to-yellow-500 rounded-xl p-6 text-white shadow-xl"
+                >
+                  <div class="text-3xl mb-4">🚀</div>
+                  <h3 class="text-xl font-bold mb-3">
+                    TechFest Startup Competition
+                  </h3>
+                  <p class="mb-4">
+                    "HealthTracker" won Best Healthcare Innovation Award with
+                    $10,000 prize
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm"
+                      >Startup</span
+                    >
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm"
+                      >Healthcare</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button
+              class="achievement-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-primary text-secondary p-2 rounded-full shadow-lg hover:bg-primary/80 transition"
+            >
+              ←
+            </button>
+            <button
+              class="achievement-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary text-secondary p-2 rounded-full shadow-lg hover:bg-primary/80 transition"
+            >
+              →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Student Projects & Showcases -->
+      <section class="py-16 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <span
+              class="bg-primary text-secondary px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide"
+            >
+              Innovation & Development
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mt-4 mb-4">
+              Student Projects & Showcases
+            </h2>
+            <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+              Discover groundbreaking projects developed by our talented
+              students. From mobile applications to AI solutions, our projects
+              address real-world challenges and showcase technical excellence.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+              class="project-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-secondary"
+            >
+              <div
+                class="h-48 bg-gradient-to-br from-blue-400 to-purple-600 flex items-center justify-center"
+              >
+                <div class="text-white text-6xl">📱</div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-primary mb-3">
+                  Smart Campus App
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Mobile app for campus navigation, event updates, dining menus,
+                  and integrated student services.
+                </p>
+                <div class="flex gap-2 mb-4">
+                  <span
+                    class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
+                    >React Native</span
+                  >
+                  <span
+                    class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm"
+                    >Node.js</span
+                  >
+                </div>
+                <div class="flex gap-3">
+                  <a
+                    href="#"
+                    class="text-primary hover:text-secondary transition font-medium"
+                    >🔗 Demo</a
+                  >
+                  <a
+                    href="#"
+                    class="text-primary hover:text-secondary transition font-medium"
+                    >💻 GitHub</a
+                  >
+                  <a
+                    href="#"
+                    class="text-primary hover:text-secondary transition font-medium"
+                    >📹 Video</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="project-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-secondary"
+            >
+              <div
+                class="h-48 bg-gradient-to-br from-green-400 to-blue-600 flex items-center justify-center"
+              >
+                <div class="text-white text-6xl">🤖</div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-primary mb-3">
+                  AI Chatbot Assistant
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Intelligent chatbot for student queries using advanced NLP and
+                  machine learning algorithms.
+                </p>
+                <div class="flex gap-2 mb-4">
+                  <span
+                    class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm"
+                    >Python</span
+                  >
+                  <span
+                    class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm"
+                    >TensorFlow</span
+                  >
+                </div>
+                <div class="flex gap-3">
+                  <a
+                    href="#"
+                    class="text-primary hover:text-secondary transition font-medium"
+                    >🔗 Demo</a
+                  >
+                  <a
+                    href="#"
+                    class="text-primary hover:text-secondary transition font-medium"
+                    >💻 GitHub</a
+                  >
+                  <a
+                    href="#"
+                    class="text-primary hover:text-secondary transition font-medium"
+                    >📹 Video</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="project-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-secondary"
+            >
+              <div
+                class="h-48 bg-gradient-to-br from-pink-400 to-red-600 flex items-center justify-center"
+              >
+                <div class="text-white text-6xl">🔐</div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-primary mb-3">
+                  Blockchain Voting System
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Secure, transparent voting system using blockchain technology
+                  for enhanced democracy.
+                </p>
+                <div class="flex gap-2 mb-4">
+                  <span
+                    class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm"
+                    >Solidity</span
+                  >
+                  <span
+                    class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
+                    >Web3</span
+                  >
+                </div>
+                <div class="flex gap-3">
+                  <a
+                    href="#"
+                    class="text-primary hover:text-secondary transition font-medium"
+                    >🔗 Demo</a
+                  >
+                  <a
+                    href="#"
+                    class="text-primary hover:text-secondary transition font-medium"
+                    >💻 GitHub</a
+                  >
+                  <a
+                    href="#"
+                    class="text-primary hover:text-secondary transition font-medium"
+                    >📹 Video</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Events & Activities -->
+      <section class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <span
+              class="bg-secondary text-primary px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide"
+            >
+              Campus Engagement
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mt-4 mb-4">
+              Events & Activities
+            </h2>
+            <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+              Experience a dynamic calendar of events, workshops, competitions,
+              and cultural programs that foster learning, networking, and
+              personal growth throughout the academic year.
+            </p>
+          </div>
+          <div class="timeline relative">
+            <div
+              class="timeline-line absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-secondary transform md:-translate-x-1/2"
+            ></div>
+
+            <div class="timeline-item mb-8 flex items-center">
+              <div
+                class="timeline-marker w-4 h-4 bg-secondary rounded-full absolute left-6 md:left-1/2 transform md:-translate-x-1/2 z-10 shadow-lg"
+              ></div>
+              <div class="timeline-content ml-16 md:ml-0 md:w-1/2 md:pr-8">
+                <div
+                  class="bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl p-6 shadow-xl border-2 border-transparent hover:border-secondary transition"
+                >
+                  <div class="text-sm opacity-90 mb-2 font-medium">
+                    Upcoming - September 15, 2025
+                  </div>
+                  <h3 class="text-xl font-bold mb-3">CodeFest 2025</h3>
+                  <p class="mb-4">
+                    48-hour hackathon with exciting prizes, industry mentorship,
+                    and networking opportunities
+                  </p>
+                  <span
+                    class="bg-white/20 px-3 py-1 rounded-full text-sm font-medium"
+                    >Hackathon</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item mb-8 flex items-center md:justify-end">
+              <div
+                class="timeline-marker w-4 h-4 bg-secondary rounded-full absolute left-6 md:left-1/2 transform md:-translate-x-1/2 z-10 shadow-lg"
+              ></div>
+              <div class="timeline-content ml-16 md:ml-0 md:w-1/2 md:pl-8">
+                <div
+                  class="bg-gradient-to-r from-blue-500 to-green-500 text-white rounded-xl p-6 shadow-xl border-2 border-transparent hover:border-secondary transition"
+                >
+                  <div class="text-sm opacity-90 mb-2 font-medium">
+                    August 25, 2025
+                  </div>
+                  <h3 class="text-xl font-bold mb-3">AI Workshop Series</h3>
+                  <p class="mb-4">
+                    Hands-on workshop on Machine Learning, Deep Learning, and
+                    emerging AI technologies
+                  </p>
+                  <span
+                    class="bg-white/20 px-3 py-1 rounded-full text-sm font-medium"
+                    >Workshop</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item mb-8 flex items-center">
+              <div
+                class="timeline-marker w-4 h-4 bg-secondary rounded-full absolute left-6 md:left-1/2 transform md:-translate-x-1/2 z-10 shadow-lg"
+              ></div>
+              <div class="timeline-content ml-16 md:ml-0 md:w-1/2 md:pr-8">
+                <div
+                  class="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-xl p-6 shadow-xl border-2 border-transparent hover:border-secondary transition"
+                >
+                  <div class="text-sm opacity-90 mb-2 font-medium">
+                    July 20, 2025
+                  </div>
+                  <h3 class="text-xl font-bold mb-3">Tech Talent Hunt</h3>
+                  <p class="mb-4">
+                    Programming competition with top technology companies as
+                    judges and recruiters
+                  </p>
+                  <span
+                    class="bg-white/20 px-3 py-1 rounded-full text-sm font-medium"
+                    >Competition</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item mb-8 flex items-center md:justify-end">
+              <div
+                class="timeline-marker w-4 h-4 bg-secondary rounded-full absolute left-6 md:left-1/2 transform md:-translate-x-1/2 z-10 shadow-lg"
+              ></div>
+              <div class="timeline-content ml-16 md:ml-0 md:w-1/2 md:pl-8">
+                <div
+                  class="bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-xl p-6 shadow-xl border-2 border-transparent hover:border-secondary transition"
+                >
+                  <div class="text-sm opacity-90 mb-2 font-medium">
+                    June 10, 2025
+                  </div>
+                  <h3 class="text-xl font-bold mb-3">Cultural Night</h3>
+                  <p class="mb-4">
+                    Annual cultural program showcasing student talents,
+                    performances, and creativity
+                  </p>
+                  <span
+                    class="bg-white/20 px-3 py-1 rounded-full text-sm font-medium"
+                    >Cultural</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Alumni Success Stories -->
+      <section class="py-16 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <span
+              class="bg-primary text-secondary px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide"
+            >
+              Graduate Excellence
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mt-4 mb-4">
+              Alumni Success Stories
+            </h2>
+            <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+              Meet our distinguished alumni who are making significant
+              contributions to the technology industry, research, and
+              entrepreneurship across the globe.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+              class="alumni-card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-secondary"
+            >
+              <div
+                class="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold shadow-lg"
+              >
+                AR
+              </div>
+              <h3 class="text-xl font-bold text-primary text-center mb-2">
+                Ahmed Rahman
+              </h3>
+              <p class="text-secondary text-center mb-4 font-semibold">
+                Software Engineer at Google
+              </p>
+              <blockquote class="text-gray-600 text-center italic mb-4">
+                "CSE-BU provided me with the perfect foundation. The practical
+                approach and supportive faculty helped me land my dream job at
+                one of the world's leading tech companies."
+              </blockquote>
+              <div class="text-center">
+                <span
+                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium"
+                  >Batch 2020</span
+                >
+              </div>
+            </div>
+
+            <div
+              class="alumni-card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-secondary"
+            >
+              <div
+                class="w-20 h-20 bg-gradient-to-br from-green-500 to-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold shadow-lg"
+              >
+                SK
+              </div>
+              <h3 class="text-xl font-bold text-primary text-center mb-2">
+                Sadia Khan
+              </h3>
+              <p class="text-secondary text-center mb-4 font-semibold">
+                ML Engineer at Microsoft
+              </p>
+              <blockquote class="text-gray-600 text-center italic mb-4">
+                "The research opportunities and AI/ML projects during my
+                undergrad shaped my career in artificial intelligence. The
+                department's support was instrumental in my growth."
+              </blockquote>
+              <div class="text-center">
+                <span
+                  class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium"
+                  >Batch 2019</span
+                >
+              </div>
+            </div>
+
+            <div
+              class="alumni-card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent hover:border-secondary"
+            >
+              <div
+                class="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold shadow-lg"
+              >
+                MH
+              </div>
+              <h3 class="text-xl font-bold text-primary text-center mb-2">
+                Md. Hasan
+              </h3>
+              <p class="text-secondary text-center mb-4 font-semibold">
+                Founder, TechStartup BD
+              </p>
+              <blockquote class="text-gray-600 text-center italic mb-4">
+                "CSE-BU taught me not just coding, but entrepreneurial thinking.
+                My startup now employs 50+ developers and serves clients
+                globally."
+              </blockquote>
+              <div class="text-center">
+                <span
+                  class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium"
+                  >Batch 2018</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Career & Internship Opportunities -->
+      <section class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <span
+              class="bg-secondary text-primary px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide"
+            >
+              Professional Growth
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mt-4 mb-4">
+              Career & Internship Opportunities
+            </h2>
+            <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+              Connect with leading technology companies through our extensive
+              industry network. Our career services and placement cell ensure
+              excellent opportunities for internships and full-time positions.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 class="text-2xl font-bold text-primary mb-6">
+                Industry Partnerships
+              </h3>
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div
+                  class="company-logo bg-gray-100 rounded-lg p-4 flex items-center justify-center hover:bg-gray-200 transition border-2 border-transparent hover:border-secondary"
+                >
+                  <div class="text-2xl font-bold text-blue-600">Google</div>
+                </div>
+                <div
+                  class="company-logo bg-gray-100 rounded-lg p-4 flex items-center justify-center hover:bg-gray-200 transition border-2 border-transparent hover:border-secondary"
+                >
+                  <div class="text-2xl font-bold text-green-600">Microsoft</div>
+                </div>
+                <div
+                  class="company-logo bg-gray-100 rounded-lg p-4 flex items-center justify-center hover:bg-gray-200 transition border-2 border-transparent hover:border-secondary"
+                >
+                  <div class="text-2xl font-bold text-orange-600">Amazon</div>
+                </div>
+                <div
+                  class="company-logo bg-gray-100 rounded-lg p-4 flex items-center justify-center hover:bg-gray-200 transition border-2 border-transparent hover:border-secondary"
+                >
+                  <div class="text-2xl font-bold text-blue-800">IBM</div>
+                </div>
+                <div
+                  class="company-logo bg-gray-100 rounded-lg p-4 flex items-center justify-center hover:bg-gray-200 transition border-2 border-transparent hover:border-secondary"
+                >
+                  <div class="text-2xl font-bold text-red-600">Oracle</div>
+                </div>
+                <div
+                  class="company-logo bg-gray-100 rounded-lg p-4 flex items-center justify-center hover:bg-gray-200 transition border-2 border-transparent hover:border-secondary"
+                >
+                  <div class="text-2xl font-bold text-purple-600">Samsung</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-primary mb-6">
+                Placement Statistics
+              </h3>
+              <div class="space-y-4">
+                <div class="placement-stat">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="text-gray-700 font-medium"
+                      >Overall Placement Rate</span
+                    >
+                    <span class="font-bold text-primary">85%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-3">
+                    <div
+                      class="bg-gradient-to-r from-green-400 to-blue-500 h-3 rounded-full placement-bar"
+                      style="width: 0%"
+                      data-width="85"
+                    ></div>
+                  </div>
+                </div>
+                <div class="placement-stat">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="text-gray-700 font-medium"
+                      >Average Package</span
+                    >
+                    <span class="font-bold text-primary">8.5 LPA</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-3">
+                    <div
+                      class="bg-gradient-to-r from-yellow-400 to-orange-500 h-3 rounded-full placement-bar"
+                      style="width: 0%"
+                      data-width="75"
+                    ></div>
+                  </div>
+                </div>
+                <div class="placement-stat">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="text-gray-700 font-medium"
+                      >Highest Package</span
+                    >
+                    <span class="font-bold text-primary">25 LPA</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-3">
+                    <div
+                      class="bg-gradient-to-r from-purple-400 to-pink-500 h-3 rounded-full placement-bar"
+                      style="width: 0%"
+                      data-width="90"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Student Support & Resources -->
+      <section class="py-16 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+          <!-- Section Header -->
+          <div class="text-center mb-16">
+            <div
+              class="inline-block bg-secondary text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4"
+            >
+              STUDENT WELFARE
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+              Student Support & Resources
+            </h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+              Comprehensive support system ensuring every student's academic
+              success and personal well-being through dedicated counseling,
+              mentorship, and resource accessibility
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div
+              class="support-card bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-300"
+            >
+              <div class="text-4xl mb-4">🧠</div>
+              <h3 class="text-xl font-bold text-primary mb-3">
+                Academic Counseling
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Personalized guidance for course selection and career planning.
+              </p>
+              <a href="#" class="text-secondary hover:text-primary transition"
+                >Learn More →</a
+              >
+            </div>
+            <div
+              class="support-card bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-300"
+            >
+              <div class="text-4xl mb-4">👥</div>
+              <h3 class="text-xl font-bold text-primary mb-3">
+                Mentorship Program
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Senior students and alumni mentoring junior students.
+              </p>
+              <a href="#" class="text-secondary hover:text-primary transition"
+                >Learn More →</a
+              >
+            </div>
+            <div
+              class="support-card bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-300"
+            >
+              <div class="text-4xl mb-4">📚</div>
+              <h3 class="text-xl font-bold text-primary mb-3">
+                Library & Lab Access
+              </h3>
+              <p class="text-gray-600 mb-4">
+                24/7 access to digital resources and modern lab facilities.
+              </p>
+              <a href="#" class="text-secondary hover:text-primary transition"
+                >Learn More →</a
+              >
+            </div>
+            <div
+              class="support-card bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-300"
+            >
+              <div class="text-4xl mb-4">💰</div>
+              <h3 class="text-xl font-bold text-primary mb-3">Scholarships</h3>
+              <p class="text-gray-600 mb-4">
+                Merit-based and need-based financial assistance programs.
+              </p>
+              <a href="#" class="text-secondary hover:text-primary transition"
+                >Learn More →</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. International Opportunities -->
+      <section class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+          <!-- Section Header -->
+          <div class="text-center mb-16">
+            <div
+              class="inline-block bg-secondary text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4"
+            >
+              GLOBAL EXPOSURE
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+              International Opportunities
+            </h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+              Expand your horizons through prestigious exchange programs,
+              international collaborations, and global research opportunities
+              with leading universities worldwide
+            </p>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div>
+              <h3 class="text-2xl font-bold text-primary mb-6">
+                Exchange Programs
+              </h3>
+              <div class="space-y-6">
+                <div
+                  class="exchange-program bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl p-6"
+                >
+                  <h4 class="text-xl font-bold mb-3">
+                    🇺🇸 University of California
+                  </h4>
+                  <p class="mb-4">
+                    Semester exchange program for computer science students
+                  </p>
+                  <div class="flex gap-2">
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm"
+                      >Research</span
+                    >
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm"
+                      >AI/ML</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="exchange-program bg-gradient-to-r from-green-500 to-blue-600 text-white rounded-xl p-6"
+                >
+                  <h4 class="text-xl font-bold mb-3">
+                    🇩🇪 Technical University Munich
+                  </h4>
+                  <p class="mb-4">
+                    Summer research internship in automotive software
+                  </p>
+                  <div class="flex gap-2">
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm"
+                      >Engineering</span
+                    >
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm"
+                      >IoT</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="exchange-program bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-xl p-6"
+                >
+                  <h4 class="text-xl font-bold mb-3">
+                    🇸🇬 National University Singapore
+                  </h4>
+                  <p class="mb-4">
+                    Joint research program in cybersecurity and blockchain
+                  </p>
+                  <div class="flex gap-2">
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm"
+                      >Security</span
+                    >
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm"
+                      >Blockchain</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-primary mb-6">
+                Global Impact
+              </h3>
+              <div
+                class="world-map bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl p-8 text-center"
+              >
+                <div class="text-6xl mb-4">🌍</div>
+                <h4 class="text-xl font-bold text-primary mb-4">
+                  Students Worldwide
+                </h4>
+                <div class="grid grid-cols-2 gap-4 text-center">
+                  <div>
+                    <div class="text-2xl font-bold text-secondary">15+</div>
+                    <div class="text-gray-600">Countries</div>
+                  </div>
+                  <div>
+                    <div class="text-2xl font-bold text-secondary">45+</div>
+                    <div class="text-gray-600">Exchange Students</div>
+                  </div>
+                  <div>
+                    <div class="text-2xl font-bold text-secondary">8</div>
+                    <div class="text-gray-600">Partner Universities</div>
+                  </div>
+                  <div>
+                    <div class="text-2xl font-bold text-secondary">25+</div>
+                    <div class="text-gray-600">Research Collaborations</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11. Call-to-Action -->
+      <section
+        class="py-16 px-4 bg-gradient-to-br from-primary to-blue-900 text-white"
+      >
+        <div class="max-w-4xl mx-auto text-center">
+          <!-- Section Header -->
+          <div class="mb-12">
+            <div
+              class="inline-block bg-secondary text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4"
+            >
+              JOIN US TODAY
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+              Ready to Join Our Community?
+            </h2>
+            <p class="text-xl opacity-90 max-w-2xl mx-auto">
+              Be part of the next generation of tech innovators and leaders.
+              Start your journey with us and unlock unlimited possibilities
+            </p>
+          </div>
+          <div class="flex flex-col md:flex-row gap-6 justify-center">
+            <a
+              href="programs.html"
+              class="bg-secondary text-primary font-bold py-4 px-8 rounded-xl hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105"
+            >
+              🎓 Explore Programs →
+            </a>
+            <a
+              href="#events"
+              class="border-2 border-secondary text-secondary font-bold py-4 px-8 rounded-xl hover:bg-secondary hover:text-primary transition-all duration-300 transform hover:scale-105"
+            >
+              📅 Check Upcoming Events →
+            </a>
+          </div>
+
+          <!-- Student Wall of Fame Preview -->
+          <div class="mt-16 pt-12 border-t border-white/20">
+            <h3 class="text-2xl font-bold mb-8">🌟 Student Wall of Fame</h3>
+            <div class="overflow-hidden relative h-20">
+              <div
+                class="fame-scroll flex absolute whitespace-nowrap"
+                style="animation: scroll-fame 30s linear infinite"
+              >
+                <div class="flex items-center mx-8">
+                  <span
+                    class="bg-secondary text-primary px-4 py-2 rounded-full font-semibold"
+                    >Ahmed R. - Google SWE</span
+                  >
+                </div>
+                <div class="flex items-center mx-8">
+                  <span
+                    class="bg-secondary text-primary px-4 py-2 rounded-full font-semibold"
+                    >Sadia K. - Microsoft ML Engineer</span
+                  >
+                </div>
+                <div class="flex items-center mx-8">
+                  <span
+                    class="bg-secondary text-primary px-4 py-2 rounded-full font-semibold"
+                    >Hasan M. - Startup Founder</span
+                  >
+                </div>
+                <div class="flex items-center mx-8">
+                  <span
+                    class="bg-secondary text-primary px-4 py-2 rounded-full font-semibold"
+                    >Fatima S. - PhD at MIT</span
+                  >
+                </div>
+                <div class="flex items-center mx-8">
+                  <span
+                    class="bg-secondary text-primary px-4 py-2 rounded-full font-semibold"
+                    >Rahman T. - Amazon SDE</span
+                  >
+                </div>
+                <!-- Duplicate for infinite scroll -->
+                <div class="flex items-center mx-8">
+                  <span
+                    class="bg-secondary text-primary px-4 py-2 rounded-full font-semibold"
+                    >Ahmed R. - Google SWE</span
+                  >
+                </div>
+                <div class="flex items-center mx-8">
+                  <span
+                    class="bg-secondary text-primary px-4 py-2 rounded-full font-semibold"
+                    >Sadia K. - Microsoft ML Engineer</span
+                  >
+                </div>
+                <div class="flex items-center mx-8">
+                  <span
+                    class="bg-secondary text-primary px-4 py-2 rounded-full font-semibold"
+                    >Hasan M. - Startup Founder</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="w-full bg-primary text-secondary pt-12 pb-6 px-4 border-t border-primary/30"
+    >
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 md:gap-8"
+      >
+        <!-- Department Info -->
+        <div class="flex flex-col gap-3">
+          <div
+            class="flex items-center gap-3 mb-2 justify-center md:justify-start"
+          >
+            <img
+              src="./assets/bu logo.png"
+              alt="BU Logo"
+              class="h-12 w-12 rounded bg-white p-1"
+            />
+            <div>
+              <div class="font-bold text-lg">CSE - University of Barishal</div>
+              <div class="text-secondary opacity-80 text-xs">
+                Excellence in Computing
+              </div>
+            </div>
+          </div>
+          <div
+            class="text-secondary opacity-80 text-sm text-center md:text-left"
+          >
+            Empowering the next generation of innovators and leaders in Computer
+            Science. Accredited by UGC. Modern Labs. International
+            Collaborations.
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <div class="font-bold text-lg mb-3 text-center md:text-left">
+            Quick Links
+          </div>
+          <ul
+            class="space-y-2 text-secondary opacity-90 text-sm flex flex-col items-center md:items-start"
+          >
+            <li>
+              <a href="index.html" class="hover:underline block py-1">Home</a>
+            </li>
+            <li>
+              <a href="about.html" class="hover:underline block py-1"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a href="faculty.html" class="hover:underline block py-1"
+                >Faculty</a
+              >
+            </li>
+            <li>
+              <a href="programs.html" class="hover:underline block py-1"
+                >Programs</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <div class="font-bold text-lg mb-3 text-center md:text-left">
+            Contact
+          </div>
+          <ul
+            class="text-secondary opacity-90 text-sm space-y-2 flex flex-col items-center md:items-start"
+          >
+            <li class="flex items-center gap-2">
+              <span aria-hidden="true">🏫</span>
+              <span>5th Floor, Academic Building, BU</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span aria-hidden="true">📧</span>
+              <a href="mailto:cse@bu.ac.bd" class="hover:underline"
+                >cse@bu.ac.bd</a
+              >
+            </li>
+            <li class="flex items-center gap-2">
+              <span aria-hidden="true">🌐</span>
+              <a
+                href="https://bu.ac.bd"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:underline"
+                >bu.ac.bd</a
+              >
+            </li>
+            <li class="flex items-center gap-2">
+              <span aria-hidden="true">📞</span>
+              <span>+880-1234-567890</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Social & Newsletter -->
+        <div>
+          <div class="font-bold text-lg mb-3 text-center md:text-left">
+            Connect
+          </div>
+          <div class="flex gap-3 mb-4 justify-center md:justify-start">
+            <a
+              href="https://facebook.com/csebu"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-secondary/70"
+              aria-label="Facebook"
+              ><!-- Facebook Icon -->
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.632.771-1.632 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12z"
+                /></svg
+            ></a>
+            <a
+              href="https://twitter.com/csebu"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-secondary/70"
+              aria-label="Twitter"
+              ><!-- Twitter Icon -->
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M22.46 6c-.77.35-1.6.59-2.47.69a4.3 4.3 0 0 0 1.88-2.37 8.59 8.59 0 0 1-2.72 1.04A4.28 4.28 0 0 0 16.11 4c-2.37 0-4.29 1.92-4.29 4.29 0 .34.04.67.11.99C7.69 8.99 4.07 7.13 1.64 4.16c-.37.64-.58 1.39-.58 2.19 0 1.51.77 2.84 1.94 3.62-.72-.02-1.39-.22-1.98-.55v.06c0 2.11 1.5 3.87 3.5 4.27-.36.1-.74.16-1.13.16-.28 0-.54-.03-.8-.08.54 1.68 2.12 2.9 3.99 2.93A8.6 8.6 0 0 1 2 19.54c-.63 0-1.25-.04-1.86-.11A12.13 12.13 0 0 0 7.29 21.5c7.55 0 11.68-6.26 11.68-11.68 0-.18-.01-.36-.02-.54A8.18 8.18 0 0 0 22.46 6z"
+                /></svg
+            ></a>
+            <a
+              href="https://linkedin.com/company/csebu"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-secondary/70"
+              aria-label="LinkedIn"
+              ><!-- LinkedIn Icon -->
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.18-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z"
+                /></svg
+            ></a>
+          </div>
+
+          <form
+            class="flex flex-col gap-2 w-full max-w-xs mx-auto md:mx-0"
+            onsubmit="event.preventDefault(); alert('Thank you for subscribing!');"
+            aria-label="Newsletter subscription"
+          >
+            <label for="newsletter" class="text-secondary opacity-80 text-xs"
+              >Subscribe to our newsletter</label
+            >
+            <div class="flex-col md:flex-row flex gap-2">
+              <input
+                id="newsletter"
+                type="email"
+                required
+                placeholder="Your email"
+                class="rounded px-3 py-1 text-primary bg-white border border-primary/20 focus:outline-none focus:ring-2 focus:ring-secondary/50"
+              />
+              <button
+                type="submit"
+                class="bg-secondary text-primary font-bold px-3 py-1 rounded hover:bg-yellow-400 transition"
+              >
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div
+        class="max-w-7xl mx-auto mt-8 border-t border-secondary/20 pt-4 flex flex-col md:flex-row justify-between items-center text-xs text-secondary opacity-70 gap-2 text-center"
+      >
+        <div>
+          &copy; 2025 Department of Computer Science & Engineering, University
+          of Barishal. All rights reserved.
+        </div>
+        <div class="flex gap-4 mt-2 md:mt-0">
+          <a href="#privacy" class="hover:underline">Privacy Policy</a>
+          <a href="#terms" class="hover:underline">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="index.js" type="module"></script>
+  </body>
+</html>
