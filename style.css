@@ -107,3 +107,364 @@ Edge */ ::-webkit-scrollbar {
 * {
   -ms-overflow-style: none;
 }
+
+/* Programs Page Tab Styles */
+.tab-button {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.tab-button.active {
+  color: #030724 !important;
+  border-bottom-color: #f0bd02 !important;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(240, 189, 2, 0.1) 100%
+  );
+}
+
+.tab-button:not(.active):hover {
+  color: #030724;
+  border-bottom-color: #f0bd02;
+}
+
+.tab-content {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  min-height: 400px;
+}
+
+.tab-content.active {
+  opacity: 1;
+}
+
+.program-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.program-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Smooth animations for program cards */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.program-card {
+  animation: slideInUp 0.6s ease forwards;
+}
+
+/* Stagger animation for multiple cards */
+.program-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.program-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.program-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.program-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.program-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.program-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+/* Tab content fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tab-content.active {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Responsive tab buttons */
+@media (max-width: 768px) {
+  .tab-button {
+    font-size: 0.875rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .tab-button span {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .tab-button svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+/* Button hover effects for program cards */
+.program-card button {
+  transition: all 0.2s ease;
+}
+
+.program-card button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* Loading state for program cards */
+.program-card.loading {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.program-card.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #030724;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* New Sections Styles */
+
+/* Facilities Section */
+.facility-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.facility-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Career Prospects Section */
+.career-card {
+  transition: all 0.3s ease;
+}
+
+.career-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Alumni Success Stories */
+.alumni-card {
+  transition: all 0.3s ease;
+}
+
+.alumni-card:hover {
+  transform: scale(1.05);
+}
+
+/* Company Logos */
+.company-logo {
+  transition: all 0.3s ease;
+  filter: grayscale(100%);
+}
+
+.company-logo:hover {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+/* Exchange & Collaboration Section */
+.collaboration-card {
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.collaboration-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Section Animations */
+.section-hidden {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gradient Text Effect */
+.gradient-text {
+  background: linear-gradient(45deg, #030724, #f0bd02);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Floating Animation for Icons */
+@keyframes floatIcon {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floating-icon {
+  animation: floatIcon 3s ease-in-out infinite;
+}
+
+/* Staggered Animation Classes */
+.animate-delay-100 {
+  animation-delay: 0.1s;
+}
+.animate-delay-200 {
+  animation-delay: 0.2s;
+}
+.animate-delay-300 {
+  animation-delay: 0.3s;
+}
+.animate-delay-400 {
+  animation-delay: 0.4s;
+}
+.animate-delay-500 {
+  animation-delay: 0.5s;
+}
+.animate-delay-600 {
+  animation-delay: 0.6s;
+}
+
+/* Backdrop Blur Support */
+@supports (backdrop-filter: blur()) {
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+}
+
+/* Responsive Grid Adjustments */
+@media (max-width: 640px) {
+  .career-card,
+  .facility-card,
+  .collaboration-card {
+    margin-bottom: 1rem;
+  }
+
+  .alumni-card {
+    padding: 1rem;
+  }
+}
+
+/* Enhanced Hover Effects for Buttons */
+.btn-enhanced {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-enhanced::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.btn-enhanced:hover::before {
+  left: 100%;
+}
+
+/* Pulse Animation for Important Elements */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(240, 189, 2, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(240, 189, 2, 0.8);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Scroll Reveal Animation */
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in-bottom {
+  animation: slideInFromBottom 0.8s ease forwards;
+}
+
+/* Enhanced Tab Content Transitions */
+.tab-content {
+  position: relative;
+}
+
+.tab-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #030724, #f0bd02);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+.tab-content.active::before {
+  transform: scaleX(1);
+}

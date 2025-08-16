@@ -1,0 +1,2050 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSE-BU / Programs Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#030724",
+              secondary: "#f0bd02",
+            },
+            fontFamily: {
+              roboto: ["Roboto", "Arial", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./assets/bu logo.png" type="image/x-icon" />
+  </head>
+  <body>
+    <!-- Live News / Event Ticker -->
+    <div
+      id="news-ticker-wrapper"
+      class="w-full bg-white text-primary font-medium text-xs md:text-sm overflow-hidden relative z-50 border-b border-primary/10"
+    >
+      <div
+        id="news-ticker"
+        class="whitespace-nowrap flex items-center py-1 px-2 cursor-pointer select-none"
+        style="will-change: transform"
+      >
+        <span class="mr-6">🎉 Admission Open for 2025! Apply Now.</span>
+        <span class="mr-6"
+          >📢 National Award 2023: Congratulations to CSE-BU!</span
+        >
+        <span class="mr-6"
+          >🗓️ Workshop on AI: 25th August, Register Today!</span
+        >
+        <span class="mr-6">💡 New Research Lab Inaugurated!</span>
+        <span class="mr-6">� Student Project Showcase: 1st September</span>
+        <!-- Duplicate for infinite scroll -->
+        <span class="mr-6">�🎉 Admission Open for 2025! Apply Now.</span>
+        <span class="mr-6"
+          >📢 National Award 2023: Congratulations to CSE-BU!</span
+        >
+        <span class="mr-6"
+          >🗓️ Workshop on AI: 25th August, Register Today!</span
+        >
+        <span class="mr-6">💡 New Research Lab Inaugurated!</span>
+        <span class="mr-6">🏆 Student Project Showcase: 1st September</span>
+      </div>
+    </div>
+    <nav class="bg-primary text-secondary sticky top-0 z-40 shadow">
+      <div
+        class="max-w-7xl mx-auto flex items-center justify-between h-16 px-4"
+      >
+        <a href="#" class="flex items-center font-bold text-lg gap-2">
+          <img src="./assets/bu logo.png" alt="BU Logo" class="h-14 w-14" />
+          <div
+            class="flex justify-center items-center flex-col text-sm md:text-base"
+          >
+            <span class="text-sm md:text-sm"
+              >Computer Science & Engineering</span
+            >
+            <span> Uiversity of Barishal </span>
+          </div>
+        </a>
+        <button
+          id="menu-toggle"
+          class="md:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
+          aria-label="Toggle navigation"
+        >
+          <span
+            class="block w-7 h-1 bg-secondary rounded-sm mb-1 transition-all"
+            id="bar1"
+          ></span>
+          <span
+            class="block w-7 h-1 bg-secondary rounded-sm mb-1 transition-all"
+            id="bar2"
+          ></span>
+          <span
+            class="block w-7 h-1 bg-secondary rounded-sm transition-all"
+            id="bar3"
+          ></span>
+        </button>
+        <ul id="nav-links" class="hidden md:flex space-x-8 font-medium">
+          <li>
+            <a
+              href="index.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="about.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >About Us</a
+            >
+          </li>
+          <li>
+            <a
+              href="faculty.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >Faculty</a
+            >
+          </li>
+          <li>
+            <a
+              href="programs.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >Programs</a
+            >
+          </li>
+          <li>
+            <a
+              href="research.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >Research</a
+            >
+          </li>
+          <li>
+            <a
+              href="students.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >Students</a
+            >
+          </li>
+          <li>
+            <a
+              href="contact.html"
+              class="hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+              >Contact Us</a
+            >
+          </li>
+        </ul>
+      </div>
+      <ul
+        id="mobile-nav"
+        class="md:hidden hidden flex-col bg-primary text-secondary w-full px-4 pb-4"
+      >
+        <li>
+          <a
+            href="index.html"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="#about"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >About Us</a
+          >
+        </li>
+        <li>
+          <a
+            href="faculty.html"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >Faculty</a
+          >
+        </li>
+        <li>
+          <a
+            href="programs.html"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >Programs</a
+          >
+        </li>
+        <li>
+          <a
+            href="research.html"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >Research</a
+          >
+        </li>
+        <li>
+          <a
+            href="students.html"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >Students</a
+          >
+        </li>
+        <li>
+          <a
+            href="contact.html"
+            class="block hover:bg-secondary hover:text-primary px-3 py-2 rounded transition"
+            >Contact Us</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Programs Main Content -->
+    <main class="min-h-screen bg-gray-50">
+      <!-- Hero Section -->
+      <section
+        class="bg-gradient-to-r from-primary to-primary/90 text-white py-16"
+      >
+        <div class="max-w-7xl mx-auto px-4 text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">Academic Programs</h1>
+          <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed">
+            Our programs are designed to prepare students for careers in
+            industry, academia, and research with a strong foundation in
+            computing sciences and cutting-edge technology.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4 text-sm">
+            <span
+              class="bg-secondary text-primary px-4 py-2 rounded-full font-semibold"
+              >✓ UGC Accredited</span
+            >
+            <span
+              class="bg-secondary text-primary px-4 py-2 rounded-full font-semibold"
+              >✓ Industry Partnerships</span
+            >
+            <span
+              class="bg-secondary text-primary px-4 py-2 rounded-full font-semibold"
+              >✓ Research Opportunities</span
+            >
+            <span
+              class="bg-secondary text-primary px-4 py-2 rounded-full font-semibold"
+              >✓ Modern Labs</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Program Categories Tabs -->
+      <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4">
+          <!-- Tab Navigation -->
+          <div
+            class="flex flex-wrap justify-center mb-8 border-b border-gray-200"
+          >
+            <button
+              class="tab-button px-6 py-3 font-semibold text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all duration-300"
+              data-tab="undergraduate"
+            >
+              <span class="flex items-center gap-2">
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                  ></path>
+                </svg>
+                Undergraduate Programs
+              </span>
+            </button>
+            <button
+              class="tab-button px-6 py-3 font-semibold text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all duration-300"
+              data-tab="postgraduate"
+            >
+              <span class="flex items-center gap-2">
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
+                  ></path>
+                </svg>
+                Postgraduate Programs
+              </span>
+            </button>
+            <button
+              class="tab-button px-6 py-3 font-semibold text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all duration-300"
+              data-tab="phd"
+            >
+              <span class="flex items-center gap-2">
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                  ></path>
+                </svg>
+                Ph.D. Programs
+              </span>
+            </button>
+            <button
+              class="tab-button px-6 py-3 font-semibold text-gray-600 hover:text-primary border-b-2 border-transparent hover:border-primary transition-all duration-300"
+              data-tab="training"
+            >
+              <span class="flex items-center gap-2">
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  ></path>
+                </svg>
+                Short Courses & Training
+              </span>
+            </button>
+          </div>
+
+          <!-- Tab Contents -->
+
+          <!-- Undergraduate Programs -->
+          <div id="undergraduate" class="tab-content">
+            <div class="text-center mb-8">
+              <h2 class="text-3xl font-bold text-primary mb-4">
+                Undergraduate Programs
+              </h2>
+              <p class="text-gray-600 max-w-3xl mx-auto">
+                Our undergraduate programs provide a comprehensive foundation in
+                computer science and engineering, preparing students for
+                successful careers in technology.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- B.Sc. in CSE Program -->
+              <div
+                class="program-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                data-category="undergraduate"
+              >
+                <div
+                  class="bg-gradient-to-r from-primary to-primary/80 p-6 text-white"
+                >
+                  <h3 class="text-xl font-bold mb-2">
+                    B.Sc. in Computer Science & Engineering
+                  </h3>
+                  <div class="flex items-center text-secondary text-sm">
+                    <svg
+                      class="w-4 h-4 mr-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
+                    </svg>
+                    4 Years Program
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">
+                      Program Highlights:
+                    </h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                      <li>• 160 Credit Hours</li>
+                      <li>• Industry-Relevant Curriculum</li>
+                      <li>• Hands-on Project Experience</li>
+                      <li>• Internship Opportunities</li>
+                      <li>• Modern Lab Facilities</li>
+                    </ul>
+                  </div>
+                  <div class="mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">
+                      Career Prospects:
+                    </h4>
+                    <p class="text-sm text-gray-600">
+                      Software Engineer, System Analyst, Web Developer, Mobile
+                      App Developer, Data Scientist
+                    </p>
+                  </div>
+                  <div class="flex gap-2">
+                    <button
+                      onclick="openApplicationForm('B.Sc. in CSE')"
+                      class="flex-1 bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary/90 transition text-sm font-medium"
+                    >
+                      Apply Now
+                    </button>
+                    <button
+                      onclick="showProgramDetails('bsc-cse')"
+                      class="flex-1 border border-primary text-primary py-2 px-4 rounded-lg hover:bg-primary hover:text-white transition text-sm font-medium"
+                    >
+                      View Details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Postgraduate Programs -->
+          <div id="postgraduate" class="tab-content" style="display: none">
+            <div class="text-center mb-8">
+              <h2 class="text-3xl font-bold text-primary mb-4">
+                Postgraduate Programs
+              </h2>
+              <p class="text-gray-600 max-w-3xl mx-auto">
+                Advanced programs designed for professionals and researchers
+                seeking specialized knowledge and expertise in cutting-edge
+                technologies.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- M.Sc. in CSE -->
+              <div
+                class="program-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                data-category="postgraduate"
+              >
+                <div
+                  class="bg-gradient-to-r from-blue-600 to-blue-500 p-6 text-white"
+                >
+                  <h3 class="text-xl font-bold mb-2">
+                    M.Sc. in Computer Science & Engineering
+                  </h3>
+                  <div class="flex items-center text-blue-200 text-sm">
+                    <svg
+                      class="w-4 h-4 mr-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
+                    </svg>
+                    2 Years Program
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">
+                      Specializations:
+                    </h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                      <li>• Artificial Intelligence & Machine Learning</li>
+                      <li>• Computer Networks & Security</li>
+                      <li>• Software Engineering</li>
+                      <li>• Database Systems</li>
+                    </ul>
+                  </div>
+                  <div class="mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">
+                      Requirements:
+                    </h4>
+                    <p class="text-sm text-gray-600">
+                      B.Sc. in CSE/IT or related field with minimum CGPA 3.00
+                    </p>
+                  </div>
+                  <div class="flex gap-2">
+                    <button
+                      onclick="openApplicationForm('M.Sc. in CSE')"
+                      class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition text-sm font-medium"
+                    >
+                      Apply Now
+                    </button>
+                    <button
+                      onclick="showProgramDetails('msc-cse')"
+                      class="flex-1 border border-blue-600 text-blue-600 py-2 px-4 rounded-lg hover:bg-blue-600 hover:text-white transition text-sm font-medium"
+                    >
+                      View Details
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- M.Engg. Program -->
+              <div
+                class="program-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                data-category="postgraduate"
+              >
+                <div
+                  class="bg-gradient-to-r from-green-600 to-green-500 p-6 text-white"
+                >
+                  <h3 class="text-xl font-bold mb-2">
+                    M.Engg. in Computer Science & Engineering
+                  </h3>
+                  <div class="flex items-center text-green-200 text-sm">
+                    <svg
+                      class="w-4 h-4 mr-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
+                    </svg>
+                    1.5 Years Program
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">
+                      Focus Areas:
+                    </h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                      <li>• Advanced Software Engineering</li>
+                      <li>• System Design & Architecture</li>
+                      <li>• Project Management</li>
+                      <li>• Industry Collaboration</li>
+                    </ul>
+                  </div>
+                  <div class="mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">
+                      Target Audience:
+                    </h4>
+                    <p class="text-sm text-gray-600">
+                      Working professionals seeking advanced technical skills
+                    </p>
+                  </div>
+                  <div class="flex gap-2">
+                    <button
+                      onclick="openApplicationForm('M.Engg. in CSE')"
+                      class="flex-1 bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition text-sm font-medium"
+                    >
+                      Apply Now
+                    </button>
+                    <button
+                      onclick="showProgramDetails('mengg-cse')"
+                      class="flex-1 border border-green-600 text-green-600 py-2 px-4 rounded-lg hover:bg-green-600 hover:text-white transition text-sm font-medium"
+                    >
+                      View Details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ph.D. Programs -->
+          <div id="phd" class="tab-content" style="display: none">
+            <div class="text-center mb-8">
+              <h2 class="text-3xl font-bold text-primary mb-4">
+                Ph.D. Programs
+              </h2>
+              <p class="text-gray-600 max-w-3xl mx-auto">
+                Research-focused doctoral programs for aspiring academics and
+                industry researchers pursuing groundbreaking research in
+                computer science.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Ph.D. in CSE -->
+              <div
+                class="program-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                data-category="phd"
+              >
+                <div
+                  class="bg-gradient-to-r from-purple-600 to-purple-500 p-6 text-white"
+                >
+                  <h3 class="text-xl font-bold mb-2">
+                    Ph.D. in Computer Science & Engineering
+                  </h3>
+                  <div class="flex items-center text-purple-200 text-sm">
+                    <svg
+                      class="w-4 h-4 mr-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
+                    </svg>
+                    3-5 Years Program
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">
+                      Research Areas:
+                    </h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                      <li>• Artificial Intelligence & Deep Learning</li>
+                      <li>• Computer Vision & Image Processing</li>
+                      <li>• Natural Language Processing</li>
+                      <li>• Cybersecurity & Cryptography</li>
+                      <li>• IoT & Embedded Systems</li>
+                      <li>• Human-Computer Interaction</li>
+                    </ul>
+                  </div>
+                  <div class="mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">
+                      Requirements:
+                    </h4>
+                    <p class="text-sm text-gray-600">
+                      M.Sc./M.Engg. in CSE or related field with research
+                      experience
+                    </p>
+                  </div>
+                  <div class="flex gap-2">
+                    <button
+                      onclick="openApplicationForm('Ph.D. in CSE')"
+                      class="flex-1 bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition text-sm font-medium"
+                    >
+                      Apply Now
+                    </button>
+                    <button
+                      onclick="showProgramDetails('phd-cse')"
+                      class="flex-1 border border-purple-600 text-purple-600 py-2 px-4 rounded-lg hover:bg-purple-600 hover:text-white transition text-sm font-medium"
+                    >
+                      View Details
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Research Opportunities -->
+              <div
+                class="program-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                data-category="phd"
+              >
+                <div
+                  class="bg-gradient-to-r from-indigo-600 to-indigo-500 p-6 text-white"
+                >
+                  <h3 class="text-xl font-bold mb-2">Research Opportunities</h3>
+                  <div class="flex items-center text-indigo-200 text-sm">
+                    <svg
+                      class="w-4 h-4 mr-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
+                    </svg>
+                    Research Focus
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">
+                      Research Support:
+                    </h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                      <li>• Research Assistantships Available</li>
+                      <li>• Access to Modern Research Labs</li>
+                      <li>• International Collaboration</li>
+                      <li>• Conference Funding Support</li>
+                      <li>• Publication Assistance</li>
+                    </ul>
+                  </div>
+                  <div class="mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">
+                      Active Projects:
+                    </h4>
+                    <p class="text-sm text-gray-600">
+                      Multiple funded research projects in AI, ML, and emerging
+                      technologies
+                    </p>
+                  </div>
+                  <div class="flex gap-2">
+                    <button
+                      onclick="showProgramDetails('research-opportunities')"
+                      class="w-full border border-indigo-600 text-indigo-600 py-2 px-4 rounded-lg hover:bg-indigo-600 hover:text-white transition text-sm font-medium"
+                    >
+                      Explore Research
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Short Courses & Training -->
+          <div id="training" class="tab-content" style="display: none">
+            <div class="text-center mb-8">
+              <h2 class="text-3xl font-bold text-primary mb-4">
+                Short Courses & Training Programs
+              </h2>
+              <p class="text-gray-600 max-w-3xl mx-auto">
+                Professional development courses and skill-building programs
+                designed for working professionals and students seeking to
+                enhance their technical expertise.
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Programming Fundamentals -->
+              <div
+                class="program-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                data-category="training"
+              >
+                <div
+                  class="bg-gradient-to-r from-orange-600 to-orange-500 p-6 text-white"
+                >
+                  <h3 class="text-xl font-bold mb-2">
+                    Programming Fundamentals
+                  </h3>
+                  <div class="flex items-center text-orange-200 text-sm">
+                    <svg
+                      class="w-4 h-4 mr-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
+                    </svg>
+                    6 Weeks Course
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">
+                      Topics Covered:
+                    </h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                      <li>• C/C++ Programming</li>
+                      <li>• Python Basics</li>
+                      <li>• Data Structures & Algorithms</li>
+                      <li>• Problem Solving Techniques</li>
+                    </ul>
+                  </div>
+                  <div class="mb-4">
+                    <p class="text-sm text-gray-600">
+                      <strong>Duration:</strong> 6 weeks (3 days/week)
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      <strong>Fee:</strong> ৳12,000
+                    </p>
+                  </div>
+                  <button
+                    onclick="openApplicationForm('Programming Fundamentals')"
+                    class="w-full bg-orange-600 text-white py-2 px-4 rounded-lg hover:bg-orange-700 transition text-sm font-medium"
+                  >
+                    Enroll Now
+                  </button>
+                </div>
+              </div>
+
+              <!-- Web Development -->
+              <div
+                class="program-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                data-category="training"
+              >
+                <div
+                  class="bg-gradient-to-r from-teal-600 to-teal-500 p-6 text-white"
+                >
+                  <h3 class="text-xl font-bold mb-2">
+                    Full Stack Web Development
+                  </h3>
+                  <div class="flex items-center text-teal-200 text-sm">
+                    <svg
+                      class="w-4 h-4 mr-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
+                    </svg>
+                    12 Weeks Course
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">
+                      Technologies:
+                    </h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                      <li>• HTML5, CSS3, JavaScript</li>
+                      <li>• React.js & Node.js</li>
+                      <li>• MongoDB & Express.js</li>
+                      <li>• Project Development</li>
+                    </ul>
+                  </div>
+                  <div class="mb-4">
+                    <p class="text-sm text-gray-600">
+                      <strong>Duration:</strong> 12 weeks (3 days/week)
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      <strong>Fee:</strong> ৳25,000
+                    </p>
+                  </div>
+                  <button
+                    onclick="openApplicationForm('Full Stack Web Development')"
+                    class="w-full bg-teal-600 text-white py-2 px-4 rounded-lg hover:bg-teal-700 transition text-sm font-medium"
+                  >
+                    Enroll Now
+                  </button>
+                </div>
+              </div>
+
+              <!-- AI & Machine Learning -->
+              <div
+                class="program-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                data-category="training"
+              >
+                <div
+                  class="bg-gradient-to-r from-pink-600 to-pink-500 p-6 text-white"
+                >
+                  <h3 class="text-xl font-bold mb-2">AI & Machine Learning</h3>
+                  <div class="flex items-center text-pink-200 text-sm">
+                    <svg
+                      class="w-4 h-4 mr-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
+                    </svg>
+                    10 Weeks Course
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">
+                      Curriculum:
+                    </h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                      <li>• Python for AI/ML</li>
+                      <li>• Machine Learning Algorithms</li>
+                      <li>• Deep Learning & Neural Networks</li>
+                      <li>• Real-world Projects</li>
+                    </ul>
+                  </div>
+                  <div class="mb-4">
+                    <p class="text-sm text-gray-600">
+                      <strong>Duration:</strong> 10 weeks (2 days/week)
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      <strong>Fee:</strong> ৳30,000
+                    </p>
+                  </div>
+                  <button
+                    onclick="openApplicationForm('AI & Machine Learning')"
+                    class="w-full bg-pink-600 text-white py-2 px-4 rounded-lg hover:bg-pink-700 transition text-sm font-medium"
+                  >
+                    Enroll Now
+                  </button>
+                </div>
+              </div>
+
+              <!-- Mobile App Development -->
+              <div
+                class="program-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                data-category="training"
+              >
+                <div
+                  class="bg-gradient-to-r from-red-600 to-red-500 p-6 text-white"
+                >
+                  <h3 class="text-xl font-bold mb-2">Mobile App Development</h3>
+                  <div class="flex items-center text-red-200 text-sm">
+                    <svg
+                      class="w-4 h-4 mr-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
+                    </svg>
+                    8 Weeks Course
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Platforms:</h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                      <li>• Flutter Development</li>
+                      <li>• React Native</li>
+                      <li>• Cross-platform Development</li>
+                      <li>• App Store Deployment</li>
+                    </ul>
+                  </div>
+                  <div class="mb-4">
+                    <p class="text-sm text-gray-600">
+                      <strong>Duration:</strong> 8 weeks (3 days/week)
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      <strong>Fee:</strong> ৳20,000
+                    </p>
+                  </div>
+                  <button
+                    onclick="openApplicationForm('Mobile App Development')"
+                    class="w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition text-sm font-medium"
+                  >
+                    Enroll Now
+                  </button>
+                </div>
+              </div>
+
+              <!-- Cybersecurity -->
+              <div
+                class="program-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                data-category="training"
+              >
+                <div
+                  class="bg-gradient-to-r from-gray-700 to-gray-600 p-6 text-white"
+                >
+                  <h3 class="text-xl font-bold mb-2">
+                    Cybersecurity Fundamentals
+                  </h3>
+                  <div class="flex items-center text-gray-300 text-sm">
+                    <svg
+                      class="w-4 h-4 mr-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
+                    </svg>
+                    6 Weeks Course
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">
+                      Skills Covered:
+                    </h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                      <li>• Network Security</li>
+                      <li>• Ethical Hacking</li>
+                      <li>• Cryptography</li>
+                      <li>• Security Tools & Techniques</li>
+                    </ul>
+                  </div>
+                  <div class="mb-4">
+                    <p class="text-sm text-gray-600">
+                      <strong>Duration:</strong> 6 weeks (2 days/week)
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      <strong>Fee:</strong> ৳18,000
+                    </p>
+                  </div>
+                  <button
+                    onclick="openApplicationForm('Cybersecurity Fundamentals')"
+                    class="w-full bg-gray-700 text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition text-sm font-medium"
+                  >
+                    Enroll Now
+                  </button>
+                </div>
+              </div>
+
+              <!-- Data Science -->
+              <div
+                class="program-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                data-category="training"
+              >
+                <div
+                  class="bg-gradient-to-r from-blue-500 to-purple-600 p-6 text-white"
+                >
+                  <h3 class="text-xl font-bold mb-2">
+                    Data Science & Analytics
+                  </h3>
+                  <div class="flex items-center text-blue-200 text-sm">
+                    <svg
+                      class="w-4 h-4 mr-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      ></path>
+                    </svg>
+                    10 Weeks Course
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">
+                      Tools & Technologies:
+                    </h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                      <li>• Python for Data Science</li>
+                      <li>• SQL & Database Management</li>
+                      <li>• Data Visualization</li>
+                      <li>• Statistical Analysis</li>
+                    </ul>
+                  </div>
+                  <div class="mb-4">
+                    <p class="text-sm text-gray-600">
+                      <strong>Duration:</strong> 10 weeks (2 days/week)
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      <strong>Fee:</strong> ৳22,000
+                    </p>
+                  </div>
+                  <button
+                    onclick="openApplicationForm('Data Science & Analytics')"
+                    class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-2 px-4 rounded-lg hover:from-blue-600 hover:to-purple-700 transition text-sm font-medium"
+                  >
+                    Enroll Now
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Additional Information Section -->
+      <section class="bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="text-center">
+              <div
+                class="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+              >
+                <svg
+                  class="w-8 h-8 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-primary mb-2">
+                Quality Education
+              </h3>
+              <p class="text-gray-600">
+                UGC approved curriculum with industry-relevant content and
+                modern teaching methodologies.
+              </p>
+            </div>
+            <div class="text-center">
+              <div
+                class="bg-secondary/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+              >
+                <svg
+                  class="w-8 h-8 text-secondary"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-primary mb-2">
+                Industry Partnership
+              </h3>
+              <p class="text-gray-600">
+                Strong connections with leading tech companies for internships
+                and job placements.
+              </p>
+            </div>
+            <div class="text-center">
+              <div
+                class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+              >
+                <svg
+                  class="w-8 h-8 text-green-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-primary mb-2">
+                Research Excellence
+              </h3>
+              <p class="text-gray-600">
+                State-of-the-art research facilities and opportunities for
+                cutting-edge research.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Facilities & Learning Support Section -->
+      <section class="bg-gray-50 py-16">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+              Facilities & Learning Support
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+              State-of-the-art facilities and comprehensive learning support to
+              enhance your educational experience and prepare you for the
+              future.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <!-- Computer Labs -->
+            <div
+              class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+            >
+              <div
+                class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mb-4"
+              >
+                <svg
+                  class="w-8 h-8 text-blue-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-800 mb-3">
+                Advanced Computer Labs
+              </h3>
+              <ul class="text-gray-600 space-y-2 text-sm">
+                <li>• 200+ High-Performance Workstations</li>
+                <li>• Latest Software Development Tools</li>
+                <li>• 24/7 Lab Access for Students</li>
+                <li>• Dedicated Project Development Spaces</li>
+                <li>• High-Speed Internet Connectivity</li>
+              </ul>
+            </div>
+
+            <!-- Research Centers -->
+            <div
+              class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+            >
+              <div
+                class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mb-4"
+              >
+                <svg
+                  class="w-8 h-8 text-green-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-800 mb-3">
+                Research Centers
+              </h3>
+              <ul class="text-gray-600 space-y-2 text-sm">
+                <li>• AI & Machine Learning Research Lab</li>
+                <li>• Cybersecurity Research Center</li>
+                <li>• IoT & Embedded Systems Lab</li>
+                <li>• Computer Vision Lab</li>
+                <li>• Collaborative Research Projects</li>
+              </ul>
+            </div>
+
+            <!-- Online Learning Support -->
+            <div
+              class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+            >
+              <div
+                class="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mb-4"
+              >
+                <svg
+                  class="w-8 h-8 text-purple-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-800 mb-3">
+                Online Learning Platform
+              </h3>
+              <ul class="text-gray-600 space-y-2 text-sm">
+                <li>• LMS with Interactive Content</li>
+                <li>• Virtual Labs & Simulations</li>
+                <li>• Online Assignment Submission</li>
+                <li>• Video Lectures & Tutorials</li>
+                <li>• 24/7 Technical Support</li>
+              </ul>
+            </div>
+
+            <!-- Library & Resources -->
+            <div
+              class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+            >
+              <div
+                class="bg-indigo-100 rounded-full w-16 h-16 flex items-center justify-center mb-4"
+              >
+                <svg
+                  class="w-8 h-8 text-indigo-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-800 mb-3">
+                Digital Library
+              </h3>
+              <ul class="text-gray-600 space-y-2 text-sm">
+                <li>• 50,000+ Digital Books & Journals</li>
+                <li>• IEEE & ACM Digital Libraries</li>
+                <li>• Research Paper Access</li>
+                <li>• Quiet Study Spaces</li>
+                <li>• Group Discussion Rooms</li>
+              </ul>
+            </div>
+
+            <!-- Innovation Hub -->
+            <div
+              class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+            >
+              <div
+                class="bg-yellow-100 rounded-full w-16 h-16 flex items-center justify-center mb-4"
+              >
+                <svg
+                  class="w-8 h-8 text-yellow-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-800 mb-3">
+                Innovation Hub
+              </h3>
+              <ul class="text-gray-600 space-y-2 text-sm">
+                <li>• Startup Incubation Center</li>
+                <li>• Prototype Development Lab</li>
+                <li>• 3D Printing & Manufacturing</li>
+                <li>• Mentorship Programs</li>
+                <li>• Industry Expert Sessions</li>
+              </ul>
+            </div>
+
+            <!-- Student Support -->
+            <div
+              class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+            >
+              <div
+                class="bg-red-100 rounded-full w-16 h-16 flex items-center justify-center mb-4"
+              >
+                <svg
+                  class="w-8 h-8 text-red-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-800 mb-3">
+                Student Support Services
+              </h3>
+              <ul class="text-gray-600 space-y-2 text-sm">
+                <li>• Academic Counseling</li>
+                <li>• Career Guidance</li>
+                <li>• Tutoring Services</li>
+                <li>• Mental Health Support</li>
+                <li>• Financial Aid Assistance</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Career Prospects Section -->
+      <section class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">
+              Career Prospects
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+              Our graduates are highly sought after by leading companies
+              worldwide. Explore the diverse career paths and success stories of
+              our alumni.
+            </p>
+          </div>
+
+          <!-- Job Roles Grid -->
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div
+              class="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl"
+            >
+              <div
+                class="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3"
+              >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-800">Software Engineer</h3>
+              <p class="text-sm text-gray-600 mt-1">
+                Full-stack development, mobile apps, web applications
+              </p>
+            </div>
+
+            <div
+              class="text-center p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-xl"
+            >
+              <div
+                class="bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3"
+              >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                  <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-800">Data Scientist</h3>
+              <p class="text-sm text-gray-600 mt-1">
+                Machine learning, analytics, business intelligence
+              </p>
+            </div>
+
+            <div
+              class="text-center p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl"
+            >
+              <div
+                class="bg-purple-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3"
+              >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-800">Research Scientist</h3>
+              <p class="text-sm text-gray-600 mt-1">
+                AI research, academic positions, R&D roles
+              </p>
+            </div>
+
+            <div
+              class="text-center p-6 bg-gradient-to-br from-red-50 to-red-100 rounded-xl"
+            >
+              <div
+                class="bg-red-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3"
+              >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-800">Cybersecurity Expert</h3>
+              <p class="text-sm text-gray-600 mt-1">
+                Security analysis, ethical hacking, compliance
+              </p>
+            </div>
+
+            <div
+              class="text-center p-6 bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl"
+            >
+              <div
+                class="bg-yellow-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3"
+              >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-800">Product Manager</h3>
+              <p class="text-sm text-gray-600 mt-1">
+                Tech product strategy, project management
+              </p>
+            </div>
+
+            <div
+              class="text-center p-6 bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl"
+            >
+              <div
+                class="bg-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3"
+              >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-800">System Architect</h3>
+              <p class="text-sm text-gray-600 mt-1">
+                Enterprise systems, cloud architecture
+              </p>
+            </div>
+
+            <div
+              class="text-center p-6 bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl"
+            >
+              <div
+                class="bg-pink-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3"
+              >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-800">DevOps Engineer</h3>
+              <p class="text-sm text-gray-600 mt-1">
+                CI/CD, infrastructure automation
+              </p>
+            </div>
+
+            <div
+              class="text-center p-6 bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl"
+            >
+              <div
+                class="bg-teal-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3"
+              >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="font-bold text-gray-800">Entrepreneur</h3>
+              <p class="text-sm text-gray-600 mt-1">
+                Tech startups, innovation leadership
+              </p>
+            </div>
+          </div>
+
+          <!-- Alumni Success Stories -->
+          <div class="bg-gray-50 rounded-2xl p-8 mb-12">
+            <h3 class="text-2xl font-bold text-center text-primary mb-8">
+              Alumni Success Stories
+            </h3>
+            <div class="grid md:grid-cols-3 gap-8">
+              <div class="text-center">
+                <div
+                  class="bg-primary rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4"
+                >
+                  <span class="text-secondary text-2xl font-bold">SH</span>
+                </div>
+                <h4 class="font-bold text-gray-800">Sakib Hasan</h4>
+                <p class="text-sm text-gray-600 mb-2">
+                  Senior Software Engineer at Google
+                </p>
+                <p class="text-xs text-gray-500 italic">
+                  "CSE-BU provided me with the perfect foundation to land my
+                  dream job at Google. The rigorous curriculum and supportive
+                  faculty made all the difference."
+                </p>
+              </div>
+
+              <div class="text-center">
+                <div
+                  class="bg-primary rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4"
+                >
+                  <span class="text-secondary text-2xl font-bold">FA</span>
+                </div>
+                <h4 class="font-bold text-gray-800">Fatima Ahmed</h4>
+                <p class="text-sm text-gray-600 mb-2">
+                  Data Scientist at Microsoft
+                </p>
+                <p class="text-xs text-gray-500 italic">
+                  "The research opportunities and AI courses at CSE-BU helped me
+                  develop expertise in machine learning that opened doors to
+                  exciting career opportunities."
+                </p>
+              </div>
+
+              <div class="text-center">
+                <div
+                  class="bg-primary rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4"
+                >
+                  <span class="text-secondary text-2xl font-bold">RK</span>
+                </div>
+                <h4 class="font-bold text-gray-800">Rakib Khan</h4>
+                <p class="text-sm text-gray-600 mb-2">
+                  CTO & Co-founder at TechStart BD
+                </p>
+                <p class="text-xs text-gray-500 italic">
+                  "The entrepreneurship support and innovation hub at CSE-BU
+                  inspired me to start my own company. Now we're one of
+                  Bangladesh's leading fintech startups."
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Company Logos -->
+          <div class="text-center">
+            <h3 class="text-xl font-bold text-gray-800 mb-6">
+              Our Graduates Work At
+            </h3>
+            <div
+              class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-70"
+            >
+              <div
+                class="bg-white p-4 rounded-lg shadow-sm border flex items-center justify-center h-16"
+              >
+                <span class="font-bold text-blue-600">Google</span>
+              </div>
+              <div
+                class="bg-white p-4 rounded-lg shadow-sm border flex items-center justify-center h-16"
+              >
+                <span class="font-bold text-blue-800">Microsoft</span>
+              </div>
+              <div
+                class="bg-white p-4 rounded-lg shadow-sm border flex items-center justify-center h-16"
+              >
+                <span class="font-bold text-orange-600">Amazon</span>
+              </div>
+              <div
+                class="bg-white p-4 rounded-lg shadow-sm border flex items-center justify-center h-16"
+              >
+                <span class="font-bold text-blue-500">Meta</span>
+              </div>
+              <div
+                class="bg-white p-4 rounded-lg shadow-sm border flex items-center justify-center h-16"
+              >
+                <span class="font-bold text-red-600">Oracle</span>
+              </div>
+              <div
+                class="bg-white p-4 rounded-lg shadow-sm border flex items-center justify-center h-16"
+              >
+                <span class="font-bold text-purple-600">Samsung</span>
+              </div>
+              <div
+                class="bg-white p-4 rounded-lg shadow-sm border flex items-center justify-center h-16"
+              >
+                <span class="font-bold text-green-600">Grameenphone</span>
+              </div>
+              <div
+                class="bg-white p-4 rounded-lg shadow-sm border flex items-center justify-center h-16"
+              >
+                <span class="font-bold text-blue-700">BRAC</span>
+              </div>
+              <div
+                class="bg-white p-4 rounded-lg shadow-sm border flex items-center justify-center h-16"
+              >
+                <span class="font-bold text-red-500">Robi</span>
+              </div>
+              <div
+                class="bg-white p-4 rounded-lg shadow-sm border flex items-center justify-center h-16"
+              >
+                <span class="font-bold text-gray-800">TigerIT</span>
+              </div>
+              <div
+                class="bg-white p-4 rounded-lg shadow-sm border flex items-center justify-center h-16"
+              >
+                <span class="font-bold text-blue-600">DataSoft</span>
+              </div>
+              <div
+                class="bg-white p-4 rounded-lg shadow-sm border flex items-center justify-center h-16"
+              >
+                <span class="font-bold text-purple-500">Brain Station 23</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Exchange & Collaboration Opportunities Section -->
+      <section
+        class="bg-gradient-to-br from-primary to-primary/90 text-white py-16"
+      >
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+              Exchange & Collaboration Opportunities
+            </h2>
+            <p class="text-xl text-white/90 max-w-3xl mx-auto">
+              Expand your horizons through international exchange programs,
+              industry collaborations, and global research partnerships.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Study Abroad Programs -->
+            <div
+              class="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300"
+            >
+              <div
+                class="bg-secondary rounded-full w-16 h-16 flex items-center justify-center mb-4"
+              >
+                <svg
+                  class="w-8 h-8 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Study Abroad Programs</h3>
+              <ul class="space-y-2 text-white/90 text-sm">
+                <li>• Exchange Programs with 15+ Universities</li>
+                <li>• Semester Abroad in USA, Canada, Europe</li>
+                <li>• Joint Degree Programs Available</li>
+                <li>• Scholarship Opportunities</li>
+                <li>• Academic Credit Transfer</li>
+              </ul>
+              <div class="mt-4 pt-4 border-t border-white/20">
+                <p class="text-xs text-white/80">
+                  <strong>Partner Universities:</strong> University of Toronto,
+                  TU Munich, KTH Sweden, NUS Singapore
+                </p>
+              </div>
+            </div>
+
+            <!-- Industry Collaborations -->
+            <div
+              class="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300"
+            >
+              <div
+                class="bg-secondary rounded-full w-16 h-16 flex items-center justify-center mb-4"
+              >
+                <svg
+                  class="w-8 h-8 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Industry Partnerships</h3>
+              <ul class="space-y-2 text-white/90 text-sm">
+                <li>• Internship Programs with Top Companies</li>
+                <li>• Guest Lectures by Industry Experts</li>
+                <li>• Real-world Project Collaborations</li>
+                <li>• Job Placement Assistance</li>
+                <li>• Industry-Sponsored Research</li>
+              </ul>
+              <div class="mt-4 pt-4 border-t border-white/20">
+                <p class="text-xs text-white/80">
+                  <strong>Partners:</strong> Google, Microsoft, Samsung R&D,
+                  Grameenphone, BRAC IT
+                </p>
+              </div>
+            </div>
+
+            <!-- Research Collaborations -->
+            <div
+              class="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300"
+            >
+              <div
+                class="bg-secondary rounded-full w-16 h-16 flex items-center justify-center mb-4"
+              >
+                <svg
+                  class="w-8 h-8 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Research Partnerships</h3>
+              <ul class="space-y-2 text-white/90 text-sm">
+                <li>• International Research Collaborations</li>
+                <li>• Joint Research Publications</li>
+                <li>• Conference Participation Support</li>
+                <li>• Research Grant Opportunities</li>
+                <li>• Cross-cultural Research Teams</li>
+              </ul>
+              <div class="mt-4 pt-4 border-t border-white/20">
+                <p class="text-xs text-white/80">
+                  <strong>Active Projects:</strong> AI Ethics, Smart Cities,
+                  Cybersecurity, Climate Tech
+                </p>
+              </div>
+            </div>
+
+            <!-- International Competitions -->
+            <div
+              class="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300"
+            >
+              <div
+                class="bg-secondary rounded-full w-16 h-16 flex items-center justify-center mb-4"
+              >
+                <svg
+                  class="w-8 h-8 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Global Competitions</h3>
+              <ul class="space-y-2 text-white/90 text-sm">
+                <li>• ACM ICPC World Finals</li>
+                <li>• Google Summer of Code</li>
+                <li>• NASA Space Apps Challenge</li>
+                <li>• Hackathons & Coding Contests</li>
+                <li>• Innovation Competitions</li>
+              </ul>
+              <div class="mt-4 pt-4 border-t border-white/20">
+                <p class="text-xs text-white/80">
+                  <strong>Recent Achievements:</strong> ICPC Asia Regional
+                  Finalists, Google Code-in Winners
+                </p>
+              </div>
+            </div>
+
+            <!-- Professional Certifications -->
+            <div
+              class="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300"
+            >
+              <div
+                class="bg-secondary rounded-full w-16 h-16 flex items-center justify-center mb-4"
+              >
+                <svg
+                  class="w-8 h-8 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold mb-3">
+                Professional Certifications
+              </h3>
+              <ul class="space-y-2 text-white/90 text-sm">
+                <li>• AWS Cloud Certifications</li>
+                <li>• Microsoft Azure Certifications</li>
+                <li>• Google Cloud Platform</li>
+                <li>• Cisco Networking Certifications</li>
+                <li>• Industry-Standard Certifications</li>
+              </ul>
+              <div class="mt-4 pt-4 border-t border-white/20">
+                <p class="text-xs text-white/80">
+                  <strong>Support:</strong> Exam vouchers, training materials,
+                  preparation courses
+                </p>
+              </div>
+            </div>
+
+            <!-- Cultural Exchange -->
+            <div
+              class="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300"
+            >
+              <div
+                class="bg-secondary rounded-full w-16 h-16 flex items-center justify-center mb-4"
+              >
+                <svg
+                  class="w-8 h-8 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Cultural Exchange</h3>
+              <ul class="space-y-2 text-white/90 text-sm">
+                <li>• International Student Programs</li>
+                <li>• Cultural Immersion Experiences</li>
+                <li>• Language Learning Support</li>
+                <li>• Global Alumni Network</li>
+                <li>• Cross-cultural Project Teams</li>
+              </ul>
+              <div class="mt-4 pt-4 border-t border-white/20">
+                <p class="text-xs text-white/80">
+                  <strong>Activities:</strong> International festivals, cultural
+                  nights, buddy programs
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Call to Action -->
+          <div class="text-center mt-12">
+            <div
+              class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 inline-block"
+            >
+              <h3 class="text-2xl font-bold mb-4">Ready to Go Global?</h3>
+              <p class="text-white/90 mb-6 max-w-2xl">
+                Join our international programs and expand your horizons.
+                Connect with global opportunities and build a worldwide network.
+              </p>
+              <div class="flex flex-wrap justify-center gap-4">
+                <button
+                  onclick="openApplicationForm('International Programs')"
+                  class="bg-secondary text-primary font-bold px-6 py-3 rounded-lg hover:bg-yellow-400 transition"
+                >
+                  Apply for Exchange Program
+                </button>
+                <button
+                  onclick="showProgramDetails('international')"
+                  class="border border-secondary text-secondary font-bold px-6 py-3 rounded-lg hover:bg-secondary hover:text-primary transition"
+                >
+                  Learn More
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Professional Footer -->
+    <footer
+      class="w-full bg-primary text-secondary pt-12 pb-6 px-4 border-t border-primary/30"
+    >
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 md:gap-8"
+      >
+        <!-- Department Info -->
+        <div class="flex flex-col gap-3">
+          <div
+            class="flex items-center gap-3 mb-2 justify-center md:justify-start"
+          >
+            <img
+              src="./assets/bu logo.png"
+              alt="BU Logo"
+              class="h-12 w-12 rounded bg-white p-1"
+            />
+            <div>
+              <div class="font-bold text-lg">CSE - University of Barishal</div>
+              <div class="text-secondary/80 text-xs">
+                Excellence in Computing
+              </div>
+            </div>
+          </div>
+          <div class="text-secondary/80 text-sm text-center md:text-left">
+            Empowering the next generation of innovators and leaders in Computer
+            Science. Accredited by UGC. Modern Labs. International
+            Collaborations.
+          </div>
+        </div>
+        <!-- Quick Links -->
+        <div>
+          <div class="font-bold text-lg mb-3 text-center md:text-left">
+            Quick Links
+          </div>
+          <ul
+            class="space-y-2 text-secondary/90 text-sm flex flex-col items-center md:items-start"
+          >
+            <li>
+              <a href="index.html" class="hover:underline block py-1">Home</a>
+            </li>
+            <li>
+              <a href="about.html" class="hover:underline block py-1"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a href="#faculty" class="hover:underline block py-1">Faculty</a>
+            </li>
+            <li>
+              <a href="#programs" class="hover:underline block py-1"
+                >Programs</a
+              >
+            </li>
+          </ul>
+        </div>
+        <!-- Contact Info -->
+        <div>
+          <div class="font-bold text-lg mb-3 text-center md:text-left">
+            Contact
+          </div>
+          <ul
+            class="text-secondary/90 text-sm space-y-2 flex flex-col items-center md:items-start"
+          >
+            <li class="flex items-center gap-2">
+              <span>🏫</span>
+              <span>5th Floor, Academic Building, BU</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span>📧</span>
+              <a href="mailto:cse@bu.ac.bd" class="hover:underline"
+                >cse@bu.ac.bd</a
+              >
+            </li>
+            <li class="flex items-center gap-2">
+              <span>🌐</span>
+              <a href="https://bu.ac.bd" target="_blank" class="hover:underline"
+                >bu.ac.bd</a
+              >
+            </li>
+            <li class="flex items-center gap-2">
+              <span>📞</span> <span>+880-1234-567890</span>
+            </li>
+          </ul>
+        </div>
+        <!-- Social & Newsletter -->
+        <div>
+          <div class="font-bold text-lg mb-3 text-center md:text-left">
+            Connect
+          </div>
+          <div class="flex gap-3 mb-4 justify-center md:justify-start">
+            <a
+              href="https://facebook.com/csebu"
+              target="_blank"
+              class="hover:text-secondary/70"
+              aria-label="Facebook"
+              ><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.632.771-1.632 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.128 22 16.991 22 12z"
+                /></svg
+            ></a>
+            <a
+              href="https://twitter.com/csebu"
+              target="_blank"
+              class="hover:text-secondary/70"
+              aria-label="Twitter"
+              ><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M22.46 6c-.77.35-1.6.59-2.47.69a4.3 4.3 0 0 0 1.88-2.37 8.59 8.59 0 0 1-2.72 1.04A4.28 4.28 0 0 0 16.11 4c-2.37 0-4.29 1.92-4.29 4.29 0 .34.04.67.11.99C7.69 8.99 4.07 7.13 1.64 4.16c-.37.64-.58 1.39-.58 2.19 0 1.51.77 2.84 1.94 3.62-.72-.02-1.39-.22-1.98-.55v.06c0 2.11 1.5 3.87 3.5 4.27-.36.1-.74.16-1.13.16-.28 0-.54-.03-.8-.08.54 1.68 2.12 2.9 3.99 2.93A8.6 8.6 0 0 1 2 19.54c-.63 0-1.25-.04-1.86-.11A12.13 12.13 0 0 0 7.29 21.5c7.55 0 11.68-6.26 11.68-11.68 0-.18-.01-.36-.02-.54A8.18 8.18 0 0 0 22.46 6z"
+                /></svg
+            ></a>
+            <a
+              href="https://linkedin.com/company/csebu"
+              target="_blank"
+              class="hover:text-secondary/70"
+              aria-label="LinkedIn"
+              ><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.28h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.18-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v4.72z"
+                /></svg
+            ></a>
+          </div>
+          <form
+            class="flex flex-col gap-2 w-full max-w-xs mx-auto md:mx-0"
+            onsubmit="event.preventDefault(); alert('Thank you for subscribing!');"
+          >
+            <label for="newsletter" class="text-secondary/80 text-xs"
+              >Subscribe to our newsletter</label
+            >
+            <div class="flex-col md:flex-row flex gap-2">
+              <input
+                id="newsletter"
+                type="email"
+                required
+                placeholder="Your email"
+                class="rounded px-3 py-1 text-primary bg-white border border-primary/20 focus:outline-none focus:ring-2 focus:ring-secondary/50"
+              />
+              <button
+                type="submit"
+                class="bg-secondary text-primary font-bold px-3 py-1 rounded hover:bg-yellow-400 transition"
+              >
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div
+        class="max-w-7xl mx-auto mt-8 border-t border-secondary/20 pt-4 flex flex-col md:flex-row justify-between items-center text-xs text-secondary/70 gap-2 text-center"
+      >
+        <div>
+          &copy; 2025 Department of Computer Science & Engineering, University
+          of Barishal. All rights reserved.
+        </div>
+        <div class="flex gap-4 mt-2 md:mt-0">
+          <a href="#privacy" class="hover:underline">Privacy Policy</a>
+          <a href="#terms" class="hover:underline">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="index.js"></script>
+    <script src="programs.js"></script>
+  </body>
+</html>

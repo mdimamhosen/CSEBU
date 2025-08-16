@@ -1,3 +1,24 @@
+// Faculty Directory Tab System (moved from faculty.html)
+document.addEventListener("DOMContentLoaded", function () {
+	// Only run this if faculty tabs exist on the page
+	const tabs = document.querySelectorAll(".faculty-tab");
+	const contents = document.querySelectorAll(".faculty-tab-content");
+	if (tabs.length && contents.length) {
+		tabs.forEach((tab) => {
+			tab.addEventListener("click", function () {
+				tabs.forEach((t) => t.classList.remove("bg-secondary"));
+				tabs.forEach((t) => t.classList.add("bg-gray-200"));
+				this.classList.remove("bg-gray-200");
+				this.classList.add("bg-secondary");
+				contents.forEach((c) => c.classList.add("hidden"));
+				const target = document.getElementById("tab-" + this.dataset.tab);
+				if (target) target.classList.remove("hidden");
+			});
+		});
+		// Show first tab by default
+		tabs[0].click();
+	}
+});
 // Animated Skill / Research Graphs Section
 document.addEventListener("DOMContentLoaded", () => {
 	// Animate charts when in view
@@ -654,3 +675,22 @@ document.head.appendChild(pathStyle);
       window.addEventListener("scroll", handleStoryScroll);
       window.addEventListener("DOMContentLoaded", handleStoryScroll);
  
+
+	//   faculty page
+	  document.addEventListener("DOMContentLoaded", function () {
+          const tabs = document.querySelectorAll(".faculty-tab");
+          const contents = document.querySelectorAll(".faculty-tab-content");
+          tabs.forEach((tab) => {
+            tab.addEventListener("click", function () {
+              tabs.forEach((t) => t.classList.remove("bg-secondary"));
+              tabs.forEach((t) => t.classList.add("bg-gray-200"));
+              this.classList.remove("bg-gray-200");
+              this.classList.add("bg-secondary");
+              contents.forEach((c) => c.classList.add("hidden"));
+              const target = document.getElementById("tab-" + this.dataset.tab);
+              if (target) target.classList.remove("hidden");
+            });
+          });
+          // Show first tab by default
+          tabs[0].click();
+        });
