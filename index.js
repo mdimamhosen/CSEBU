@@ -985,3 +985,268 @@ document.addEventListener("DOMContentLoaded", function () {
     document.head.appendChild(style);
   }
 });
+
+// About Page Enhancements
+document.addEventListener("DOMContentLoaded", function () {
+  // Animated Counter for About Page Statistics
+  function animateCounter(element, target, duration = 2000, suffix = "+") {
+    let start = 0;
+    const increment = target / (duration / 16);
+    
+    function updateCounter() {
+      start += increment;
+      if (start < target) {
+        element.textContent = Math.ceil(start) + suffix;
+        requestAnimationFrame(updateCounter);
+      } else {
+        element.textContent = target + suffix;
+      }
+    }
+    updateCounter();
+  }
+
+  // Trigger counter animations when about stats section is in view
+  const aboutStatsSection = document.querySelector("#students-count")?.parentElement?.parentElement?.parentElement;
+  if (aboutStatsSection) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Get all stat elements and animate them
+          const studentsEl = document.getElementById("students-count");
+          const facultyEl = document.getElementById("faculty-count");
+          const graduatesEl = document.getElementById("graduates-count");
+          const projectsEl = document.getElementById("projects-count");
+
+          if (studentsEl) animateCounter(studentsEl, 500);
+          if (facultyEl) animateCounter(facultyEl, 25);
+          if (graduatesEl) animateCounter(graduatesEl, 300);
+          if (projectsEl) animateCounter(projectsEl, 150);
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(aboutStatsSection);
+  }
+
+  // Timeline Animation
+  const timelineItems = document.querySelectorAll(".relative.border-l-4 .flex.items-start");
+  timelineItems.forEach((item, index) => {
+    item.style.opacity = "0";
+    item.style.transform = "translateX(-50px)";
+    item.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateX(0)";
+          }, index * 200);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    observer.observe(item);
+  });
+
+  // Academic Programs Cards Animation
+  const programCards = document.querySelectorAll(".bg-gradient-to-br");
+  programCards.forEach((card, index) => {
+    card.style.opacity = "0";
+    card.style.transform = "translateY(30px) scale(0.95)";
+    card.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0) scale(1)";
+          }, index * 150);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    observer.observe(card);
+  });
+
+  // Student Organization Cards Hover Effects
+  const orgCards = document.querySelectorAll(".bg-white.rounded-lg.shadow");
+  orgCards.forEach(card => {
+    card.addEventListener("mouseenter", function() {
+      this.style.transform = "translateY(-5px) scale(1.02)";
+      this.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
+      this.style.boxShadow = "0 10px 25px rgba(3, 7, 36, 0.15)";
+    });
+    
+    card.addEventListener("mouseleave", function() {
+      this.style.transform = "translateY(0) scale(1)";
+      this.style.boxShadow = "";
+    });
+  });
+
+  // Alumni Cards Animation
+  const alumniCards = document.querySelectorAll(".bg-secondary\\/10");
+  alumniCards.forEach((card, index) => {
+    card.style.opacity = "0";
+    card.style.transform = "rotateY(45deg) translateY(20px)";
+    card.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "rotateY(0deg) translateY(0)";
+          }, index * 200);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    observer.observe(card);
+  });
+
+  // Leadership Cards Staggered Animation
+  const leadershipCards = document.querySelectorAll(".bg-white.rounded-lg.shadow-lg");
+  leadershipCards.forEach((card, index) => {
+    card.style.opacity = "0";
+    card.style.transform = "translateY(40px)";
+    card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }, index * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    observer.observe(card);
+  });
+
+  // Parallax Effect for Hero Section
+  const heroSection = document.querySelector('.min-h-\\[340px\\]');
+  if (heroSection) {
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const rate = scrolled * -0.5;
+      heroSection.style.backgroundPositionY = rate + 'px';
+    });
+  }
+
+  // Smooth Reveal for Mission/Vision Cards
+  const missionCards = document.querySelectorAll(".bg-primary\\/5");
+  missionCards.forEach((card, index) => {
+    card.style.opacity = "0";
+    card.style.transform = "scale(0.9)";
+    card.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "scale(1)";
+          }, index * 200);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    observer.observe(card);
+  });
+
+  // Floating Animation for Icons
+  const floatingIcons = document.querySelectorAll(".text-4xl, .text-3xl");
+  floatingIcons.forEach(icon => {
+    if (icon.textContent.match(/[🎓🔬💼🎯🏆⚡🎤🎯🤝🚀🌟🏢🏛️🌍💼🔬🛠️]/)) {
+      icon.style.animation = "float 3s ease-in-out infinite";
+      icon.style.animationDelay = Math.random() * 2 + "s";
+    }
+  });
+
+  // Add CSS animations if not present
+  if (!document.querySelector('#about-animations')) {
+    const style = document.createElement('style');
+    style.id = 'about-animations';
+    style.textContent = `
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+      
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      @keyframes fadeInScale {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      
+      .animate-slide-in-left {
+        animation: slideInLeft 0.8s ease forwards;
+      }
+      
+      .animate-fade-in-scale {
+        animation: fadeInScale 0.6s ease forwards;
+      }
+      
+      .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // Add hover effects to all cards
+  document.querySelectorAll('.rounded-lg').forEach(card => {
+    card.classList.add('hover-lift');
+  });
+
+  // Scroll Progress Indicator (optional)
+  const progressBar = document.createElement('div');
+  progressBar.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #030724, #f0bd02);
+    z-index: 9999;
+    transition: width 0.1s ease;
+  `;
+  document.body.appendChild(progressBar);
+
+  window.addEventListener('scroll', () => {
+    const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    progressBar.style.width = scrollPercent + '%';
+  });
+});
