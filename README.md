@@ -6,6 +6,12 @@
 	<img src="https://img.shields.io/badge/License-Educational-blue?style=for-the-badge"/>
 </p>
 
+<p align="center">
+	<a href="https://mdimamhosen.github.io/CSEBU/" target="_blank">
+		<img src="https://img.shields.io/badge/Live%20Site-Visit%20Now-brightgreen?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Live Site"/>
+	</a>
+</p>
+
 # CSE-BU Department Website
 
 Welcome to the official website repository for the Department of Computer Science & Engineering, University of Barishal (CSE-BU). This site is designed to be modern, interactive, and informative, serving students, faculty, alumni, and visitors.
